@@ -4430,3 +4430,1091 @@ public class SolutionMedianOfTwoSortedArrays {
     }
 }
 ```
+### Question 121: Kth Largest Element in an Array
+
+Find the kth largest element in an unsorted array.
+
+Examples
+```
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+=============================================
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+```
+Constraints
+```
+1 <= k <= nums.length <= 30000
+```
+Solution
+```java
+import java.util.*;
+public class SolutionKthLargestElement {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int num : nums) {
+            pq.offer(num);
+            if (pq.size() > k) pq.poll();
+        }
+        return pq.peek();
+    }
+}
+```
+### Question 122: IPO
+Given the initial capital and profits of projects, find the maximum capital after k projects.
+Examples
+```
+Input: k = 2, w = 0, profits = [1,2,3], capital = [0,1,2]
+Output: 4
+=============================================
+Input: k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]
+Output: 6
+```
+Constraints
+```
+1 <= k <= 10^4
+0 <= w <= 10^9
+1 <= profits.length, capital.length <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionIPO {
+    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
+        int n = profits.length;
+        int[][] projects = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            projects[i][0] = capital[i];
+            projects[i][1] = profits[i];
+        }
+        Arrays.sort(projects, Comparator.comparingInt(a -> a[0]));
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        int i = 0;
+        for (int j = 0; j < k; j++) {
+            while (i < n && projects[i][0] <= w) {
+                pq.offer(projects[i][1]);
+                i++;
+            }
+            if (pq.isEmpty()) break;
+            w += pq.poll();
+        }
+        return w;
+    }
+}
+```
+### Question 123: Find K Pairs with Smallest Sums
+Find the k pairs with the smallest sums from two sorted arrays.
+Examples
+```
+Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
+Output: [[1,2],[1,4],[1,6]]
+=============================================
+Input: nums1 = [1,1,2], nums2 = [1,2,3], k = 2
+Output: [[1,1],[1,1]]
+```
+Constraints
+```
+1 <= nums1.length, nums2.length <= 10^5
+0 <= nums1[i], nums2[i] <= 10^9
+1 <= k <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionKPairsWithSmallestSums {
+    public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums1.length == 0 || nums2.length == 0 || k <= 0) return res;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0] + a[1]) - (b[0] + b[1]));
+        for (int i = 0; i < Math.min(k, nums1.length); i++) {
+            pq.offer(new int[]{nums1[i], nums2[0], 0});
+        }
+        while (k-- > 0 && !pq.isEmpty()) {
+            int[] pair = pq.poll();
+            res.add(Arrays.asList(pair[0], pair[1]));
+            if (pair[2] + 1 < nums2.length) {
+                pq.offer(new int[]{pair[0], nums2[pair[2] + 1], pair[2] + 1});
+            }
+        }
+        return res;
+    }
+}
+```
+### Question 124: Find Median from Data Stream
+Design a data structure that supports adding numbers and finding the median efficiently.
+Examples
+```Input: ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"]
+       [[],[1],[2],[],[3],[]]
+Output: [null,null,null,1.5,null,2.0]
+```
+Constraints
+```
+1 <= num <= 10^5
+There will be at most 10^5 calls to addNum and findMedian.
+```
+```java
+import java.util.*;
+public class MedianFinder {
+    private PriorityQueue<Integer> maxHeap; // lower half
+    private PriorityQueue<Integer> minHeap; // upper half
+    public MedianFinder() {
+        maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        minHeap = new PriorityQueue<>();
+    }
+    }
+    public void addNum(int num) {
+        maxHeap.offer(num);
+        minHeap.offer(maxHeap.poll());
+        if (minHeap.size() > maxHeap.size()) {
+            maxHeap.offer(minHeap.poll());
+        }
+    }
+    public double findMedian() {
+        if (maxHeap.size() > minHeap.size()) {
+            return maxHeap.peek();
+        } else {
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        }
+    }
+}
+``` 
+### Question 125: Add Binary
+Add two binary strings and return their sum as a binary string.
+Examples
+```Input: a = "11", b = "1"
+Output: "100"
+=============================================
+Input: a = "1010", b = "1011"
+Output: "10101"
+```
+Constraints
+```
+1 <= a.length, b.length <= 10^4
+a and b consist only of '0' or '1'.
+```
+```java
+public class SolutionAddBinary {
+    public String addBinary(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1;
+        int carry = 0;
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int sum = carry;
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            if (j >= 0) sum += b.charAt(j--) - '0';
+            sb.append(sum % 2);
+            carry = sum / 2;
+        }
+        return sb.reverse().toString();
+    }
+}
+```
+### Question 126: Reverse Bits
+Reverse the bits of a given 32-bit unsigned integer.
+Examples
+```Input: n = 43261596
+Output: 964176192
+=============================================
+Input: n = 4294967293
+Output: 3221225471
+```
+Constraints
+```
+The input must be a 32-bit unsigned integer.
+```
+```java
+public class SolutionReverseBits {
+    public int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result <<= 1; // Shift result left by 1
+            result |= (n & 1); // Add the last bit of n to result
+            n >>= 1; // Shift n right by 1
+        }
+        return result;
+    }
+}
+```
+### Question 127: Number of 1 Bits
+Count the number of '1' bits in a given integer.
+Examples
+```Input: n = 11
+Output: 3
+=============================================
+Input: n = 128
+Output: 1
+```
+Constraints
+```
+0 <= n <= 2^31 - 1
+```
+```java
+public class SolutionNumberOf1Bits {
+    public int hammingWeight(int n) {
+        int count = 0;
+        while (n != 0) {
+            count += n & 1; // Check the last bit
+            n >>>= 1; // Shift right by 1 (unsigned)
+        }
+        return count;
+    }
+}
+```
+### Question 128: Single Number
+Find the single number in an array where every other number appears twice.
+Examples
+```Input: nums = [2,2,1]
+Output: 1
+=============================================
+Input: nums = [4,1,2,1,2]
+Output: 4
+```
+Constraints
+```
+1 <= nums.length <= 3 * 10^4
+-3 * 10^4 <= nums[i] <= 3 * 10^4
+Each element in the array appears twice except for one element.
+```
+```java
+public class SolutionSingleNumber {
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num; // XOR operation
+        }
+        return result;
+    }
+}
+```
+### Question 129: Single Number II
+Find the single number in an array where every other number appears three times.
+Examples
+```Input: nums = [2,2,3,2]
+Output: 3
+=============================================
+Input: nums = [0,1,0,1,0,1,99]
+Output: 99
+```
+Constraints
+```
+1 <= nums.length <= 3 * 10^4
+-2^31 <= nums[i] <= 2^31 - 1
+Each element in the array appears three times except for one element.
+```
+```java
+public class SolutionSingleNumberII {
+    public int singleNumber(int[] nums) {
+        int ones = 0, twos = 0;
+        for (int num : nums) {
+            ones = (ones ^ num) & ~twos; // Add to ones if not in twos
+            twos = (twos ^ num) & ~ones; // Add to twos if not in ones
+        }
+        return ones; // The single number will be in ones
+    }
+}
+```
+### Question 130: Bitwise AND of Numbers Range
+Find the bitwise AND of all numbers in a given range [m, n].
+Examples
+```Input: m = 5, n = 7
+Output: 4
+=============================================
+Input: m = 0, n = 1
+Output: 0
+```
+Constraints
+```
+0 <= m <= n <= 2^31 - 1
+```
+```java
+public class SolutionBitwiseANDRange {
+    public int rangeBitwiseAnd(int m, int n) {
+        int shift = 0;
+        while (m < n) {
+            m >>= 1;
+            n >>= 1;
+            shift++;
+        }
+        return m << shift; // Shift back to the left by the number of shifts
+    }
+}
+```
+### Question 131: Palindrome Number 
+Determine whether an integer is a palindrome without converting it to a string.
+Examples
+```Input: x = 121
+Output: true
+=============================================
+Input: x = -121
+Output: false
+```
+Constraints
+```
+-2^31 <= x <= 2^31 - 1
+```
+```java
+public class SolutionPalindromeNumber {
+    public boolean isPalindrome(int x) {
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
+            return false; // Negative numbers and multiples of 10 (except 0) are not palindromes
+        }
+        int reversed = 0;
+        while (x > reversed) {
+            reversed = reversed * 10 + x % 10; // Build the reversed number
+            x /= 10; // Remove the last digit from x
+        }
+        return x == reversed || x == reversed / 10; // Check if the original number is equal to the reversed number or the reversed number without its last digit
+    }
+}
+```
+### Question 132: Plus One
+Given a non-negative integer represented as an array of digits, increment the number by one.
+Examples
+```Input: digits = [1,2,3]
+Output: [1,2,4]
+=============================================
+Input: digits = [9,9,9]
+Output: [1,0,0,0]
+```
+Constraints
+```
+1 <= digits.length <= 100
+0 <= digits[i] <= 9
+The digits do not contain any leading zeros except for the number 0 itself.
+```
+```java
+import java.util.*;
+public class SolutionPlusOne {
+    public int[] plusOne(int[] digits) {
+        int n = digits.length;
+        for (int i = n - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits; // No carry needed, just increment and return
+            }
+            digits[i] = 0; // Set current digit to 0 and carry over
+        }
+        // If we reach here, it means we had a carry from the most significant digit
+        int[] result = new int[n + 1];
+        result[0] = 1; // Set the first digit to 1
+        return result; // The rest are already initialized to 0
+    }
+}
+```
+### Question 133: Factorial Trailing Zeroes
+Count the number of trailing zeroes in the factorial of a given number.
+Examples
+```Input: n = 5
+Output: 1
+=============================================
+Input: n = 10
+Output: 2
+```
+Constraints
+```
+0 <= n <= 10^4
+```
+```java
+public class SolutionFactorialTrailingZeroes {
+    public int trailingZeroes(int n) {
+        int count = 0;
+        while (n >= 5) {
+            n /= 5; // Count how many times 5 is a factor
+            count += n; // Add to the count
+        }
+        return count; // The count of trailing zeroes is the number of times 5 is a factor in the numbers from 1 to n
+    }
+}
+```
+### Question 134: Sqrt(x)
+Implement the sqrt function to compute the square root of a non-negative integer x.
+Examples
+```Input: x = 4
+Output: 2
+=============================================
+Input: x = 8
+Output: 2
+```
+Constraints
+```
+0 <= x <= 2^31 - 1
+```
+```java
+public class SolutionSqrt {
+    public int mySqrt(int x) {
+        if (x < 2) return x; // Handle cases for 0 and 1 directly
+        int left = 2, right = x / 2;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            long square = (long) mid * mid; // Use long to prevent overflow
+            if (square == x) {
+                return mid; // Found the exact square root
+            } else if (square < x) {
+                left = mid + 1; // Move to the right half
+            } else {
+                right = mid - 1; // Move to the left half
+            }
+        }
+        return right; // The right pointer will be at the largest integer whose square is less than or equal to x
+    }
+}
+```
+
+### Question 135: Pow(x, n)
+Implement the pow function to compute x raised to the power n.
+Examples
+```Input: x = 2.00000, n = 10
+Output: 1024.00000
+=============================================
+Input: x = 2.10000, n = 3
+Output: 9.26100
+```
+Constraints
+```
+-100.0 < x < 100.0
+-2^31 <= n <= 2^31 - 1
+-10^4 <= x^n <= 10^4
+```
+```java
+public class SolutionPow {
+    public double myPow(double x, int n) {
+        if (n == 0) return 1; // x^0 = 1
+        if (n < 0) {
+            x = 1 / x; // If n is negative, take the reciprocal of x
+            n = -n; // Make n positive
+        }
+        double result = 1;
+        while (n > 0) {
+            if ((n & 1) == 1) { // If n is odd
+                result *= x; // Multiply the result by x
+            }
+            x *= x; // Square x
+            n >>= 1; // Divide n by 2
+        }
+        return result; // Return the final result
+    }
+}
+```
+
+### Question 136: Max Points on a Line
+Given an array of points on a 2D plane, find the maximum number of points that lie on the same straight line.
+Examples
+```Input: points = [[1,1],[2,2],[3,3]]
+Output: 3
+=============================================
+Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+Output: 4
+```
+Constraints
+```
+1 <= points.length <= 300
+points[i].length == 2
+-10^4 <= points[i][0], points[i][1] <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionMaxPointsOnLine {
+    public int maxPoints(int[][] points) {
+        if (points.length < 2) return points.length; // If less than 2 points, return the count
+        int maxPoints = 1;
+        for (int i = 0; i < points.length; i++) {
+            Map<String, Integer> slopeCount = new HashMap<>();
+            int duplicate = 0, vertical = 0;
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i][0] == points[j][0] && points[i][1] == points[j][1]) {
+                    duplicate++; // Count duplicates
+                } else if (points[i][0] == points[j][0]) {
+                    vertical++; // Count vertical lines
+                } else {
+                    int dy = points[j][1] - points[i][1];
+                    int dx = points[j][0] - points[i][0];
+                    int gcd = gcd(dy, dx); // Get the greatest common divisor
+                    dy /= gcd; // Reduce dy
+                    dx /= gcd; // Reduce dx
+                    String slope = dy + "/" + dx; // Create a unique slope representation
+                    slopeCount.put(slope, slopeCount.getOrDefault(slope, 0) + 1); // Count the slope
+                }
+            }
+            maxPoints = Math.max(maxPoints, vertical + duplicate + 1); // Update max
+            for (int count : slopeCount.values()) {
+                maxPoints = Math.max(maxPoints, count + duplicate + 1); // Update max
+            }
+        }
+        return maxPoints; // Return the maximum points on a line
+    }
+}
+private int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a; // Return the greatest common divisor
+    }
+}
+```
+### Question 136: Max Points on a Line
+Given an array of points on a 2D plane, find the maximum number of points that lie on the same straight line.
+Examples
+```Input: points = [[1,1],[2,2],[3,3]]
+Output: 3
+=============================================
+Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+Output: 4
+```
+Constraints
+```
+1 <= points.length <= 300
+points[i].length == 2
+-10^4 <= points[i][0], points[i][1] <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionMaxPointsOnLine {
+    public int maxPoints(int[][] points) {
+        if (points.length < 2) return points.length; // If less than 2 points, return the count
+        int maxPoints = 1;
+        for (int i = 0; i < points.length; i++) {
+            Map<String, Integer> slopeCount = new HashMap<>();
+            int duplicate = 0, vertical = 0;
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i][0] == points[j][0] && points[i][1] == points[j][1]) {
+                    duplicate++; // Count duplicates
+                } else if (points[i][0] == points[j][0]) {
+                    vertical++; // Count vertical lines
+                } else {
+                    int dy = points[j][1] - points[i][1];
+                    int dx = points[j][0] - points[i][0];
+                    int gcd = gcd(dy, dx); // Get the greatest common divisor
+                    dy /= gcd; // Reduce dy
+                    dx /= gcd; // Reduce dx
+                    String slope = dy + "/" + dx; // Create a unique slope representation
+                    slopeCount.put(slope, slopeCount.getOrDefault(slope, 0) + 1); // Count the slope
+                }
+            }
+            maxPoints = Math.max(maxPoints, vertical + duplicate + 1); // Update max
+            for (int count : slopeCount.values()) {
+                maxPoints = Math.max(maxPoints, count + duplicate + 1); // Update max
+            }
+        }
+        return maxPoints; // Return the maximum points on a line
+    }
+    private int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a; // Return the greatest common divisor
+    }
+}
+```
+### Question 137: Climbing Stairs
+You are climbing a staircase with n steps. Each time you can either climb 1 or 2 steps. Find the number of distinct ways to reach the top.
+Examples
+```Input: n = 2
+Output: 2
+=============================================
+Input: n = 3
+Output: 3
+```
+Constraints
+```
+1 <= n <= 45
+```
+```java
+public class SolutionClimbingStairs {
+    public int climbStairs(int n) {
+        if (n <= 2) return n; // Base cases: 1 step or 2 steps
+        int first = 1, second = 2;
+        for (int i = 3; i <= n; i++) {
+            int temp = second; // Store the previous second value
+            second = first + second; // Update second to the new value
+            first = temp; // Update first to the previous second value
+        }
+        return second; // The second variable holds the number of ways to reach the nth step
+    }
+}
+```
+
+### Question 138: House Robber
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, but adjacent houses have security systems connected that will automatically contact the police if two adjacent houses are robbed on the same night.
+Examples
+```Input: nums = [1,2,3,1]
+Output: 4
+=============================================
+Input: nums = [2,7,9,3,1]
+Output: 12
+```
+Constraints
+```
+1 <= nums.length <= 100
+0 <= nums[i] <= 400
+```
+```java
+public class SolutionHouseRobber {
+    public int rob(int[] nums) {
+        if (nums.length == 0) return 0; // No houses to rob
+        if (nums.length == 1) return nums[0]; // Only one house to rob
+        int prev1 = 0, prev2 = 0; // Initialize previous two
+        for (int num : nums) {
+            int temp = prev1; // Store the previous max
+            prev1 = Math.max(prev1, prev2 + num); // Max of robbing current house or not
+            prev2 = temp; // Update prev2 to the previous max
+        }
+        return prev1; // The last computed value is the maximum amount that can be robbed
+    }
+}
+```
+### Question 139: Word Break
+Given a string s and a dictionary of strings wordDict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+Examples
+```Input: s = "leetcode", wordDict = ["leet","code"]
+Output: true
+=============================================
+Input: s = "applepenapple", wordDict = ["apple","pen"]
+Output: true
+```
+Constraints
+```
+1 <= s.length <= 300
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 20
+The input string s and the words in wordDict consist of only lowercase English letters.
+The wordDict does not contain duplicate words.
+```
+```java
+import java.util.*;
+public class SolutionWordBreak {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordSet = new HashSet<>(wordDict); // Convert list to set
+        boolean[] dp = new boolean[s.length() + 1]; // DP array to track
+        dp[0] = true; // Base case: empty string can always be segmented
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordSet.contains(s.substring(j, i))) {
+                    dp[i] = true; // If substring s[j:i] is in wordDict and dp[j] is true, set dp[i] to true
+                    break; // No need to check further
+                }
+            }
+        }
+        return dp[s.length()]; // Return if the whole string can be segmented
+    }
+}
+```
+### Question 140: Coin Change
+Given an amount and a list of coin denominations, find the minimum number of coins needed to make that amount.
+Examples
+```Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+=============================================
+Input: coins = [2], amount = 3
+Output: -1
+Explanation: It is not possible to make amount 3 with coin 2.
+```
+Constraints
+```
+1 <= coins.length <= 12
+1 <= coins[i] <= 2^31 - 1
+0 <= amount <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionCoinChange {
+    public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE); // Initialize with max value
+        dp[0] = 0; // Base case: 0 coins needed for amount 0
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; i++) {
+                if (dp[i - coin] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                }
+            }
+        }
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+    }
+}
+```
+### Question 141: Longest Increasing Subsequence
+Find the length of the longest increasing subsequence in an array of integers.
+Examples
+```Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], so the length is 4.
+=============================================
+Input: nums = [0,1,0,3,2,3]
+Output: 4
+Explanation: The longest increasing subsequence is [0,1,2,3], so the length is 4.
+```
+Constraints
+```
+1 <= nums.length <= 2500
+-10^4 <= nums[i] <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionLongestIncreasingSubsequence {
+    public int lengthOfLIS(int[] nums) {
+        if (nums.length == 0) return 0; // If the array is empty
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, 1); // Initialize dp array with 1
+        int maxLength = 1; // At least one element is always an increasing subsequence
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1); // Update dp[i] if a longer subsequence is found
+                }
+            }
+            maxLength = Math.max(maxLength, dp[i]); // Update the maximum length found so far
+        }
+        return maxLength; // Return the maximum length of increasing subsequence
+    }
+}
+```
+### Question 142: Triangle
+Find the minimum path sum from the top to the bottom of a triangle.
+Examples
+```Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
+Output: 11
+Explanation: The minimum path sum is 2 + 3 + 5 + 1 = 11.
+=============================================
+Input: triangle = [[-10]]
+Output: -10
+```
+Constraints
+```
+1 <= triangle.length <= 200
+1 <= triangle[i].length <= i + 1
+-10^4 <= triangle[i][j] <= 10^4
+```
+```java
+import java.util.*;
+public class SolutionTriangle {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        int[] dp = new int[n]; // DP array to store minimum path sums
+        for (int i = 0; i < n; i++) {
+            dp[i] = triangle.get(n - 1).get(i); // Initialize with the last row of the triangle
+        }
+        for (int i = n - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                dp[j] = triangle.get(i).get(j) + Math.min(dp[j], dp[j + 1]); // Update dp[j] with the minimum path sum
+            }
+        }
+        return dp[0]; // The top element will have the minimum path sum
+    }
+}
+```
+
+### Question 143: Minimum Path Sum
+Find the minimum path sum from the top left to the bottom right of a grid.
+Examples
+```Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: The path 1 → 3 → 1 → 1 → 1 has the minimum sum = 7.
+=============================================
+Input: grid = [[1,2,3],[4,5,6],[7,8,9]]
+Output: 21
+```
+Constraints
+```
+m == grid.length
+n == grid[0].length
+1 <= m, n <= 200
+0 <= grid[i][j] <= 100
+```
+```java
+import java.util.*;
+public class SolutionMinimumPathSum {
+    public int minPathSum(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int[][] dp = new int[m][n]; // DP array to store minimum path sums
+        dp[0][0] = grid[0][0]; // Start at the top
+        for (int i = 1; i < m; i++) {
+            dp[i][0] = dp[i - 1][0] + grid[i][0]; // Fill the first column
+        }
+        for (int j = 1; j < n; j++) {
+            dp[0][j] = dp[0][j - 1] + grid  [0][j]; // Fill the first row
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = grid[i][j] + Math.min(dp[i - 1][j], dp[i][j - 1]); // Update dp[i][j]
+            }
+        }
+        return dp[m - 1][n - 1]; // Return the minimum path sum
+    }
+}
+```
+### Question 144: Unique Paths II
+Find the number of unique paths from the top left to the bottom right of a grid with obstacles.
+Examples
+```Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+Output: 2
+Explanation: There are two unique paths to the bottom right corner.
+=============================================
+Input: obstacleGrid = [[0,1],[0,0]]
+Output: 1
+```
+Constraints
+```
+m == obstacleGrid.length
+n == obstacleGrid[0].length
+1 <= m, n <= 100
+obstacleGrid[i][j] is 0 or 1
+```
+```java
+import java.util.*;
+public class SolutionUniquePathsII {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int m = obstacleGrid.length, n = obstacleGrid[0].length;
+        if (obstacleGrid[0][0] == 1 || obstacleGrid[m - 1][n - 1] == 1) {
+            return 0; // If start or end is blocked, return 0
+        }
+        int[][] dp = new int[m][n]; // DP array to store unique paths
+        dp[0][0] = 1; // Start at the top left corner
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (obstacleGrid[i][j] == 1) {
+                    dp[i][j] = 0; // If there's an obstacle, no paths through
+                } else {
+                    if (i > 0) dp[i][j] += dp[i - 1][j]; // Add paths from the top
+                    if (j > 0) dp[i][j] += dp[i][j - 1]; // Add paths from the left
+                }
+            }
+        }
+        return dp[m - 1][n - 1]; // Return the number of unique paths to the bottom right corner
+    }
+}
+```
+### Question 145: Longest Palindromic Substring 
+Find the longest palindromic substring in a given string.
+Examples
+```Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+=============================================
+Input: s = "cbbd"
+Output: "bb"
+```
+Constraints
+```
+1 <= s.length <= 1000
+s consist of only digits and English letters (lowercase and/or uppercase).
+```
+```java
+public class SolutionLongestPalindromicSubstring {
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) return ""; // Handle edge cases
+        int start = 0, end = 0; // Initialize start and end indices
+        for (int i = 0; i < s.length(); i++) {    
+            int len1 = expandAroundCenter(s, i, i); // Odd length palindrome
+            int len2 = expandAroundCenter(s, i, i + 1); // Even length palindrome
+            int len = Math.max(len1, len2); // Get the maximum length
+            if (len > end - start) { // Update start and end indices if a longer palindrome is found
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1); // Return the longest palindromic substring
+    }
+    private int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--; // Expand to the left
+            right++; // Expand to the right
+        }
+        return right - left - 1; // Return the length of the palindrome found
+    }
+}
+```
+### Question 146: Interleaving String
+Determine if a string s3 is formed by interleaving two other strings s1 and s2.
+Examples
+```Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbca"
+Output: true
+=============================================
+Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbac"
+Output: false
+```
+Constraints
+```
+1 <= s1.length, s2.length <= 100
+0 <= s3.length <= s1.length + s2.length
+s1, s2, and s3 consist of lowercase English letters.
+```
+```java
+import java.util.*;
+public class SolutionInterleavingString {
+    public boolean isInterleave(String s1, String s2, String s3) {
+        if (s1.length() + s2.length() != s3.length()) return false; // Check length constraint
+        boolean[][] dp = new boolean[s1.length() + 1][s2.length() + 1]; // DP array to track interleaving
+        dp[0][0] = true; // Base case: empty strings interleave to form an empty string
+        for (int i = 0; i <= s1.length(); i++) {
+            for (int j = 0; j <= s2.length(); j++) {
+                if (i > 0) {
+                    dp[i][j] |= dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1); // Check if s1 can contribute to s3
+                }
+                if (j > 0) {
+                    dp[i][j] |= dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1); // Check if s2 can contribute to s3
+                }
+            }
+        }
+        return dp[s1.length()][s2.length()]; // Return if the entire s3 can be formed by interleaving s1 and s2
+    }
+}
+```
+### Question 147: Edit Distance
+Find the minimum number of operations required to convert one string into another.
+Examples
+```Input: word1 = "horse", word2 = "ros"
+Output: 3
+Explanation: horse → rorse (replace 'h' with 'r') → rose (remove 'r') → ros (remove 'e')
+=============================================
+Input: word1 = "intention", word2 = "execution"
+Output: 5
+Explanation: intention → inention (remove 't') → enention (replace 'i' with 'e') → exention (replace 'n' with 'x') → exection (replace 'n' with 'c') → execution (add 'u')
+```
+Constraints
+```1 <= word1.length, word2.length <= 500
+word1 and word2 consist of lowercase English letters.
+```
+```java
+import java.util.*;
+public class SolutionEditDistance {
+    public int minDistance(String word1, String word2) {
+        int m = word1.length(), n = word2.length();
+        int[][] dp = new int[m + 1][n + 1]; // DP array to store edit distances
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (i == 0) {
+                    dp[i][j] = j; // If word1 is empty, we need j insertions
+                } else if (j == 0) {
+                    dp[i][j] = i; // If word2 is empty, we need i deletions
+                } else if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1]; // If characters match, no operation needed
+                } else {
+                    dp[i][j] = 1 + Math.min(dp[i - 1][j], // Deletion
+                                           Math.min(dp[i][j - 1], // Insertion
+                                                    dp[i - 1][j - 1])); // Replacement
+                }
+            }
+        }
+        return dp[m][n]; // Return the minimum edit distance
+    }
+}
+```
+### Question 148: Best Time to Buy and Sell Stock III
+Find the maximum profit you can achieve by making at most two transactions.
+Examples
+```Input: prices = [3,3,5,0,0,3,1,4]
+Output: 6
+Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3.
+Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 3.
+=============================================
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 4.
+```
+Constraints
+```1 <= prices.length <= 10^5
+0 <= prices[i] <= 10^5
+```
+```java
+import java.util.*;
+public class SolutionBestTimeToBuyAndSellStockIII {
+    public int maxProfit(int[] prices) {
+        if (prices.length < 2) return 0; // If less than 2 prices, no profit can be made
+        int firstBuy = Integer.MIN_VALUE, firstSell = 0;
+        int secondBuy = Integer.MIN_VALUE, secondSell = 0;  // Initialize variables for first and second transactions
+        for (int price : prices) {
+            firstBuy = Math.max(firstBuy, -price); // Update firstBuy
+            firstSell = Math.max(firstSell, firstBuy + price); // Update firstSell
+            secondBuy = Math.max(secondBuy, firstSell - price); // Update secondBuy
+            secondSell = Math.max(secondSell, secondBuy + price); // Update secondSell
+        }
+        return secondSell; // Return the maximum profit
+    }
+}
+```
+
+### Question 149: Best Time to Buy and Sell Stock IV
+Find the maximum profit you can achieve by making at most k transactions.
+Examples
+```Input: k = 2, prices = [2,4,1]
+Output: 2
+Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 2.
+=============================================
+Input: k = 2, prices = [3,2,6,5,0,3]
+Output: 7
+Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 4.
+Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3.
+```
+Constraints
+```1 <= k <= 100
+1 <= prices.length <= 1000
+0 <= prices[i] <= 1000
+```
+```java
+import java.util.*;
+public class SolutionBestTimeToBuyAndSellStockIV {
+    public int maxProfit(int k, int[] prices) {
+        if (prices.length < 2 || k == 0) return 0; // If less than 2 prices or no transactions, no profit can be made
+        if (k >= prices.length / 2) {
+            int maxProfit = 0;
+            for (int i = 1; i < prices.length; i++) {
+                if (prices[i] > prices[i - 1]) {
+                    maxProfit += prices[i] - prices[i - 1]; // If the price increases
+                }
+            }
+            return maxProfit; // Return the total profit for unlimited transactions
+        }
+        int[][] dp = new int[k + 1][prices.length]; // DP array to store profits
+        for (int i = 1; i <= k; i++) {
+            int maxDiff = -prices[0]; // Initialize maxDiff for the first transaction
+            for (int j = 1; j < prices.length; j++) {
+                dp[i][j] = Math.max(dp[i][j - 1], prices[j] + maxDiff); // Update the profit for the current transaction
+                maxDiff = Math.max(maxDiff, dp[i - 1][j] - prices[j]); // Update maxDiff for the next transaction
+            }
+        }
+        return dp[k][prices.length - 1]; // Return the maximum profit after k transactions
+    }
+}
+```
+### Question 150: Maximal Square
+Find the largest square containing only 1's in a binary matrix and return its area.
+Examples
+```Input: matrix = [["1","0","1","0","0"],["1","1","1","1","0"],["1","0","0","1","0"],["0","1","1","1","0"],["1","0","1","0","1]]
+Output: 4
+Explanation: The largest square has a side length of 2, so its area is 4.
+=============================================
+Input: matrix = [["0","1"],["1","0"]]
+Output: 1
+Explanation: The largest square has a side length of 1, so its area is 1.
+```
+Constraints
+```
+1 <= matrix.length, matrix[i].length <= 300
+matrix[i][j] is '0' or '1'.
+```
+```java
+import java.util.*;
+public class SolutionMaximalSquare {
+    public int maximalSquare(char[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0) return 0; // Handle edge cases
+        int maxSide = 0; // Variable to track the maximum side length of the square
+        int[][] dp = new int[matrix.length][matrix[0].length]; // DP array to store the side lengths of squares
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][j] == '1') {
+                    if (i == 0 || j == 0)
+                        dp[i][j] = 1; // If it's the first row or column, set the side length to 1
+                    else
+                        dp[i][j] = Math.min(dp[i - 1][j], Math.min(dp[i][j - 1], dp[i - 1][j - 1])) + 1; // Update the side length based on the minimum of the three neighboring squares
+                    maxSide = Math.max(maxSide, dp[i][j]); // Update the maximum side length found so   far
+                }
+            }
+        }
+        return maxSide * maxSide; // Return the area of the largest square found
+    }
+}
+```
+completed 150 questions in leetcode/leetcode.md
