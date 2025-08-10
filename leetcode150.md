@@ -1,4 +1,4 @@
-# Top 150 interview questions 
+# Top 150 interview questions
 
 ## Questions
 
@@ -11,7 +11,8 @@ Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 
 Examples
-```
+
+```text
 Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 Output: [1,2,2,3,5,6]
 Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
@@ -28,15 +29,19 @@ Explanation: The arrays we are merging are [] and [1].
 The result of the merge is [1].
 Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
 ```
+
 Constraints:
-```
+
+```text
 nums1.length == m + n
 nums2.length == n
 0 <= m, n <= 200
 1 <= m + n <= 200
 -109 <= nums1[i], nums2[j] <= 109
 ```
+
 ### Solution
+
 ```java
 public class SolutionMergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -60,7 +65,8 @@ public class SolutionMergeSortedArray {
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:Change the array nums such that the first k elements of nums contain the elements which are not equal to val. The remaining elements of nums are not important as well as the size of nums.Return k.
 
 Examples
-```
+
+```text
 Input: nums = [3,2,2,3], val = 3
 Output: 2, nums = [2,2,_,_]
 Explanation: Your function should return k = 2, with the first two elements of nums being 2. It does not matter what you leave beyond the returned k (hence they are underscores).
@@ -69,13 +75,17 @@ Input: nums = [0,1,2,2,3,0,4,2], val = 2
 Output: 5, nums = [0,1,4,0,3,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4. Note that the five elements can be returned in any order. It does not matter what you leave beyond the returned k (hence they are underscores).
 ```
+
 Constraints
-```
+
+```text
 0 <= nums.length <= 100
 0 <= nums[i] <= 50
 0 <= val <= 100
 ```
+
 Solution
+
 ```java
 public class SolutionRemoveElement {
     public int removeElement(int[] nums, int val) {
@@ -97,11 +107,14 @@ public class SolutionRemoveElement {
     }
 }
 ```
+
 ### Question 3: Remove Duplicates from Sorted Array
+
 Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.Return k after placing the final result in the first k slots of nums.Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
 Examples
-```
+
+```text
 Input: nums = [1,1,2]
 Output: 2, nums = [1,2,_]
 Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
@@ -114,12 +127,15 @@ It does not matter what you leave beyond the returned k.
 ```
 
 Constraints
-```
+
+```text
 1 <= nums.length <= 3 * 10^4
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
 ```
+
 Solution
+
 ```java
 public class SolutionRemoveDuplicates {
     public int removeDuplicates(int[] nums) {
@@ -144,11 +160,14 @@ public class SolutionRemoveDuplicates {
     }
 }
 ```
+
 ### Question 4: Remove Duplicates from Sorted Array II
+
 Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.Return k after placing the final result in the first k slots of nums.Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
 Examples
-```
+
+```text
 Input: nums = [1,1,1,2,2,3]
 Output: 5, nums = [1,1,2,2,3,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
@@ -161,12 +180,15 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 ```
 
 Constraints
-```
+
+```text
 1 <= nums.length <= 3 * 10^4
 -10^4 <= nums[i] <= 10^4
 nums is sorted in non-decreasing order.
 ```
+
 Solution
+
 ```java
 public class SolutionRemoveDuplicatesII {
     public int removeDuplicates(int[] nums) {
@@ -192,22 +214,28 @@ public class SolutionRemoveDuplicatesII {
 ```
 
 ### Question 5: Majority Element
+
 Given an array nums of size n, return the majority element.The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 Examples
-```
+
+```text
 Input: nums = [3,2,3]
 Output: 3
 =============================================
 Input: nums = [2,2,1,1,1,2,2]
 Output: 2
 ```
+
 Constraints
-```
+
+```text
 n == nums.length
 1 <= n <= 5 * 10^4
 -10^9 <= nums[i] <= 10^9
 ```
+
 Solution
+
 ```java
 public class SolutionMajorityElement {
     public int majorityElement(int[] nums) {
@@ -231,20 +259,25 @@ public class SolutionMajorityElement {
 Given an array, rotate the array to the right by k steps, where k is non-negative.
 
 Examples
-```
+
+```text
 Input: nums = [1,2,3,4,5,6,7], k = 3
 Output: [5,6,7,1,2,3,4]
 =============================================
 Input: nums = [-1,-100,3,99], k = 2
 Output: [3,99,-1,-100]
 ```
+
 Constraints
-```
+
+```text
 1 <= nums.length <= 10^5
 -2^31 <= nums[i] <= 2^31 - 1
 0 <= k <= 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionRotateArray {
     public void rotate(int[] nums, int k) {
@@ -270,19 +303,24 @@ public class SolutionRotateArray {
 You are given an array prices where prices[i] is the price of a given stock on the ith day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
 
 Examples
-```
+
+```text
 Input: prices = [7,1,5,3,6,4]
 Output: 5
 =============================================
 Input: prices = [7,6,4,3,1]
 Output: 0
 ```
+
 Constraints
-```
+
+```text
 1 <= prices.length <= 10^5
 0 <= prices[i] <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionBestTimeToBuySellStock {
     public int maxProfit(int[] prices) {
@@ -301,19 +339,24 @@ public class SolutionBestTimeToBuySellStock {
 You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
 
 Examples
-```
+
+```text
 Input: prices = [7,1,5,3,6,4]
 Output: 7
 =============================================
 Input: prices = [1,2,3,4,5]
 Output: 4
 ```
+
 Constraints
-```
+
+```text
 1 <= prices.length <= 3 * 10^4
 0 <= prices[i] <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionBestTimeToBuySellStockII {
     public int maxProfit(int[] prices) {
@@ -333,19 +376,24 @@ public class SolutionBestTimeToBuySellStockII {
 Given an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index.
 
 Examples
-```
+
+```text
 Input: nums = [2,3,1,1,4]
 Output: true
 =============================================
 Input: nums = [3,2,1,0,4]
 Output: false
 ```
+
 Constraints
-```
+
+```text
 1 <= nums.length <= 10^4
 0 <= nums[i] <= 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionJumpGame {
     public boolean canJump(int[] nums) {
@@ -364,19 +412,24 @@ public class SolutionJumpGame {
 Given an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Return the minimum number of jumps to reach the last index.
 
 Examples
-```
+
+```text
 Input: nums = [2,3,1,1,4]
 Output: 2
 =============================================
 Input: nums = [2,3,0,1,4]
 Output: 2
 ```
+
 Constraints
-```
+
+```text
 1 <= nums.length <= 10^4
 0 <= nums[i] <= 1000
 ```
+
 Solution
+
 ```java
 public class SolutionJumpGameII {
     public int jump(int[] nums) {
@@ -398,6 +451,7 @@ public class SolutionJumpGameII {
 Given an array of integers citations where citations[i] is the number of citations a researcher received for their ith paper, return the researcher's h-index.
 
 Examples
+
 ```
 Input: citations = [3,0,6,1,5]
 Output: 3
@@ -405,13 +459,17 @@ Output: 3
 Input: citations = [1,3,1]
 Output: 1
 ```
+
 Constraints
+
 ```
 n == citations.length
 1 <= n <= 5000
 0 <= citations[i] <= 1000
 ```
+
 Solution
+
 ```java
 import java.util.Arrays;
 public class SolutionHIndex {
@@ -433,6 +491,7 @@ public class SolutionHIndex {
 Implement the RandomizedSet class with insert, remove, and getRandom methods, all with average O(1) time complexity.
 
 Examples
+
 ```
 Input
 ["RandomizedSet","insert","remove","insert","getRandom","remove","insert","getRandom"]
@@ -440,12 +499,16 @@ Input
 Output
 [null,true,false,true,2,true,false,2]
 ```
+
 Constraints
+
 ```
 -2^31 <= val <= 2^31 - 1
 At most 2 * 10^5 calls will be made to insert, remove, and getRandom.
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class RandomizedSet {
@@ -488,6 +551,7 @@ public class RandomizedSet {
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The solution must be O(n) and without using division.
 
 Examples
+
 ```
 Input: nums = [1,2,3,4]
 Output: [24,12,8,6]
@@ -495,12 +559,16 @@ Output: [24,12,8,6]
 Input: nums = [-1,1,0,-3,3]
 Output: [0,0,9,0,0]
 ```
+
 Constraints
+
 ```
 2 <= nums.length <= 10^5
 -30 <= nums[i] <= 30
 ```
+
 Solution
+
 ```java
 public class SolutionProductExceptSelf {
     public int[] productExceptSelf(int[] nums) {
@@ -526,6 +594,7 @@ public class SolutionProductExceptSelf {
 There are n gas stations along a circular route, where the amount of gas at the ith station is gas[i], and the cost to travel to the next station is cost[i]. Return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1.
 
 Examples
+
 ```
 Input: gas = [1,2,3,4,5], cost = [3,4,5,1,2]
 Output: 3
@@ -533,13 +602,17 @@ Output: 3
 Input: gas = [2,3,4], cost = [3,4,3]
 Output: -1
 ```
+
 Constraints
+
 ```
 n == gas.length == cost.length
 1 <= n <= 10^5
 0 <= gas[i], cost[i] <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionGasStation {
     public int canCompleteCircuit(int[] gas, int[] cost) {
@@ -562,6 +635,7 @@ public class SolutionGasStation {
 There are n children standing in a line. Each child is assigned a rating value. You are giving candies to these children subjected to the following requirements: Each child must have at least one candy. Children with a higher rating get more candies than their neighbors. Return the minimum number of candies you need to distribute.
 
 Examples
+
 ```
 Input: ratings = [1,0,2]
 Output: 5
@@ -569,13 +643,17 @@ Output: 5
 Input: ratings = [1,2,2]
 Output: 4
 ```
+
 Constraints
+
 ```
 n == ratings.length
 1 <= n <= 2 * 10^4
 0 <= ratings[i] <= 2 * 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionCandy {
     public int candy(int[] ratings) {
@@ -600,6 +678,7 @@ public class SolutionCandy {
 Given n non-negative integers representing an elevation map, compute how much water it can trap after raining.
 
 Examples
+
 ```
 Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
@@ -607,13 +686,17 @@ Output: 6
 Input: height = [4,2,0,3,2,5]
 Output: 9
 ```
+
 Constraints
+
 ```
 n == height.length
 1 <= n <= 2 * 10^4
 0 <= height[i] <= 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionTrappingRainWater {
     public int trap(int[] height) {
@@ -639,6 +722,7 @@ public class SolutionTrappingRainWater {
 Convert a Roman numeral to an integer.
 
 Examples
+
 ```
 Input: s = "III"
 Output: 3
@@ -649,12 +733,16 @@ Output: 58
 Input: s = "MCMXCIV"
 Output: 1994
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 15
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 ```
+
 Solution
+
 ```java
 import java.util.Map;
 public class SolutionRomanToInteger {
@@ -682,6 +770,7 @@ public class SolutionRomanToInteger {
 Convert an integer to a Roman numeral.
 
 Examples
+
 ```
 Input: num = 3
 Output: "III"
@@ -692,11 +781,15 @@ Output: "LVIII"
 Input: num = 1994
 Output: "MCMXCIV"
 ```
+
 Constraints
+
 ```
 1 <= num <= 3999
 ```
+
 Solution
+
 ```java
 public class SolutionIntegerToRoman {
     public String intToRoman(int num) {
@@ -719,6 +812,7 @@ public class SolutionIntegerToRoman {
 Given a string s consisting of words and spaces, return the length of the last word in the string.
 
 Examples
+
 ```
 Input: s = "Hello World"
 Output: 5
@@ -726,12 +820,16 @@ Output: 5
 Input: s = "   fly me   to   the moon  "
 Output: 4
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 10^4
 s consists of only English letters and spaces ' '.
 ```
+
 Solution
+
 ```java
 public class SolutionLengthOfLastWord {
     public int lengthOfLastWord(String s) {
@@ -751,6 +849,7 @@ public class SolutionLengthOfLastWord {
 Write a function to find the longest common prefix string amongst an array of strings.
 
 Examples
+
 ```
 Input: strs = ["flower","flow","flight"]
 Output: "fl"
@@ -758,12 +857,16 @@ Output: "fl"
 Input: strs = ["dog","racecar","car"]
 Output: ""
 ```
+
 Constraints
+
 ```
 1 <= strs.length <= 200
 0 <= strs[i].length <= 200
 ```
+
 Solution
+
 ```java
 public class SolutionLongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
@@ -779,11 +882,13 @@ public class SolutionLongestCommonPrefix {
     }
 }
 ```
+
 ### Question 21: Reverse Words in a String
 
 Given an input string s, reverse the order of the words.
 
 Examples
+
 ```
 Input: s = "the sky is blue"
 Output: "blue is sky the"
@@ -791,12 +896,16 @@ Output: "blue is sky the"
 Input: s = "  hello world  "
 Output: "world hello"
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 10^4
 s contains English letters (upper-case and lower-case), digits, and spaces ' '.
 ```
+
 Solution
+
 ```java
 public class SolutionReverseWords {
     public String reverseWords(String s) {
@@ -816,6 +925,7 @@ public class SolutionReverseWords {
 Convert a string to a zigzag pattern on a given number of rows.
 
 Examples
+
 ```
 Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
@@ -823,12 +933,16 @@ Output: "PAHNAPLSIIGYIR"
 Input: s = "PAYPALISHIRING", numRows = 4
 Output: "PINALSIGYAHRPI"
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 1000
 1 <= numRows <= 1000
 ```
+
 Solution
+
 ```java
 public class SolutionZigzagConversion {
     public String convert(String s, int numRows) {
@@ -853,6 +967,7 @@ public class SolutionZigzagConversion {
 Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 
 Examples
+
 ```
 Input: haystack = "sadbutsad", needle = "sad"
 Output: 0
@@ -860,11 +975,15 @@ Output: 0
 Input: haystack = "leetcode", needle = "leeto"
 Output: -1
 ```
+
 Constraints
+
 ```
 1 <= haystack.length, needle.length <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionStrStr {
     public int strStr(String haystack, String needle) {
@@ -878,6 +997,7 @@ public class SolutionStrStr {
 Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
 
 Examples
+
 ```
 Input: words = ["This","is","an","example","of","text","justification."], maxWidth = 16
 Output:
@@ -887,14 +1007,18 @@ Output:
    "justification.  "
 ]
 ```
+
 Constraints
+
 ```
 1 <= words.length <= 300
 1 <= words[i].length <= 20
 words[i] consists of only English letters and symbols.
 1 <= maxWidth <= 100
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionTextJustification {
@@ -931,12 +1055,15 @@ public class SolutionTextJustification {
     }
 }
 ```
+
 ## 2 Pointers
+
 ### Question 25: Valid Palindrome
 
 Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
 
 Examples
+
 ```
 Input: s = "A man, a plan, a canal: Panama"
 Output: true
@@ -944,11 +1071,15 @@ Output: true
 Input: s = "race a car"
 Output: false
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 2 * 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionValidPalindrome {
     public boolean isPalindrome(String s) {
@@ -969,6 +1100,7 @@ public class SolutionValidPalindrome {
 Given two strings s and t, return true if s is a subsequence of t.
 
 Examples
+
 ```
 Input: s = "abc", t = "ahbgdc"
 Output: true
@@ -976,12 +1108,16 @@ Output: true
 Input: s = "axc", t = "ahbgdc"
 Output: false
 ```
+
 Constraints
+
 ```
 0 <= s.length <= 100
 0 <= t.length <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionIsSubsequence {
     public boolean isSubsequence(String s, String t) {
@@ -1000,6 +1136,7 @@ public class SolutionIsSubsequence {
 Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number.
 
 Examples
+
 ```
 Input: numbers = [2,7,11,15], target = 9
 Output: [1,2]
@@ -1007,13 +1144,17 @@ Output: [1,2]
 Input: numbers = [2,3,4], target = 6
 Output: [1,3]
 ```
+
 Constraints
+
 ```
 2 <= numbers.length <= 3 * 10^4
 -1000 <= numbers[i] <= 1000
 numbers is sorted in non-decreasing order.
 ```
+
 Solution
+
 ```java
 public class SolutionTwoSumII {
     public int[] twoSum(int[] numbers, int target) {
@@ -1034,6 +1175,7 @@ public class SolutionTwoSumII {
 Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai), n vertical lines are drawn. Find two lines that together with the x-axis form a container, such that the container contains the most water.
 
 Examples
+
 ```
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
@@ -1041,12 +1183,16 @@ Output: 49
 Input: height = [1,1]
 Output: 1
 ```
+
 Constraints
+
 ```
 2 <= height.length <= 10^5
 0 <= height[i] <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionContainerWithMostWater {
     public int maxArea(int[] height) {
@@ -1066,6 +1212,7 @@ public class SolutionContainerWithMostWater {
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j != k and nums[i] + nums[j] + nums[k] == 0.
 
 Examples
+
 ```
 Input: nums = [-1,0,1,2,-1,-4]
 Output: [[-1,-1,2],[-1,0,1]]
@@ -1073,12 +1220,16 @@ Output: [[-1,-1,2],[-1,0,1]]
 Input: nums = []
 Output: []
 ```
+
 Constraints
+
 ```
 0 <= nums.length <= 3000
 -10^5 <= nums[i] <= 10^5
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionThreeSum {
@@ -1103,12 +1254,15 @@ public class SolutionThreeSum {
     }
 }
 ```
+
 ## Sliding Window
+
 ### Question 30: Minimum Size Subarray Sum
 
 Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray of which the sum is greater than or equal to target. If there is no such subarray, return 0.
 
 Examples
+
 ```
 Input: target = 7, nums = [2,3,1,2,4,3]
 Output: 2
@@ -1116,13 +1270,17 @@ Output: 2
 Input: target = 4, nums = [1,4,4]
 Output: 1
 ```
+
 Constraints
+
 ```
 1 <= target <= 10^9
 1 <= nums.length <= 10^5
 1 <= nums[i] <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionMinSubArrayLen {
     public int minSubArrayLen(int target, int[] nums) {
@@ -1144,6 +1302,7 @@ public class SolutionMinSubArrayLen {
 Given a string s, find the length of the longest substring without repeating characters.
 
 Examples
+
 ```
 Input: s = "abcabcbb"
 Output: 3
@@ -1151,11 +1310,15 @@ Output: 3
 Input: s = "bbbbb"
 Output: 1
 ```
+
 Constraints
+
 ```
 0 <= s.length <= 5 * 10^4
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionLongestSubstringNoRepeat {
@@ -1173,7 +1336,9 @@ public class SolutionLongestSubstringNoRepeat {
     }
 }
 ```
+
 another Solution
+
 ```java
 public int lengthOfLongestSubstring(String s) {
         Set<Character> hs = new HashSet<>();
@@ -1204,6 +1369,7 @@ public int lengthOfLongestSubstring(String s) {
 Given a string s and a list of words, find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters.
 
 Examples
+
 ```
 Input: s = "barfoothefoobarman", words = ["foo","bar"]
 Output: [0,9]
@@ -1211,13 +1377,17 @@ Output: [0,9]
 Input: s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"]
 Output: []
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 10^4
 1 <= words.length <= 5000
 1 <= words[i].length <= 30
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionSubstringWithConcatWords {
@@ -1249,6 +1419,7 @@ public class SolutionSubstringWithConcatWords {
 Given two strings s and t, return the minimum window in s which will contain all the characters in t.
 
 Examples
+
 ```
 Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
@@ -1256,11 +1427,15 @@ Output: "BANC"
 Input: s = "a", t = "a"
 Output: "a"
 ```
+
 Constraints
+
 ```
 1 <= s.length, t.length <= 10^5
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionMinWindowSubstring {
@@ -1291,12 +1466,15 @@ public class SolutionMinWindowSubstring {
     }
 }
 ```
+
 ## Matrix
+
 ### Question 34: Valid Sudoku
 
 Determine if a 9 x 9 Sudoku board is valid.
 
 Examples
+
 ```
 Input: board = 
 [["5","3",".",".","7",".",".",".","."],
@@ -1310,12 +1488,16 @@ Input: board =
  [".",".",".",".","8",".",".","7","9"]]
 Output: true
 ```
+
 Constraints
+
 ```
 board.length == 9
 board[i].length == 9
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionValidSudoku {
@@ -1340,6 +1522,7 @@ public class SolutionValidSudoku {
 Given an m x n matrix, return all elements of the matrix in spiral order.
 
 Examples
+
 ```
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,3,6,9,8,7,4,5]
@@ -1347,13 +1530,17 @@ Output: [1,2,3,6,9,8,7,4,5]
 Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ```
+
 Constraints
+
 ```
 m == matrix.length
 n == matrix[i].length
 1 <= m, n <= 10
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionSpiralMatrix {
@@ -1384,16 +1571,21 @@ public class SolutionSpiralMatrix {
 You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise) in-place.
 
 Examples
+
 ```
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [[7,4,1],[8,5,2],[9,6,3]]
 ```
+
 Constraints
+
 ```
 n == matrix.length == matrix[i].length
 1 <= n <= 20
 ```
+
 Solution
+
 ```java
 public class SolutionRotateImage {
     public void rotate(int[][] matrix) {
@@ -1421,6 +1613,7 @@ public class SolutionRotateImage {
 Given an m x n integer matrix, if an element is 0, set its entire row and column to 0 in-place.
 
 Examples
+
 ```
 Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
 Output: [[1,0,1],[0,0,0],[1,0,1]]
@@ -1428,13 +1621,17 @@ Output: [[1,0,1],[0,0,0],[1,0,1]]
 Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 ```
+
 Constraints
+
 ```
 m == matrix.length
 n == matrix[0].length
 1 <= m, n <= 200
 ```
+
 Solution
+
 ```java
 public class SolutionSetMatrixZeroes {
     public void setZeroes(int[][] matrix) {
@@ -1459,63 +1656,127 @@ public class SolutionSetMatrixZeroes {
 
 ### Question 38: Game of Life
 
-Given a board of m by n cells, each cell is either dead or alive. Write a function to compute the next state.
+According to Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
+
+The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
+
+Any live cell with fewer than two live neighbors dies as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by over-population.
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+The next state of the board is determined by applying the above rules simultaneously to every cell in the current state of the m x n grid board. In this process, births and deaths occur simultaneously.
+
+Given the current state of the board, update the board to reflect its next state.
+
+Note that you do not need to return anything.
 
 Examples
-```
+
+```text
 Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
 ```
+
 Constraints
-```
+
+```text
 m == board.length
 n == board[0].length
 1 <= m, n <= 25
 ```
+
 Solution
+
 ```java
-public class SolutionGameOfLife {
+public class Solution {
     public void gameOfLife(int[][] board) {
-        int m = board.length, n = board[0].length;
-        int[] dirs = {-1, 0, 1};
+        // Get the dimensions of the board.
+        int m = board.length;
+        if (m == 0) return;
+        int n = board[0].length;
+
+        // An array to easily iterate through all 8 neighbor positions.
+        // We use relative coordinates (dx, dy) from the current cell.
+        int[][] directions = {
+            {-1, -1}, {-1, 0}, {-1, 1},
+            {0, -1},          {0, 1},
+            {1, -1}, {1, 0}, {1, 1}
+        };
+
+        // First pass: iterate through each cell and calculate its next state.
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                int live = 0;
-                for (int dx : dirs) {
-                    for (int dy : dirs) {
-                        if (dx == 0 && dy == 0) continue;
-                        int x = i + dx, y = j + dy;
-                        if (x >= 0 && x < m && y >= 0 && y < n && (board[x][y] & 1) == 1) live++;
+                int liveNeighbors = 0;
+
+                // Check all 8 neighbors.
+                for (int[] dir : directions) {
+                    int x = i + dir[0];
+                    int y = j + dir[1];
+
+                    // Check if the neighbor is within the board boundaries.
+                    // The bitwise AND with 1 (board[x][y] & 1) retrieves the *current* state.
+                    if (x >= 0 && x < m && y >= 0 && y < n && (board[x][y] & 1) == 1) {
+                        liveNeighbors++;
                     }
                 }
-                if ((board[i][j] & 1) == 1 && (live == 2 || live == 3)) board[i][j] |= 2;
-                if ((board[i][j] & 1) == 0 && live == 3) board[i][j] |= 2;
+
+                // Apply the Game of Life rules to determine the next state.
+                // The current state is retrieved using board[i][j] & 1.
+                // The next state is stored in the second least significant bit.
+                
+                // Rule 1 & 3: A live cell (1) with 2 or 3 live neighbors lives on.
+                if ((board[i][j] & 1) == 1) {
+                    if (liveNeighbors == 2 || liveNeighbors == 3) {
+                        // Set the second bit to 1, indicating the cell will be live.
+                        board[i][j] |= 2; // '2' is 10 in binary, which sets the second bit.
+                    }
+                    // For other cases (liveNeighbors < 2 or > 3), the second bit remains 0, meaning it dies.
+                } 
+                // Rule 4: A dead cell (0) with exactly 3 live neighbors becomes a live cell.
+                else {
+                    if (liveNeighbors == 3) {
+                        // Set the second bit to 1, indicating the cell will become live.
+                        board[i][j] |= 2;
+                    }
+                }
             }
         }
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < n; j++)
+
+        // Second pass: Update the board to the new state.
+        // We shift all bits to the right by 1 (>>= 1).
+        // This moves the second bit (the new state) to the first bit,
+        // and discards the original state.
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 board[i][j] >>= 1;
+            }
+        }
     }
 }
 ```
+
 ## HashMap
+
 ### Question 39: Ransom Note
 
 Given two strings ransomNote and magazine, return true if ransomNote can be constructed from magazine.
 
 Examples
-```
+
+```text
 Input: ransomNote = "a", magazine = "b"
 Output: false
 =============================================
 Input: ransomNote = "aa", magazine = "aab"
 Output: true
-```
+
 Constraints
-```
+
 1 <= ransomNote.length, magazine.length <= 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionRansomNote {
     public boolean canConstruct(String ransomNote, String magazine) {
@@ -1529,23 +1790,85 @@ public class SolutionRansomNote {
 }
 ```
 
+Another Solution:
+
+```java
+public boolean canConstruct(String ransomNote, String magazine) {
+        // Create a HashMap to store the character counts of the magazine.
+        HashMap<Character, Integer> charCounts = new HashMap<>();
+
+        // Populate the HashMap with characters from the magazine.
+        // The key is the character, and the value is its frequency.
+        for (char c : magazine.toCharArray()) {
+            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+        }
+
+        // Iterate through the characters of the ransom note.
+        for (char c : ransomNote.toCharArray()) {
+            // Check if the character is in the HashMap and its count is greater than 0.
+            // If the character is not a key or its count is 0, we can't form the note.
+            if (charCounts.getOrDefault(c, 0) > 0) {
+                // If the character is available, decrement its count in the HashMap.
+                charCounts.put(c, charCounts.get(c) - 1);
+            } else {
+                // Not enough of this character in the magazine.
+                return false;
+            }
+        }
+
+        // If we successfully iterated through the entire ransom note,
+        // it means we have all the required characters.
+        return true;
+    }
+```
+
 ### Question 40: Isomorphic Strings
 
 Given two strings s and t, determine if they are isomorphic.
 
-Examples
-```
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+```text
+
+Example 1:
+
 Input: s = "egg", t = "add"
+
 Output: true
-=============================================
+
+Explanation:
+
+The strings s and t can be made identical by:
+
+Mapping 'e' to 'a'.
+Mapping 'g' to 'd'.
+Example 2:
+
 Input: s = "foo", t = "bar"
+
 Output: false
+
+Explanation:
+
+The strings s and t can not be made identical as 'o' needs to be mapped to both 'a' and 'r'.
+
+Example 3:
+
+Input: s = "paper", t = "title"
+
+Output: true
+
+Constraints:
+
+1 <= s.length <= 5 * 104
+t.length == s.length
+s and t consist of any valid ascii character.
 ```
-Constraints
-```
-1 <= s.length, t.length <= 5 * 10^4
-```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionIsomorphicStrings {
@@ -1563,24 +1886,50 @@ public class SolutionIsomorphicStrings {
     }
 }
 ```
+
 ### Question 41: Word Pattern
 
 Given a pattern and a string s, find if s follows the same pattern.
 
-Examples
-```
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s. Specifically:
+
+Each letter in pattern maps to exactly one unique word in s.
+Each unique word in s maps to exactly one letter in pattern.
+No two letters map to the same word, and no two words map to the same letter.
+
+```text
+Example 1:
 Input: pattern = "abba", s = "dog cat cat dog"
 Output: true
-=============================================
+
+Explanation:
+The bijection can be established as:
+'a' maps to "dog".
+'b' maps to "cat".
+Example 2:
+
 Input: pattern = "abba", s = "dog cat cat fish"
+
 Output: false
-```
-Constraints
-```
+
+Example 3:
+
+Input: pattern = "aaaa", s = "dog cat cat dog"
+
+Output: false
+
+Constraints:
+
 1 <= pattern.length <= 300
+pattern contains only lower-case English letters.
 1 <= s.length <= 3000
+s contains only lowercase English letters and spaces ' '.
+s does not contain any leading or trailing spaces.
+All the words in s are separated by a single space.
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionWordPattern {
@@ -1604,21 +1953,31 @@ public class SolutionWordPattern {
 
 ### Question 42: Valid Anagram
 
-Given two strings s and t, return true if t is an anagram of s.
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
-Examples
-```
+```text
+Example 1:
+
 Input: s = "anagram", t = "nagaram"
+
 Output: true
-=============================================
+
+Example 2:
+
 Input: s = "rat", t = "car"
+
 Output: false
+
+Constraints:
+
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+
+Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
 ```
-Constraints
-```
-1 <= s.length, t.length <= 5 * 10^4
-```
+
 Solution
+
 ```java
 public class SolutionValidAnagram {
     public boolean isAnagram(String s, String t) {
@@ -1635,19 +1994,38 @@ public class SolutionValidAnagram {
 
 ### Question 43: Group Anagrams
 
-Group anagrams from a list of strings.
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
-Examples
-```
+```text
+Example 1:
+
 Input: strs = ["eat","tea","tan","ate","nat","bat"]
-Output: [["eat","tea","ate"],["tan","nat"],["bat"]]
-```
-Constraints
-```
-1 <= strs.length <= 10^4
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Explanation:
+
+There is no string in strs that can be rearranged to form "bat".
+The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.
+The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
+Example 2:
+
+Input: strs = [""]
+Output: [[""]]
+
+Example 3:
+
+Input: strs = ["a"]
+Output: [["a"]]
+
+Constraints:
+
+1 <= strs.length <= 104
 0 <= strs[i].length <= 100
+strs[i] consists of lowercase English letters.
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionGroupAnagrams {
@@ -1668,17 +2046,20 @@ public class SolutionGroupAnagrams {
 
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
+```text
 Examples
-```
+
 Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
-```
+
 Constraints
-```
+
 2 <= nums.length <= 10^4
 -10^9 <= nums[i] <= 10^9
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionTwoSum {
@@ -1696,21 +2077,37 @@ public class SolutionTwoSum {
 
 ### Question 45: Happy Number
 
-Determine if a number is a happy number.
+Write an algorithm to determine if a number n is happy.
 
-Examples
-```
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+Return true if n is a happy number, and false if not.
+
+```text
+Example 1:
+
 Input: n = 19
 Output: true
-=============================================
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+Example 2:
+
 Input: n = 2
 Output: false
+
+Constraints:
+
+1 <= n <= 231 - 1
 ```
-Constraints
-```
-1 <= n <= 2^31 - 1
-```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionHappyNumber {
@@ -1739,6 +2136,7 @@ public class SolutionHappyNumber {
 Given an integer array nums and an integer k, return true if there are two distinct indices i and j such that nums[i] == nums[j] and abs(i - j) <= k.
 
 Examples
+
 ```
 Input: nums = [1,2,3,1], k = 3
 Output: true
@@ -1749,13 +2147,17 @@ Output: true
 Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 10^5
 -10^9 <= nums[i] <= 10^9
 0 <= k <= 10^5
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionContainsDuplicateII {
@@ -1775,6 +2177,7 @@ public class SolutionContainsDuplicateII {
 Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
 
 Examples
+
 ```
 Input: nums = [100,4,200,1,3,2]
 Output: 4
@@ -1782,12 +2185,16 @@ Output: 4
 Input: nums = [0,3,7,2,5,8,4,6,0,1]
 Output: 9
 ```
+
 Constraints
+
 ```
 0 <= nums.length <= 10^5
 -10^9 <= nums[i] <= 10^9
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionLongestConsecutiveSequence {
@@ -1809,25 +2216,51 @@ public class SolutionLongestConsecutiveSequence {
     }
 }
 ```
+
 ## Intervals
+
 ### Question 48: Summary Ranges
 
-Given a sorted integer array nums, return the smallest sorted list of ranges that cover all the numbers in the array exactly.
+You are given a sorted unique integer array nums.
 
-Examples
-```
+A range [a,b] is the set of all integers from a to b (inclusive).
+
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
+
+Each range [a,b] in the list should be output as:
+
+"a->b" if a != b
+"a" if a == b
+
+```text
+Example 1:
+
 Input: nums = [0,1,2,4,5,7]
 Output: ["0->2","4->5","7"]
-=============================================
+Explanation: The ranges are:
+[0,2] --> "0->2"
+[4,5] --> "4->5"
+[7,7] --> "7"
+Example 2:
+
 Input: nums = [0,2,3,4,6,8,9]
 Output: ["0","2->4","6","8->9"]
-```
-Constraints
-```
+Explanation: The ranges are:
+[0,0] --> "0"
+[2,4] --> "2->4"
+[6,6] --> "6"
+[8,9] --> "8->9"
+
+Constraints:
+
 0 <= nums.length <= 20
--2^31 <= nums[i] <= 2^31 - 1
+-231 <= nums[i] <= 231 - 1
+All the values of nums are unique.
+nums is sorted in ascending order.
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionSummaryRanges {
@@ -1851,6 +2284,7 @@ public class SolutionSummaryRanges {
 Given an array of intervals, merge all overlapping intervals.
 
 Examples
+
 ```
 Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
 Output: [[1,6],[8,10],[15,18]]
@@ -1858,13 +2292,17 @@ Output: [[1,6],[8,10],[15,18]]
 Input: intervals = [[1,4],[4,5]]
 Output: [[1,5]]
 ```
+
 Constraints
+
 ```
 1 <= intervals.length <= 10^4
 intervals[i].length == 2
 0 <= intervals[i][0] <= intervals[i][1] <= 10^4
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionMergeIntervals {
@@ -1891,6 +2329,7 @@ public class SolutionMergeIntervals {
 Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
 
 Examples
+
 ```
 Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
 Output: [[1,5],[6,9]]
@@ -1898,13 +2337,17 @@ Output: [[1,5],[6,9]]
 Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 Output: [[1,2],[3,10],[12,16]]
 ```
+
 Constraints
+
 ```
 0 <= intervals.length <= 10^4
 intervals[i].length == 2
 0 <= intervals[i][0] <= intervals[i][1] <= 10^5
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionInsertInterval {
@@ -1929,6 +2372,7 @@ public class SolutionInsertInterval {
 Given a list of intervals representing balloons, find the minimum number of arrows to burst all balloons.
 
 Examples
+
 ```
 Input: points = [[10,16],[2,8],[1,6],[7,12]]
 Output: 2
@@ -1936,12 +2380,16 @@ Output: 2
 Input: points = [[1,2],[3,4],[5,6],[7,8]]
 Output: 4
 ```
+
 Constraints
+
 ```
 1 <= points.length <= 10^5
 points[i].length == 2
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionMinArrowsBurstBalloons {
@@ -1959,24 +2407,28 @@ public class SolutionMinArrowsBurstBalloons {
     }
 }
 ```
+
 ## Stack
+
 ### Question 52: Valid Parentheses
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 Examples
-```
+
+```text
 Input: s = "()[]{}"
 Output: true
 =============================================
 Input: s = "(]"
 Output: false
-```
+
 Constraints
-```
 1 <= s.length <= 10^4
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionValidParentheses {
@@ -1997,18 +2449,21 @@ public class SolutionValidParentheses {
 Given an absolute path for a file (Unix-style), simplify it.
 
 Examples
-```
+
+```text
 Input: path = "/home/"
 Output: "/home"
 =============================================
 Input: path = "/../"
 Output: "/"
-```
+
 Constraints
-```
+
 1 <= path.length <= 3000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionSimplifyPath {
@@ -2034,16 +2489,19 @@ public class SolutionSimplifyPath {
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
 Examples
-```
+
+```text
 Input: ["MinStack","push","push","push","getMin","pop","top","getMin"]
        [[],[-2],[0],[-3],[],[],[],[]]
 Output: [null,null,null,null,-3,null,0,-2]
-```
+
 Constraints
-```
+
 -2^31 <= val <= 2^31 - 1
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class MinStack {
@@ -2070,6 +2528,7 @@ public class MinStack {
 Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 
 Examples
+
 ```
 Input: tokens = ["2","1","+","3","*"]
 Output: 9
@@ -2077,11 +2536,15 @@ Output: 9
 Input: tokens = ["4","13","5","/","+"]
 Output: 6
 ```
+
 Constraints
+
 ```
 1 <= tokens.length <= 10^4
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionEvalRPN {
@@ -2110,6 +2573,7 @@ public class SolutionEvalRPN {
 Implement a basic calculator to evaluate a simple expression string.
 
 Examples
+
 ```
 Input: s = "1 + 1"
 Output: 2
@@ -2117,11 +2581,15 @@ Output: 2
 Input: s = " 2-1 + 2 "
 Output: 3
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 3 * 10^5
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionBasicCalculator {
@@ -2150,12 +2618,15 @@ public class SolutionBasicCalculator {
     }
 }
 ```
+
 ## Linked List
+
 ### Question 57: Linked List Cycle
 
 Given a linked list, determine if it has a cycle.
 
 Examples
+
 ```
 Input: head = [3,2,0,-4], pos = 1
 Output: true
@@ -2163,11 +2634,15 @@ Output: true
 Input: head = [1,2], pos = 0
 Output: true
 ```
+
 Constraints
+
 ```
 The number of nodes in the list is in the range [0, 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionLinkedListCycle {
     public boolean hasCycle(ListNode head) {
@@ -2187,15 +2662,20 @@ public class SolutionLinkedListCycle {
 Add two numbers represented by linked lists.
 
 Examples
+
 ```
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
 ```
+
 Constraints
+
 ```
 The number of nodes in each list is in the range [1, 100].
 ```
+
 Solution
+
 ```java
 public class SolutionAddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -2219,15 +2699,20 @@ public class SolutionAddTwoNumbers {
 Merge two sorted linked lists and return it as a new sorted list.
 
 Examples
+
 ```
 Input: l1 = [1,2,4], l2 = [1,3,4]
 Output: [1,1,2,3,4,4]
 ```
+
 Constraints
+
 ```
 The number of nodes in both lists is in the range [0, 50].
 ```
+
 Solution
+
 ```java
 public class SolutionMergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -2248,15 +2733,20 @@ public class SolutionMergeTwoSortedLists {
 Copy a linked list with next and random pointer.
 
 Examples
+
 ```
 Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
 ```
+
 Constraints
+
 ```
 0 <= Node.val <= 100
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionCopyListWithRandomPointer {
@@ -2284,15 +2774,20 @@ public class SolutionCopyListWithRandomPointer {
 Reverse a linked list from position left to right.
 
 Examples
+
 ```
 Input: head = [1,2,3,4,5], left = 2, right = 4
 Output: [1,4,3,2,5]
 ```
+
 Constraints
+
 ```
 1 <= left <= right <= n
 ```
+
 Solution
+
 ```java
 public class SolutionReverseLinkedListII {
     public ListNode reverseBetween(ListNode head, int left, int right) {
@@ -2318,6 +2813,7 @@ public class SolutionReverseLinkedListII {
 Reverse nodes of a linked list k at a time.
 
 Examples
+
 ```
 Input: head = [1,2,3,4,5], k = 2
 Output: [2,1,4,3,5]
@@ -2325,11 +2821,15 @@ Output: [2,1,4,3,5]
 Input: head = [1,2,3,4,5], k = 3
 Output: [3,2,1,4,5]
 ```
+
 Constraints
+
 ```
 1 <= k <= n
 ```
+
 Solution
+
 ```java
 public class SolutionReverseNodesKGroup {
     public ListNode reverseKGroup(ListNode head, int k) {
@@ -2359,15 +2859,20 @@ public class SolutionReverseNodesKGroup {
 Remove the nth node from the end of a linked list.
 
 Examples
+
 ```
 Input: head = [1,2,3,4,5], n = 2
 Output: [1,2,3,5]
 ```
+
 Constraints
+
 ```
 1 <= n <= size of list
 ```
+
 Solution
+
 ```java
 public class SolutionRemoveNthFromEnd {
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -2389,6 +2894,7 @@ public class SolutionRemoveNthFromEnd {
 Remove all nodes that have duplicate numbers from a sorted linked list.
 
 Examples
+
 ```
 Input: head = [1,2,3,3,4,4,5]
 Output: [1,2,5]
@@ -2396,11 +2902,15 @@ Output: [1,2,5]
 Input: head = [1,1,1,2,3]
 Output: [2,3]
 ```
+
 Constraints
+
 ```
 The number of nodes in the list is in the range [0, 300].
 ```
+
 Solution
+
 ```java
 public class SolutionRemoveDuplicatesSortedListII {
     public ListNode deleteDuplicates(ListNode head) {
@@ -2424,15 +2934,20 @@ public class SolutionRemoveDuplicatesSortedListII {
 Rotate a linked list to the right by k places.
 
 Examples
+
 ```
 Input: head = [1,2,3,4,5], k = 2
 Output: [4,5,1,2,3]
 ```
+
 Constraints
+
 ```
 0 <= k <= 2 * 10^9
 ```
+
 Solution
+
 ```java
 public class SolutionRotateList {
     public ListNode rotateRight(ListNode head, int k) {
@@ -2459,15 +2974,20 @@ public class SolutionRotateList {
 Partition a linked list around a value x.
 
 Examples
+
 ```
 Input: head = [1,4,3,2,5,2], x = 3
 Output: [1,2,2,4,3,5]
 ```
+
 Constraints
+
 ```
 The number of nodes in the list is in the range [0, 200].
 ```
+
 Solution
+
 ```java
 public class SolutionPartitionList {
     public ListNode partition(ListNode head, int x) {
@@ -2490,16 +3010,21 @@ public class SolutionPartitionList {
 Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
 Examples
+
 ```
 Input: ["LRUCache","put","put","get","put","get","put","get","get","get"]
        [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
 Output: [null,null,null,1,null,-1,null,-1,3,4]
 ```
+
 Constraints
+
 ```
 1 <= capacity <= 3000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class LRUCache {
@@ -2520,21 +3045,28 @@ public class LRUCache {
     }
 }
 ```
+
 ## Binary Tree General
+
 ### Question 68: Maximum Depth of Binary Tree
 
 Given a binary tree, find its maximum depth.
 
 Examples
+
 ```
 Input: root = [3,9,20,null,null,15,7]
 Output: 3
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionMaxDepthBinaryTree {
     public int maxDepth(TreeNode root) {
@@ -2549,6 +3081,7 @@ public class SolutionMaxDepthBinaryTree {
 Given two binary trees, check if they are the same.
 
 Examples
+
 ```
 Input: p = [1,2,3], q = [1,2,3]
 Output: true
@@ -2556,11 +3089,15 @@ Output: true
 Input: p = [1,2], q = [1,null,2]
 Output: false
 ```
+
 Constraints
+
 ```
 The number of nodes in both trees is in the range [0, 100].
 ```
+
 Solution
+
 ```java
 public class SolutionSameTree {
     public boolean isSameTree(TreeNode p, TreeNode q) {
@@ -2576,15 +3113,20 @@ public class SolutionSameTree {
 Invert a binary tree.
 
 Examples
+
 ```
 Input: root = [4,2,7,1,3,6,9]
 Output: [4,7,2,9,6,3,1]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 100].
 ```
+
 Solution
+
 ```java
 public class SolutionInvertBinaryTree {
     public TreeNode invertTree(TreeNode root) {
@@ -2602,6 +3144,7 @@ public class SolutionInvertBinaryTree {
 Check if a binary tree is symmetric.
 
 Examples
+
 ```
 Input: root = [1,2,2,3,4,4,3]
 Output: true
@@ -2609,11 +3152,15 @@ Output: true
 Input: root = [1,2,2,null,3,null,3]
 Output: false
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [1, 1000].
 ```
+
 Solution
+
 ```java
 public class SolutionSymmetricTree {
     public boolean isSymmetric(TreeNode root) {
@@ -2634,15 +3181,20 @@ public class SolutionSymmetricTree {
 Construct a binary tree from preorder and inorder traversal.
 
 Examples
+
 ```
 Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
 Output: [3,9,20,null,null,15,7]
 ```
+
 Constraints
+
 ```
 1 <= preorder.length <= 3000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionBuildTreePreIn {
@@ -2668,15 +3220,20 @@ public class SolutionBuildTreePreIn {
 Construct a binary tree from inorder and postorder traversal.
 
 Examples
+
 ```
 Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
 Output: [3,9,20,null,null,15,7]
 ```
+
 Constraints
+
 ```
 1 <= inorder.length <= 3000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionBuildTreeInPost {
@@ -2702,15 +3259,20 @@ public class SolutionBuildTreeInPost {
 Populate each next pointer to point to its next right node.
 
 Examples
+
 ```
 Input: root = [1,2,3,4,5,null,7]
 Output: [1,#,2,3,#,4,5,7,#]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 6000].
 ```
+
 Solution
+
 ```java
 public class SolutionConnectNextRightII {
     public Node connect(Node root) {
@@ -2734,15 +3296,20 @@ public class SolutionConnectNextRightII {
 Flatten a binary tree to a linked list in-place.
 
 Examples
+
 ```
 Input: root = [1,2,5,3,4,null,6]
 Output: [1,null,2,null,3,null,4,null,5,null,6]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 2000].
 ```
+
 Solution
+
 ```java
 public class SolutionFlattenBinaryTree {
     public void flatten(TreeNode root) {
@@ -2765,15 +3332,20 @@ public class SolutionFlattenBinaryTree {
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values equals the sum.
 
 Examples
+
 ```
 Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], sum = 22
 Output: true
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 5000].
 ```
+
 Solution
+
 ```java
 public class SolutionPathSum {
     public boolean hasPathSum(TreeNode root, int sum) {
@@ -2789,15 +3361,20 @@ public class SolutionPathSum {
 Given a binary tree, return the sum of all root-to-leaf numbers.
 
 Examples
+
 ```
 Input: root = [1,2,3]
 Output: 25
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 1000].
 ```
+
 Solution
+
 ```java
 public class SolutionSumRootToLeafNumbers {
     public int sumNumbers(TreeNode root) {
@@ -2817,6 +3394,7 @@ public class SolutionSumRootToLeafNumbers {
 Find the maximum path sum in a binary tree.
 
 Examples
+
 ```
 Input: root = [1,2,3]
 Output: 6
@@ -2824,11 +3402,15 @@ Output: 6
 Input: root = [-10,9,20,null,null,15,7]
 Output: 42
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [1, 3 * 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionBinaryTreeMaxPathSum {
     private int maxSum = Integer.MIN_VALUE;
@@ -2851,15 +3433,20 @@ public class SolutionBinaryTreeMaxPathSum {
 Implement an iterator over a binary search tree (BST).
 
 Examples
+
 ```
 Input: root = [7,3,15,null,null,9,20]
 Output: [3,7,9,15,20]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [1, 10^5].
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class BSTIterator {
@@ -2889,15 +3476,20 @@ public class BSTIterator {
 Count the number of nodes in a complete binary tree.
 
 Examples
+
 ```
 Input: root = [1,2,3,4,5,6]
 Output: 6
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 5 * 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionCountCompleteTreeNodes {
     public int countNodes(TreeNode root) {
@@ -2918,11 +3510,13 @@ public class SolutionCountCompleteTreeNodes {
     }
 }
 ```
+
 ### Question 81: Lowest Common Ancestor of a Binary Tree
 
 Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 
 Examples
+
 ```
 Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
 Output: 3
@@ -2930,11 +3524,15 @@ Output: 3
 Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
 Output: 5
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [2, 10^5].
 ```
+
 Solution
+
 ```java
 public class SolutionLowestCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -2946,12 +3544,15 @@ public class SolutionLowestCommonAncestor {
     }
 }
 ```
+
 ## Binary Tree BFS
+
 ### Question 82: Binary Tree Right Side View
 
 Return the values of the nodes you can see ordered from top to bottom when looking at a binary tree from the right side.
 
 Examples
+
 ```
 Input: root = [1,2,3,null,5,null,4]
 Output: [1,3,4]
@@ -2959,11 +3560,15 @@ Output: [1,3,4]
 Input: root = [1,null,3]
 Output: [1,3]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 100].
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionRightSideView {
@@ -2991,15 +3596,20 @@ public class SolutionRightSideView {
 Return the average value of the nodes on each level in the form of an array.
 
 Examples
+
 ```
 Input: root = [3,9,20,null,null,15,7]
 Output: [3.00000,14.50000,11.00000]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [1, 10^4].
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionAverageOfLevels {
@@ -3028,15 +3638,20 @@ public class SolutionAverageOfLevels {
 Return the level order traversal of a binary tree's nodes' values.
 
 Examples
+
 ```
 Input: root = [3,9,20,null,null,15,7]
 Output: [[3],[9,20],[15,7]]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 2000].
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionLevelOrderTraversal {
@@ -3066,15 +3681,20 @@ public class SolutionLevelOrderTraversal {
 Return the zigzag level order traversal of a binary tree's nodes' values.
 
 Examples
+
 ```
 Input: root = [3,9,20,null,null,15,7]
 Output: [[3],[20,9],[15,7]]
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [0, 2000].
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionZigzagLevelOrder {
@@ -3101,21 +3721,28 @@ public class SolutionZigzagLevelOrder {
     }
 }
 ```
+
 ## Bianry Search Tree
+
 ### Question 86: Minimum Absolute Difference in BST
 
 Given a BST, return the minimum absolute difference between values of any two nodes.
 
 Examples
+
 ```
 Input: root = [4,2,6,1,3]
 Output: 1
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [2, 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionMinAbsDiffBST {
     private Integer prev = null;
@@ -3139,15 +3766,20 @@ public class SolutionMinAbsDiffBST {
 Find the kth smallest element in a BST.
 
 Examples
+
 ```
 Input: root = [3,1,4,null,2], k = 1
 Output: 1
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [1, 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionKthSmallestBST {
     private int count = 0, res = 0;
@@ -3170,6 +3802,7 @@ public class SolutionKthSmallestBST {
 Determine if a binary tree is a valid BST.
 
 Examples
+
 ```
 Input: root = [2,1,3]
 Output: true
@@ -3177,11 +3810,15 @@ Output: true
 Input: root = [5,1,4,null,null,3,6]
 Output: false
 ```
+
 Constraints
+
 ```
 The number of nodes in the tree is in the range [1, 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionValidateBST {
     public boolean isValidBST(TreeNode root) {
@@ -3194,12 +3831,15 @@ public class SolutionValidateBST {
     }
 }
 ```
+
 ## Graph General
+
 ### Question 89: Number of Islands
 
 Given a 2D grid map of '1's (land) and '0's (water), count the number of islands.
 
 Examples
+
 ```
 Input: grid = [
   ["1","1","1","1","0"],
@@ -3209,13 +3849,17 @@ Input: grid = [
 ]
 Output: 1
 ```
+
 Constraints
+
 ```
 m == grid.length
 n == grid[i].length
 1 <= m, n <= 300
 ```
+
 Solution
+
 ```java
 public class SolutionNumberOfIslands {
     public int numIslands(char[][] grid) {
@@ -3243,17 +3887,22 @@ public class SolutionNumberOfIslands {
 Capture all regions surrounded by 'X' on a 2D board.
 
 Examples
+
 ```
 Input: board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
 Output: [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
 ```
+
 Constraints
+
 ```
 m == board.length
 n == board[i].length
 1 <= m, n <= 200
 ```
+
 Solution
+
 ```java
 public class SolutionSurroundedRegions {
     public void solve(char[][] board) {
@@ -3284,15 +3933,20 @@ public class SolutionSurroundedRegions {
 Clone an undirected graph. Each node contains a value and a list of its neighbors.
 
 Examples
+
 ```
 Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
 Output: [[2,4],[1,3],[2,4],[1,3]]
 ```
+
 Constraints
+
 ```
 The number of nodes in the graph is in the range [0, 100].
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionCloneGraph {
@@ -3318,15 +3972,20 @@ public class SolutionCloneGraph {
 Given equations like a / b = 2.0, evaluate queries.
 
 Examples
+
 ```
 Input: equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
 Output: [6.0,0.5,-1.0,1.0,-1.0]
 ```
+
 Constraints
+
 ```
 1 <= equations.length <= 20
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionEvaluateDivision {
@@ -3362,6 +4021,7 @@ public class SolutionEvaluateDivision {
 Determine if you can finish all courses given prerequisites.
 
 Examples
+
 ```
 Input: numCourses = 2, prerequisites = [[1,0]]
 Output: true
@@ -3369,11 +4029,15 @@ Output: true
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
 Output: false
 ```
+
 Constraints
+
 ```
 1 <= numCourses <= 2000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionCourseSchedule {
@@ -3403,6 +4067,7 @@ public class SolutionCourseSchedule {
 Return the order of courses you should take to finish all courses.
 
 Examples
+
 ```
 Input: numCourses = 2, prerequisites = [[1,0]]
 Output: [0,1]
@@ -3410,11 +4075,15 @@ Output: [0,1]
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
 Output: []
 ```
+
 Constraints
+
 ```
 1 <= numCourses <= 2000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionCourseScheduleII {
@@ -3441,21 +4110,28 @@ public class SolutionCourseScheduleII {
     }
 }
 ```
+
 ## Graph BFS
+
 ### Question 95: Snakes and Ladders
 
 Find the minimum number of moves to reach the last square on a snakes and ladders board.
 
 Examples
+
 ```
 Input: board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
 Output: 4
 ```
+
 Constraints
+
 ```
 2 <= board.length == board[0].length <= 20
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionSnakesAndLadders {
@@ -3500,6 +4176,7 @@ public class SolutionSnakesAndLadders {
 Return the minimum number of mutations to mutate from start to end using valid genes.
 
 Examples
+
 ```
 Input: start = "AACCGGTT", end = "AACCGGTA", bank = ["AACCGGTA"]
 Output: 1
@@ -3507,11 +4184,15 @@ Output: 1
 Input: start = "AACCGGTT", end = "AAACGGTA", bank = ["AACCGGTA","AACCGCTA","AAACGGTA"]
 Output: 2
 ```
+
 Constraints
+
 ```
 start.length == end.length == 8
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionMinGeneticMutation {
@@ -3550,15 +4231,20 @@ public class SolutionMinGeneticMutation {
 Return the length of the shortest transformation sequence from beginWord to endWord.
 
 Examples
+
 ```
 Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]
 Output: 5
 ```
+
 Constraints
+
 ```
 1 <= beginWord.length <= 10
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionWordLadder {
@@ -3590,22 +4276,29 @@ public class SolutionWordLadder {
     }
 }
 ```
+
 ## Trie
+
 ### Question 98: Implement Trie (Prefix Tree)
 
 Implement a trie with insert, search, and startsWith methods.
 
 Examples
+
 ```
 Input: ["Trie","insert","search","search","startsWith","insert","search"]
        [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
 Output: [null,null,true,false,true,null,true]
 ```
+
 Constraints
+
 ```
 1 <= word.length, prefix.length <= 2000
 ```
+
 Solution
+
 ```java
 public class Trie {
     private Trie[] children = new Trie[26];
@@ -3643,16 +4336,21 @@ public class Trie {
 Implement a data structure that supports adding new words and searching with '.' as a wildcard.
 
 Examples
+
 ```
 Input: ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
        [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
 Output: [null,null,null,null,false,true,true,true]
 ```
+
 Constraints
+
 ```
 1 <= word.length <= 25
 ```
+
 Solution
+
 ```java
 public class WordDictionary {
     private WordDictionary[] children = new WordDictionary[26];
@@ -3690,15 +4388,20 @@ public class WordDictionary {
 Given a 2D board and a list of words, return all words present in the board.
 
 Examples
+
 ```
 Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
 Output: ["eat","oath"]
 ```
+
 Constraints
+
 ```
 1 <= board.length, board[i].length <= 12
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionWordSearchII {
@@ -3746,21 +4449,28 @@ public class SolutionWordSearchII {
     }
 }
 ```
+
 ## BackTrack
+
 ### Question 101: Letter Combinations of a Phone Number
 
 Return all possible letter combinations that the number could represent.
 
 Examples
+
 ```
 Input: digits = "23"
 Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 ```
+
 Constraints
+
 ```
 0 <= digits.length <= 4
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionLetterCombinations {
@@ -3791,15 +4501,20 @@ public class SolutionLetterCombinations {
 Return all possible combinations of k numbers out of 1 ... n.
 
 Examples
+
 ```
 Input: n = 4, k = 2
 Output: [[2,4],[3,4],[2,3],[1,2],[1,3],[1,4]]
 ```
+
 Constraints
+
 ```
 1 <= n <= 20
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionCombinations {
@@ -3827,15 +4542,20 @@ public class SolutionCombinations {
 Return all possible permutations of a list of numbers.
 
 Examples
+
 ```
 Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 6
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionPermutations {
@@ -3866,15 +4586,20 @@ public class SolutionPermutations {
 Return all unique combinations where the candidate numbers sum to target.
 
 Examples
+
 ```
 Input: candidates = [2,3,6,7], target = 7
 Output: [[2,2,3],[7]]
 ```
+
 Constraints
+
 ```
 1 <= candidates.length <= 30
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionCombinationSum {
@@ -3903,15 +4628,20 @@ public class SolutionCombinationSum {
 Return the number of distinct solutions to the n-queens puzzle.
 
 Examples
+
 ```
 Input: n = 4
 Output: 2
 ```
+
 Constraints
+
 ```
 1 <= n <= 9
 ```
+
 Solution
+
 ```java
 public class SolutionNQueensII {
     private int count = 0;
@@ -3940,15 +4670,20 @@ public class SolutionNQueensII {
 Return all combinations of well-formed parentheses.
 
 Examples
+
 ```
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]
 ```
+
 Constraints
+
 ```
 1 <= n <= 8
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionGenerateParentheses {
@@ -3973,15 +4708,20 @@ public class SolutionGenerateParentheses {
 Given a 2D board and a word, return true if the word exists in the grid.
 
 Examples
+
 ```
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 Output: true
 ```
+
 Constraints
+
 ```
 1 <= board.length, board[i].length <= 6
 ```
+
 Solution
+
 ```java
 public class SolutionWordSearch {
     public boolean exist(char[][] board, String word) {
@@ -4006,21 +4746,28 @@ public class SolutionWordSearch {
     }
 }
 ```
+
 ## Divide and Conquer
+
 ### Question 108: Convert Sorted Array to Binary Search Tree
 
 Convert a sorted array to a height-balanced BST.
 
 Examples
+
 ```
 Input: nums = [-10,-3,0,5,9]
 Output: [0,-3,9,-10,null,5]
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionSortedArrayToBST {
     public TreeNode sortedArrayToBST(int[] nums) {
@@ -4042,15 +4789,20 @@ public class SolutionSortedArrayToBST {
 Sort a linked list in O(n log n) time and constant space complexity.
 
 Examples
+
 ```
 Input: head = [4,2,1,3]
 Output: [1,2,3,4]
 ```
+
 Constraints
+
 ```
 The number of nodes in the list is in the range [0, 5 * 10^4].
 ```
+
 Solution
+
 ```java
 public class SolutionSortList {
     public ListNode sortList(ListNode head) {
@@ -4084,16 +4836,21 @@ public class SolutionSortList {
 Construct a Quad-Tree from a 2D grid.
 
 Examples
+
 ```
 Input: grid = [[0,1],[1,0]]
 Output: [[0,1],[1,0]]
 ```
+
 Constraints
+
 ```
 n == grid.length == grid[i].length
 n == 2^x where 0 <= x <= 6
 ```
+
 Solution
+
 ```java
 public class SolutionConstructQuadTree {
     public Node construct(int[][] grid) {
@@ -4119,16 +4876,21 @@ public class SolutionConstructQuadTree {
 Merge k sorted linked lists and return it as one sorted list.
 
 Examples
+
 ```
 Input: lists = [[1,4,5],[1,3,4],[2,6]]
 Output: [1,1,2,3,4,4,5,6]
 ```
+
 Constraints
+
 ```
 k == lists.length
 0 <= k <= 10^4
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionMergeKSortedLists {
@@ -4146,21 +4908,28 @@ public class SolutionMergeKSortedLists {
     }
 }
 ```
+
 ## Kadane's Algorithm
+
 ### Question 112: Maximum Subarray
 
 Find the contiguous subarray with the largest sum.
 
 Examples
+
 ```
 Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionMaximumSubarray {
     public int maxSubArray(int[] nums) {
@@ -4179,6 +4948,7 @@ public class SolutionMaximumSubarray {
 Find the maximum sum of a non-empty subarray in a circular array.
 
 Examples
+
 ```
 Input: nums = [1,-2,3,-2]
 Output: 3
@@ -4186,11 +4956,15 @@ Output: 3
 Input: nums = [5,-3,5]
 Output: 10
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 3 * 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionMaxSumCircularSubarray {
     public int maxSubarraySumCircular(int[] nums) {
@@ -4206,12 +4980,15 @@ public class SolutionMaxSumCircularSubarray {
     }
 }
 ```
+
 ## Binary Search
+
 ### Question 114: Search Insert Position
 
 Return the index if the target is found, or the index where it would be if inserted in order.
 
 Examples
+
 ```
 Input: nums = [1,3,5,6], target = 5
 Output: 2
@@ -4219,11 +4996,15 @@ Output: 2
 Input: nums = [1,3,5,6], target = 2
 Output: 1
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 10^4
 ```
+
 Solution
+
 ```java
 public class SolutionSearchInsertPosition {
     public int searchInsert(int[] nums, int target) {
@@ -4244,6 +5025,7 @@ public class SolutionSearchInsertPosition {
 Write an efficient algorithm that searches for a value in an m x n matrix.
 
 Examples
+
 ```
 Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
 Output: true
@@ -4251,12 +5033,16 @@ Output: true
 Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
 Output: false
 ```
+
 Constraints
+
 ```
 m == matrix.length
 n == matrix[i].length
 ```
+
 Solution
+
 ```java
 public class SolutionSearch2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
@@ -4279,6 +5065,7 @@ public class SolutionSearch2DMatrix {
 Find a peak element in an array.
 
 Examples
+
 ```
 Input: nums = [1,2,3,1]
 Output: 2
@@ -4286,11 +5073,15 @@ Output: 2
 Input: nums = [1,2,1,3,5,6,4]
 Output: 5
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 1000
 ```
+
 Solution
+
 ```java
 public class SolutionFindPeakElement {
     public int findPeakElement(int[] nums) {
@@ -4310,6 +5101,7 @@ public class SolutionFindPeakElement {
 Search for a target value in a rotated sorted array.
 
 Examples
+
 ```
 Input: nums = [4,5,6,7,0,1,2], target = 0
 Output: 4
@@ -4317,11 +5109,15 @@ Output: 4
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 5000
 ```
+
 Solution
+
 ```java
 public class SolutionSearchRotatedSortedArray {
     public int search(int[] nums, int target) {
@@ -4347,6 +5143,7 @@ public class SolutionSearchRotatedSortedArray {
 Find the starting and ending position of a given target value.
 
 Examples
+
 ```
 Input: nums = [5,7,7,8,8,10], target = 8
 Output: [3,4]
@@ -4354,11 +5151,15 @@ Output: [3,4]
 Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 ```
+
 Constraints
+
 ```
 0 <= nums.length <= 10^5
 ```
+
 Solution
+
 ```java
 public class SolutionFindFirstLastPosition {
     public int[] searchRange(int[] nums, int target) {
@@ -4387,6 +5188,7 @@ public class SolutionFindFirstLastPosition {
 Find the minimum element in a rotated sorted array.
 
 Examples
+
 ```
 Input: nums = [3,4,5,1,2]
 Output: 1
@@ -4394,11 +5196,15 @@ Output: 1
 Input: nums = [4,5,6,7,0,1,2]
 Output: 0
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 5000
 ```
+
 Solution
+
 ```java
 public class SolutionFindMinRotatedSortedArray {
     public int findMin(int[] nums) {
@@ -4418,6 +5224,7 @@ public class SolutionFindMinRotatedSortedArray {
 Find the median of two sorted arrays.
 
 Examples
+
 ```
 Input: nums1 = [1,3], nums2 = [2]
 Output: 2.0
@@ -4425,11 +5232,15 @@ Output: 2.0
 Input: nums1 = [1,2], nums2 = [3,4]
 Output: 2.5
 ```
+
 Constraints
+
 ```
 0 <= m, n <= 1000
 ```
+
 Solution
+
 ```java
 public class SolutionMedianOfTwoSortedArrays {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -4455,12 +5266,13 @@ public class SolutionMedianOfTwoSortedArrays {
     }
 }
 ```
-## Heap
+
 ### Question 121: Kth Largest Element in an Array
 
 Find the kth largest element in an unsorted array.
 
 Examples
+
 ```
 Input: nums = [3,2,1,5,6,4], k = 2
 Output: 5
@@ -4468,11 +5280,15 @@ Output: 5
 Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
 Output: 4
 ```
+
 Constraints
+
 ```
 1 <= k <= nums.length <= 30000
 ```
+
 Solution
+
 ```java
 import java.util.*;
 public class SolutionKthLargestElement {
@@ -4486,9 +5302,12 @@ public class SolutionKthLargestElement {
     }
 }
 ```
+
 ### Question 122: IPO
+
 Given the initial capital and profits of projects, find the maximum capital after k projects.
 Examples
+
 ```
 Input: k = 2, w = 0, profits = [1,2,3], capital = [0,1,2]
 Output: 4
@@ -4496,12 +5315,15 @@ Output: 4
 Input: k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]
 Output: 6
 ```
+
 Constraints
+
 ```
 1 <= k <= 10^4
 0 <= w <= 10^9
 1 <= profits.length, capital.length <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionIPO {
@@ -4527,9 +5349,12 @@ public class SolutionIPO {
     }
 }
 ```
+
 ### Question 123: Find K Pairs with Smallest Sums
+
 Find the k pairs with the smallest sums from two sorted arrays.
 Examples
+
 ```
 Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
 Output: [[1,2],[1,4],[1,6]]
@@ -4537,12 +5362,15 @@ Output: [[1,2],[1,4],[1,6]]
 Input: nums1 = [1,1,2], nums2 = [1,2,3], k = 2
 Output: [[1,1],[1,1]]
 ```
+
 Constraints
+
 ```
 1 <= nums1.length, nums2.length <= 10^5
 0 <= nums1[i], nums2[i] <= 10^9
 1 <= k <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionKPairsWithSmallestSums {
@@ -4564,18 +5392,24 @@ public class SolutionKPairsWithSmallestSums {
     }
 }
 ```
+
 ### Question 124: Find Median from Data Stream
+
 Design a data structure that supports adding numbers and finding the median efficiently.
 Examples
+
 ```Input: ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"]
        [[],[1],[2],[],[3],[]]
 Output: [null,null,null,1.5,null,2.0]
 ```
+
 Constraints
+
 ```
 1 <= num <= 10^5
 There will be at most 10^5 calls to addNum and findMedian.
 ```
+
 ```java
 import java.util.*;
 public class MedianFinder {
@@ -4604,20 +5438,26 @@ public class MedianFinder {
 ```
 
 ## Bit Manipulation
+
 ### Question 125: Add Binary
+
 Add two binary strings and return their sum as a binary string.
 Examples
+
 ```Input: a = "11", b = "1"
 Output: "100"
 =============================================
 Input: a = "1010", b = "1011"
 Output: "10101"
 ```
+
 Constraints
+
 ```
 1 <= a.length, b.length <= 10^4
 a and b consist only of '0' or '1'.
 ```
+
 ```java
 public class SolutionAddBinary {
     public String addBinary(String a, String b) {
@@ -4635,19 +5475,25 @@ public class SolutionAddBinary {
     }
 }
 ```
+
 ### Question 126: Reverse Bits
+
 Reverse the bits of a given 32-bit unsigned integer.
 Examples
+
 ```Input: n = 43261596
 Output: 964176192
 =============================================
 Input: n = 4294967293
 Output: 3221225471
 ```
+
 Constraints
+
 ```
 The input must be a 32-bit unsigned integer.
 ```
+
 ```java
 public class SolutionReverseBits {
     public int reverseBits(int n) {
@@ -4661,19 +5507,25 @@ public class SolutionReverseBits {
     }
 }
 ```
+
 ### Question 127: Number of 1 Bits
+
 Count the number of '1' bits in a given integer.
 Examples
+
 ```Input: n = 11
 Output: 3
 =============================================
 Input: n = 128
 Output: 1
 ```
+
 Constraints
+
 ```
 0 <= n <= 2^31 - 1
 ```
+
 ```java
 public class SolutionNumberOf1Bits {
     public int hammingWeight(int n) {
@@ -4686,21 +5538,27 @@ public class SolutionNumberOf1Bits {
     }
 }
 ```
+
 ### Question 128: Single Number
+
 Find the single number in an array where every other number appears twice.
 Examples
+
 ```Input: nums = [2,2,1]
 Output: 1
 =============================================
 Input: nums = [4,1,2,1,2]
 Output: 4
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 3 * 10^4
 -3 * 10^4 <= nums[i] <= 3 * 10^4
 Each element in the array appears twice except for one element.
 ```
+
 ```java
 public class SolutionSingleNumber {
     public int singleNumber(int[] nums) {
@@ -4712,21 +5570,27 @@ public class SolutionSingleNumber {
     }
 }
 ```
+
 ### Question 129: Single Number II
+
 Find the single number in an array where every other number appears three times.
 Examples
+
 ```Input: nums = [2,2,3,2]
 Output: 3
 =============================================
 Input: nums = [0,1,0,1,0,1,99]
 Output: 99
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 3 * 10^4
 -2^31 <= nums[i] <= 2^31 - 1
 Each element in the array appears three times except for one element.
 ```
+
 ```java
 public class SolutionSingleNumberII {
     public int singleNumber(int[] nums) {
@@ -4739,19 +5603,25 @@ public class SolutionSingleNumberII {
     }
 }
 ```
+
 ### Question 130: Bitwise AND of Numbers Range
+
 Find the bitwise AND of all numbers in a given range [m, n].
 Examples
+
 ```Input: m = 5, n = 7
 Output: 4
 =============================================
 Input: m = 0, n = 1
 Output: 0
 ```
+
 Constraints
+
 ```
 0 <= m <= n <= 2^31 - 1
 ```
+
 ```java
 public class SolutionBitwiseANDRange {
     public int rangeBitwiseAnd(int m, int n) {
@@ -4765,20 +5635,27 @@ public class SolutionBitwiseANDRange {
     }
 }
 ```
+
 ## Math
-### Question 131: Palindrome Number 
+
+### Question 131: Palindrome Number
+
 Determine whether an integer is a palindrome without converting it to a string.
 Examples
+
 ```Input: x = 121
 Output: true
 =============================================
 Input: x = -121
 Output: false
 ```
+
 Constraints
+
 ```
 -2^31 <= x <= 2^31 - 1
 ```
+
 ```java
 public class SolutionPalindromeNumber {
     public boolean isPalindrome(int x) {
@@ -4794,21 +5671,27 @@ public class SolutionPalindromeNumber {
     }
 }
 ```
+
 ### Question 132: Plus One
+
 Given a non-negative integer represented as an array of digits, increment the number by one.
 Examples
+
 ```Input: digits = [1,2,3]
 Output: [1,2,4]
 =============================================
 Input: digits = [9,9,9]
 Output: [1,0,0,0]
 ```
+
 Constraints
+
 ```
 1 <= digits.length <= 100
 0 <= digits[i] <= 9
 The digits do not contain any leading zeros except for the number 0 itself.
 ```
+
 ```java
 import java.util.*;
 public class SolutionPlusOne {
@@ -4828,19 +5711,25 @@ public class SolutionPlusOne {
     }
 }
 ```
+
 ### Question 133: Factorial Trailing Zeroes
+
 Count the number of trailing zeroes in the factorial of a given number.
 Examples
+
 ```Input: n = 5
 Output: 1
 =============================================
 Input: n = 10
 Output: 2
 ```
+
 Constraints
+
 ```
 0 <= n <= 10^4
 ```
+
 ```java
 public class SolutionFactorialTrailingZeroes {
     public int trailingZeroes(int n) {
@@ -4853,19 +5742,25 @@ public class SolutionFactorialTrailingZeroes {
     }
 }
 ```
+
 ### Question 134: Sqrt(x)
+
 Implement the sqrt function to compute the square root of a non-negative integer x.
 Examples
+
 ```Input: x = 4
 Output: 2
 =============================================
 Input: x = 8
 Output: 2
 ```
+
 Constraints
+
 ```
 0 <= x <= 2^31 - 1
 ```
+
 ```java
 public class SolutionSqrt {
     public int mySqrt(int x) {
@@ -4888,20 +5783,25 @@ public class SolutionSqrt {
 ```
 
 ### Question 135: Pow(x, n)
+
 Implement the pow function to compute x raised to the power n.
 Examples
+
 ```Input: x = 2.00000, n = 10
 Output: 1024.00000
 =============================================
 Input: x = 2.10000, n = 3
 Output: 9.26100
 ```
+
 Constraints
+
 ```
 -100.0 < x < 100.0
 -2^31 <= n <= 2^31 - 1
 -10^4 <= x^n <= 10^4
 ```
+
 ```java
 public class SolutionPow {
     public double myPow(double x, int n) {
@@ -4924,20 +5824,25 @@ public class SolutionPow {
 ```
 
 ### Question 136: Max Points on a Line
+
 Given an array of points on a 2D plane, find the maximum number of points that lie on the same straight line.
 Examples
+
 ```Input: points = [[1,1],[2,2],[3,3]]
 Output: 3
 =============================================
 Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 Output: 4
 ```
+
 Constraints
+
 ```
 1 <= points.length <= 300
 points[i].length == 2
 -10^4 <= points[i][0], points[i][1] <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionMaxPointsOnLine {
@@ -4980,21 +5885,27 @@ private int gcd(int a, int b) {
     }
 }
 ```
+
 ### Question 136: Max Points on a Line
+
 Given an array of points on a 2D plane, find the maximum number of points that lie on the same straight line.
 Examples
+
 ```Input: points = [[1,1],[2,2],[3,3]]
 Output: 3
 =============================================
 Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 Output: 4
 ```
+
 Constraints
+
 ```
 1 <= points.length <= 300
 points[i].length == 2
 -10^4 <= points[i][0], points[i][1] <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionMaxPointsOnLine {
@@ -5036,20 +5947,27 @@ public class SolutionMaxPointsOnLine {
     }
 }
 ```
+
 ## 1-D DP
+
 ### Question 137: Climbing Stairs
+
 You are climbing a staircase with n steps. Each time you can either climb 1 or 2 steps. Find the number of distinct ways to reach the top.
 Examples
+
 ```Input: n = 2
 Output: 2
 =============================================
 Input: n = 3
 Output: 3
 ```
+
 Constraints
+
 ```
 1 <= n <= 45
 ```
+
 ```java
 public class SolutionClimbingStairs {
     public int climbStairs(int n) {
@@ -5066,19 +5984,24 @@ public class SolutionClimbingStairs {
 ```
 
 ### Question 138: House Robber
+
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, but adjacent houses have security systems connected that will automatically contact the police if two adjacent houses are robbed on the same night.
 Examples
+
 ```Input: nums = [1,2,3,1]
 Output: 4
 =============================================
 Input: nums = [2,7,9,3,1]
 Output: 12
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 100
 0 <= nums[i] <= 400
 ```
+
 ```java
 public class SolutionHouseRobber {
     public int rob(int[] nums) {
@@ -5094,16 +6017,21 @@ public class SolutionHouseRobber {
     }
 }
 ```
+
 ### Question 139: Word Break
+
 Given a string s and a dictionary of strings wordDict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 Examples
+
 ```Input: s = "leetcode", wordDict = ["leet","code"]
 Output: true
 =============================================
 Input: s = "applepenapple", wordDict = ["apple","pen"]
 Output: true
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 300
 1 <= wordDict.length <= 1000
@@ -5111,6 +6039,7 @@ Constraints
 The input string s and the words in wordDict consist of only lowercase English letters.
 The wordDict does not contain duplicate words.
 ```
+
 ```java
 import java.util.*;
 public class SolutionWordBreak {
@@ -5130,9 +6059,12 @@ public class SolutionWordBreak {
     }
 }
 ```
+
 ### Question 140: Coin Change
+
 Given an amount and a list of coin denominations, find the minimum number of coins needed to make that amount.
 Examples
+
 ```Input: coins = [1,2,5], amount = 11
 Output: 3
 Explanation: 11 = 5 + 5 + 1
@@ -5141,12 +6073,15 @@ Input: coins = [2], amount = 3
 Output: -1
 Explanation: It is not possible to make amount 3 with coin 2.
 ```
+
 Constraints
+
 ```
 1 <= coins.length <= 12
 1 <= coins[i] <= 2^31 - 1
 0 <= amount <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionCoinChange {
@@ -5165,9 +6100,12 @@ public class SolutionCoinChange {
     }
 }
 ```
+
 ### Question 141: Longest Increasing Subsequence
+
 Find the length of the longest increasing subsequence in an array of integers.
 Examples
+
 ```Input: nums = [10,9,2,5,3,7,101,18]
 Output: 4
 Explanation: The longest increasing subsequence is [2,3,7,101], so the length is 4.
@@ -5176,11 +6114,14 @@ Input: nums = [0,1,0,3,2,3]
 Output: 4
 Explanation: The longest increasing subsequence is [0,1,2,3], so the length is 4.
 ```
+
 Constraints
+
 ```
 1 <= nums.length <= 2500
 -10^4 <= nums[i] <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionLongestIncreasingSubsequence {
@@ -5201,10 +6142,14 @@ public class SolutionLongestIncreasingSubsequence {
     }
 }
 ```
+
 ## Multi Dimesional DP
+
 ### Question 142: Triangle
+
 Find the minimum path sum from the top to the bottom of a triangle.
 Examples
+
 ```Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
 Output: 11
 Explanation: The minimum path sum is 2 + 3 + 5 + 1 = 11.
@@ -5212,12 +6157,15 @@ Explanation: The minimum path sum is 2 + 3 + 5 + 1 = 11.
 Input: triangle = [[-10]]
 Output: -10
 ```
+
 Constraints
+
 ```
 1 <= triangle.length <= 200
 1 <= triangle[i].length <= i + 1
 -10^4 <= triangle[i][j] <= 10^4
 ```
+
 ```java
 import java.util.*;
 public class SolutionTriangle {
@@ -5238,8 +6186,10 @@ public class SolutionTriangle {
 ```
 
 ### Question 143: Minimum Path Sum
+
 Find the minimum path sum from the top left to the bottom right of a grid.
 Examples
+
 ```Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
 Output: 7
 Explanation: The path 1 → 3 → 1 → 1 → 1 has the minimum sum = 7.
@@ -5247,13 +6197,16 @@ Explanation: The path 1 → 3 → 1 → 1 → 1 has the minimum sum = 7.
 Input: grid = [[1,2,3],[4,5,6],[7,8,9]]
 Output: 21
 ```
+
 Constraints
+
 ```
 m == grid.length
 n == grid[0].length
 1 <= m, n <= 200
 0 <= grid[i][j] <= 100
 ```
+
 ```java
 import java.util.*;
 public class SolutionMinimumPathSum {
@@ -5276,9 +6229,12 @@ public class SolutionMinimumPathSum {
     }
 }
 ```
+
 ### Question 144: Unique Paths II
+
 Find the number of unique paths from the top left to the bottom right of a grid with obstacles.
 Examples
+
 ```Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 Output: 2
 Explanation: There are two unique paths to the bottom right corner.
@@ -5286,13 +6242,16 @@ Explanation: There are two unique paths to the bottom right corner.
 Input: obstacleGrid = [[0,1],[0,0]]
 Output: 1
 ```
+
 Constraints
+
 ```
 m == obstacleGrid.length
 n == obstacleGrid[0].length
 1 <= m, n <= 100
 obstacleGrid[i][j] is 0 or 1
 ```
+
 ```java
 import java.util.*;
 public class SolutionUniquePathsII {
@@ -5317,9 +6276,12 @@ public class SolutionUniquePathsII {
     }
 }
 ```
-### Question 145: Longest Palindromic Substring 
+
+### Question 145: Longest Palindromic Substring
+
 Find the longest palindromic substring in a given string.
 Examples
+
 ```Input: s = "babad"
 Output: "bab"
 Explanation: "aba" is also a valid answer.
@@ -5327,11 +6289,14 @@ Explanation: "aba" is also a valid answer.
 Input: s = "cbbd"
 Output: "bb"
 ```
+
 Constraints
+
 ```
 1 <= s.length <= 1000
 s consist of only digits and English letters (lowercase and/or uppercase).
 ```
+
 ```java
 public class SolutionLongestPalindromicSubstring {
     public String longestPalindrome(String s) {
@@ -5357,21 +6322,27 @@ public class SolutionLongestPalindromicSubstring {
     }
 }
 ```
+
 ### Question 146: Interleaving String
+
 Determine if a string s3 is formed by interleaving two other strings s1 and s2.
 Examples
+
 ```Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbca"
 Output: true
 =============================================
 Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbac"
 Output: false
 ```
+
 Constraints
+
 ```
 1 <= s1.length, s2.length <= 100
 0 <= s3.length <= s1.length + s2.length
 s1, s2, and s3 consist of lowercase English letters.
 ```
+
 ```java
 import java.util.*;
 public class SolutionInterleavingString {
@@ -5393,9 +6364,12 @@ public class SolutionInterleavingString {
     }
 }
 ```
+
 ### Question 147: Edit Distance
+
 Find the minimum number of operations required to convert one string into another.
 Examples
+
 ```Input: word1 = "horse", word2 = "ros"
 Output: 3
 Explanation: horse → rorse (replace 'h' with 'r') → rose (remove 'r') → ros (remove 'e')
@@ -5404,10 +6378,13 @@ Input: word1 = "intention", word2 = "execution"
 Output: 5
 Explanation: intention → inention (remove 't') → enention (replace 'i' with 'e') → exention (replace 'n' with 'x') → exection (replace 'n' with 'c') → execution (add 'u')
 ```
+
 Constraints
+
 ```1 <= word1.length, word2.length <= 500
 word1 and word2 consist of lowercase English letters.
 ```
+
 ```java
 import java.util.*;
 public class SolutionEditDistance {
@@ -5433,9 +6410,12 @@ public class SolutionEditDistance {
     }
 }
 ```
+
 ### Question 148: Best Time to Buy and Sell Stock III
+
 Find the maximum profit you can achieve by making at most two transactions.
 Examples
+
 ```Input: prices = [3,3,5,0,0,3,1,4]
 Output: 6
 Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3.
@@ -5445,10 +6425,13 @@ Input: prices = [1,2,3,4,5]
 Output: 4
 Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 4.
 ```
+
 Constraints
+
 ```1 <= prices.length <= 10^5
 0 <= prices[i] <= 10^5
 ```
+
 ```java
 import java.util.*;
 public class SolutionBestTimeToBuyAndSellStockIII {
@@ -5468,8 +6451,10 @@ public class SolutionBestTimeToBuyAndSellStockIII {
 ```
 
 ### Question 149: Best Time to Buy and Sell Stock IV
+
 Find the maximum profit you can achieve by making at most k transactions.
 Examples
+
 ```Input: k = 2, prices = [2,4,1]
 Output: 2
 Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 2.
@@ -5479,11 +6464,14 @@ Output: 7
 Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 4.
 Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3.
 ```
+
 Constraints
+
 ```1 <= k <= 100
 1 <= prices.length <= 1000
 0 <= prices[i] <= 1000
 ```
+
 ```java
 import java.util.*;
 public class SolutionBestTimeToBuyAndSellStockIV {
@@ -5510,9 +6498,12 @@ public class SolutionBestTimeToBuyAndSellStockIV {
     }
 }
 ```
+
 ### Question 150: Maximal Square
+
 Find the largest square containing only 1's in a binary matrix and return its area.
 Examples
+
 ```Input: matrix = [["1","0","1","0","0"],["1","1","1","1","0"],["1","0","0","1","0"],["0","1","1","1","0"],["1","0","1","0","1]]
 Output: 4
 Explanation: The largest square has a side length of 2, so its area is 4.
@@ -5521,11 +6512,14 @@ Input: matrix = [["0","1"],["1","0"]]
 Output: 1
 Explanation: The largest square has a side length of 1, so its area is 1.
 ```
+
 Constraints
+
 ```
 1 <= matrix.length, matrix[i].length <= 300
 matrix[i][j] is '0' or '1'.
 ```
+
 ```java
 import java.util.*;
 public class SolutionMaximalSquare {
@@ -5548,4 +6542,5 @@ public class SolutionMaximalSquare {
     }
 }
 ```
+
 completed 150 questions in leetcode/leetcode.md
