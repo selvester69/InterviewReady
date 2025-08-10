@@ -931,7 +931,7 @@ public class SolutionTextJustification {
     }
 }
 ```
-
+## 2 Pointers
 ### Question 25: Valid Palindrome
 
 Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
@@ -1103,7 +1103,7 @@ public class SolutionThreeSum {
     }
 }
 ```
-
+## Sliding Window
 ### Question 30: Minimum Size Subarray Sum
 
 Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray of which the sum is greater than or equal to target. If there is no such subarray, return 0.
@@ -1172,6 +1172,31 @@ public class SolutionLongestSubstringNoRepeat {
         return maxLen;
     }
 }
+```
+another Solution
+```java
+public int lengthOfLongestSubstring(String s) {
+        Set<Character> hs = new HashSet<>();
+        int longest = 0;
+        int i = 0, j = 0;
+        // use sliding window
+        while (j < s.length()) {
+            // calculations
+            char c = s.charAt(j);
+            if (!hs.contains(c)) {
+                hs.add(c);
+                longest = Math.max(longest, j - i + 1);
+                j++;
+            } else if (hs.contains(c)) {
+                // ans from calcualtions
+                while (hs.contains(c) && hs.size()>0) {
+                    hs.remove(s.charAt(i));
+                    i++;
+                }
+            }
+        }
+        return longest;
+    }
 ```
 
 ### Question 32: Substring with Concatenation of All Words
@@ -1266,7 +1291,7 @@ public class SolutionMinWindowSubstring {
     }
 }
 ```
-
+## Matrix
 ### Question 34: Valid Sudoku
 
 Determine if a 9 x 9 Sudoku board is valid.
@@ -1473,7 +1498,7 @@ public class SolutionGameOfLife {
     }
 }
 ```
-
+## HashMap
 ### Question 39: Ransom Note
 
 Given two strings ransomNote and magazine, return true if ransomNote can be constructed from magazine.
@@ -1784,7 +1809,7 @@ public class SolutionLongestConsecutiveSequence {
     }
 }
 ```
-
+## Intervals
 ### Question 48: Summary Ranges
 
 Given a sorted integer array nums, return the smallest sorted list of ranges that cover all the numbers in the array exactly.
@@ -1934,7 +1959,7 @@ public class SolutionMinArrowsBurstBalloons {
     }
 }
 ```
-
+## Stack
 ### Question 52: Valid Parentheses
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -2125,7 +2150,7 @@ public class SolutionBasicCalculator {
     }
 }
 ```
-
+## Linked List
 ### Question 57: Linked List Cycle
 
 Given a linked list, determine if it has a cycle.
@@ -2495,7 +2520,7 @@ public class LRUCache {
     }
 }
 ```
-
+## Binary Tree General
 ### Question 68: Maximum Depth of Binary Tree
 
 Given a binary tree, find its maximum depth.
@@ -2921,7 +2946,7 @@ public class SolutionLowestCommonAncestor {
     }
 }
 ```
-
+## Binary Tree BFS
 ### Question 82: Binary Tree Right Side View
 
 Return the values of the nodes you can see ordered from top to bottom when looking at a binary tree from the right side.
@@ -3076,7 +3101,7 @@ public class SolutionZigzagLevelOrder {
     }
 }
 ```
-
+## Bianry Search Tree
 ### Question 86: Minimum Absolute Difference in BST
 
 Given a BST, return the minimum absolute difference between values of any two nodes.
@@ -3169,7 +3194,7 @@ public class SolutionValidateBST {
     }
 }
 ```
-
+## Graph General
 ### Question 89: Number of Islands
 
 Given a 2D grid map of '1's (land) and '0's (water), count the number of islands.
@@ -3416,7 +3441,7 @@ public class SolutionCourseScheduleII {
     }
 }
 ```
-
+## Graph BFS
 ### Question 95: Snakes and Ladders
 
 Find the minimum number of moves to reach the last square on a snakes and ladders board.
@@ -3565,7 +3590,7 @@ public class SolutionWordLadder {
     }
 }
 ```
-
+## Trie
 ### Question 98: Implement Trie (Prefix Tree)
 
 Implement a trie with insert, search, and startsWith methods.
@@ -3721,7 +3746,7 @@ public class SolutionWordSearchII {
     }
 }
 ```
-
+## BackTrack
 ### Question 101: Letter Combinations of a Phone Number
 
 Return all possible letter combinations that the number could represent.
@@ -3981,7 +4006,7 @@ public class SolutionWordSearch {
     }
 }
 ```
-
+## Divide and Conquer
 ### Question 108: Convert Sorted Array to Binary Search Tree
 
 Convert a sorted array to a height-balanced BST.
@@ -4121,7 +4146,7 @@ public class SolutionMergeKSortedLists {
     }
 }
 ```
-
+## Kadane's Algorithm
 ### Question 112: Maximum Subarray
 
 Find the contiguous subarray with the largest sum.
@@ -4181,7 +4206,7 @@ public class SolutionMaxSumCircularSubarray {
     }
 }
 ```
-
+## Binary Search
 ### Question 114: Search Insert Position
 
 Return the index if the target is found, or the index where it would be if inserted in order.
@@ -4430,6 +4455,7 @@ public class SolutionMedianOfTwoSortedArrays {
     }
 }
 ```
+## Heap
 ### Question 121: Kth Largest Element in an Array
 
 Find the kth largest element in an unsorted array.
@@ -4575,7 +4601,9 @@ public class MedianFinder {
         }
     }
 }
-``` 
+```
+
+## Bit Manipulation
 ### Question 125: Add Binary
 Add two binary strings and return their sum as a binary string.
 Examples
@@ -4737,6 +4765,7 @@ public class SolutionBitwiseANDRange {
     }
 }
 ```
+## Math
 ### Question 131: Palindrome Number 
 Determine whether an integer is a palindrome without converting it to a string.
 Examples
@@ -5007,6 +5036,7 @@ public class SolutionMaxPointsOnLine {
     }
 }
 ```
+## 1-D DP
 ### Question 137: Climbing Stairs
 You are climbing a staircase with n steps. Each time you can either climb 1 or 2 steps. Find the number of distinct ways to reach the top.
 Examples
@@ -5171,6 +5201,7 @@ public class SolutionLongestIncreasingSubsequence {
     }
 }
 ```
+## Multi Dimesional DP
 ### Question 142: Triangle
 Find the minimum path sum from the top to the bottom of a triangle.
 Examples
