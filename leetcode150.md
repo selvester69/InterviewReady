@@ -2416,7 +2416,7 @@ Constraints
 -2^31 <= val <= 2^31 - 1
 ```
 
-Solution
+Solution: Using 2 Stack
 
 ```java
 import java.util.*;
@@ -2435,6 +2435,56 @@ public class MinStack {
     }
     public int getMin() {
         return minStack.peek();
+    }
+}
+```
+
+Solution 2: using O(1) space
+
+```java
+class MinStack {
+    Stack<Long> st;
+    long min = Integer.MAX_VALUE;
+
+    public MinStack() {
+        st = new Stack<>();
+    }
+
+    public void push(int val) {
+        long lg = val;
+        if (st.isEmpty()) {
+            st.push(lg);
+            min = lg;
+        }
+       else if (lg < min) {
+            st.push((2 * lg) - min);
+            min = lg;
+        } else {
+            st.push(lg);
+        }
+    }
+
+    public void pop() {
+        if (st.isEmpty())
+            return;
+        if (st.peek() < min) {
+            min = 2 * min - st.peek();
+            st.pop();
+        } else {
+            st.pop();
+        }
+    }
+
+    public int top() {
+        if (st.isEmpty())
+            return -1;
+        long top = st.peek();
+        // then the value in stack is actually a flag
+        return (int)(( min > top) ? min : top);
+    }
+
+    public int getMin() {
+        return (int) min;
     }
 }
 ```
