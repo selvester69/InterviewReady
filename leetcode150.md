@@ -3196,23 +3196,30 @@ Constraints
 Solution
 
 ```java
-import java.util.*;
-public class SolutionBuildTreePreIn {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        Map<Integer, Integer> inMap = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) inMap.put(inorder[i], i);
-        return build(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, inMap);
+public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int n = inorder.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(inorder[i], i);
+        }
+        int[] preIndex = { 0 };
+        return helper(preorder, 0, n - 1, preIndex, map);
     }
-    private TreeNode build(int[] pre, int ps, int pe, int[] in, int is, int ie, Map<Integer, Integer> inMap) {
-        if (ps > pe || is > ie) return null;
-        TreeNode root = new TreeNode(pre[ps]);
-        int inRoot = inMap.get(pre[ps]);
-        int left = inRoot - is;
-        root.left = build(pre, ps + 1, ps + left, in, is, inRoot - 1, inMap);
-        root.right = build(pre, ps + left + 1, pe, in, inRoot + 1, ie, inMap);
+
+    private TreeNode helper(int[] preorder, int inS, int inE, int[] preIndex, Map<Integer, Integer> map) {
+        if (inS > inE) {
+            return null;
+        }
+        int rootData = preorder[preIndex[0]];
+        int rootIndex = map.get(rootData);// either get from map or loop and get from inorder[]
+
+        preIndex[0]++;
+
+        TreeNode root = new TreeNode(rootData);
+        root.left = helper(preorder, inS, rootIndex - 1, preIndex, map);
+        root.right = helper(preorder, rootIndex + 1, inE, preIndex, map);
         return root;
     }
-}
 ```
 
 ### Question 73: Construct Binary Tree from Inorder and Postorder Traversal
@@ -3221,14 +3228,12 @@ Construct a binary tree from inorder and postorder traversal.
 
 Examples
 
-```
+```text
 Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
 Output: [3,9,20,null,null,15,7]
-```
 
 Constraints
 
-```
 1 <= inorder.length <= 3000
 ```
 
@@ -3236,19 +3241,27 @@ Solution
 
 ```java
 import java.util.*;
-public class SolutionBuildTreeInPost {
+class Solution {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        Map<Integer, Integer> inMap = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) inMap.put(inorder[i], i);
-        return build(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1, inMap);
+        int n = inorder.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(inorder[i], i);
+        }
+        int[] postIndex = new int[] { n - 1 };
+       return helper(postorder, map, postIndex, 0, n - 1);
     }
-    private TreeNode build(int[] in, int is, int ie, int[] post, int ps, int pe, Map<Integer, Integer> inMap) {
-        if (is > ie || ps > pe) return null;
-        TreeNode root = new TreeNode(post[pe]);
-        int inRoot = inMap.get(post[pe]);
-        int left = inRoot - is;
-        root.left = build(in, is, inRoot - 1, post, ps, ps + left - 1, inMap);
-        root.right = build(in, inRoot + 1, ie, post, ps + left, pe - 1, inMap);
+
+    public TreeNode helper(int[] postorder, Map<Integer, Integer> map, int[] postIndex,
+            int inS, int inE) {
+        if (inS > inE)
+            return null;
+        int rootData = postorder[postIndex[0]];
+        int index = map.get(rootData);
+        TreeNode root = new TreeNode(rootData);
+        postIndex[0]--;
+        root.right = helper(postorder, map, postIndex, index + 1, inE);
+        root.left = helper(postorder, map, postIndex, inS, index - 1);
         return root;
     }
 }
@@ -3260,14 +3273,12 @@ Populate each next pointer to point to its next right node.
 
 Examples
 
-```
+```text
 Input: root = [1,2,3,4,5,null,7]
 Output: [1,#,2,3,#,4,5,7,#]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 6000].
 ```
 
@@ -3297,18 +3308,16 @@ Flatten a binary tree to a linked list in-place.
 
 Examples
 
-```
+```text
 Input: root = [1,2,5,3,4,null,6]
 Output: [1,null,2,null,3,null,4,null,5,null,6]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 2000].
 ```
 
-Solution
+Solution inplace with O(1) space
 
 ```java
 public class SolutionFlattenBinaryTree {
@@ -3323,6 +3332,31 @@ public class SolutionFlattenBinaryTree {
             }
             root = root.right;
         }
+    }
+}
+```
+
+Another Solution Using BFS O(n) extra space
+
+```java
+class Solution {
+    public void flatten(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
+        insert(root, q);
+        q.poll(); // skip the original root since we'll relink from it
+        while (!q.isEmpty()) {
+            root.right = q.poll(); // connect to next node
+            root.left = null;      // left should be null in linked list
+            root = root.right;
+        }
+    }
+
+    // Preorder traversal to collect nodes
+    void insert(TreeNode node, Queue<TreeNode> queue) {
+        if (node == null) return;
+        queue.add(node);
+        insert(node.left, queue);
+        insert(node.right, queue);
     }
 }
 ```
