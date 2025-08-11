@@ -12,7 +12,7 @@ The final sorted array should not be returned by the function, but instead be st
 
 Examples
 
-```text
+```texttext
 Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 Output: [1,2,2,3,5,6]
 Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
@@ -66,7 +66,7 @@ Given an integer array nums and an integer val, remove all occurrences of val in
 
 Examples
 
-```text
+```texttext
 Input: nums = [3,2,2,3], val = 3
 Output: 2, nums = [2,2,_,_]
 Explanation: Your function should return k = 2, with the first two elements of nums being 2. It does not matter what you leave beyond the returned k (hence they are underscores).
@@ -74,11 +74,9 @@ Explanation: Your function should return k = 2, with the first two elements of n
 Input: nums = [0,1,2,2,3,0,4,2], val = 2
 Output: 5, nums = [0,1,4,0,3,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4. Note that the five elements can be returned in any order. It does not matter what you leave beyond the returned k (hence they are underscores).
-```
 
 Constraints
-
-```text
+text
 0 <= nums.length <= 100
 0 <= nums[i] <= 50
 0 <= val <= 100
@@ -114,7 +112,7 @@ Given an integer array nums sorted in non-decreasing order, remove the duplicate
 
 Examples
 
-```text
+```texttext
 Input: nums = [1,1,2]
 Output: 2, nums = [1,2,_]
 Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
@@ -124,11 +122,9 @@ Input: nums = [0,0,1,1,1,2,2,3,3,4]
 Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 It does not matter what you leave beyond the returned k.
-```
 
 Constraints
-
-```text
+text
 1 <= nums.length <= 3 * 10^4
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
@@ -167,7 +163,7 @@ Given an integer array nums sorted in non-decreasing order, remove some duplicat
 
 Examples
 
-```text
+```texttext
 Input: nums = [1,1,1,2,2,3]
 Output: 5, nums = [1,1,2,2,3,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
@@ -177,11 +173,9 @@ Input: nums = [0,0,1,1,1,1,2,3,3]
 Output: 7, nums = [0,0,1,1,2,3,3,_,_]
 Explanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
-```
 
 Constraints
-
-```text
+text
 1 <= nums.length <= 3 * 10^4
 -10^4 <= nums[i] <= 10^4
 nums is sorted in non-decreasing order.
@@ -218,17 +212,15 @@ public class SolutionRemoveDuplicatesII {
 Given an array nums of size n, return the majority element.The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 Examples
 
-```text
+```texttext
 Input: nums = [3,2,3]
 Output: 3
 =============================================
 Input: nums = [2,2,1,1,1,2,2]
 Output: 2
-```
 
 Constraints
-
-```text
+text
 n == nums.length
 1 <= n <= 5 * 10^4
 -10^9 <= nums[i] <= 10^9
@@ -260,17 +252,15 @@ Given an array, rotate the array to the right by k steps, where k is non-negativ
 
 Examples
 
-```text
+```texttext
 Input: nums = [1,2,3,4,5,6,7], k = 3
 Output: [5,6,7,1,2,3,4]
 =============================================
 Input: nums = [-1,-100,3,99], k = 2
 Output: [3,99,-1,-100]
-```
 
 Constraints
-
-```text
+text
 1 <= nums.length <= 10^5
 -2^31 <= nums[i] <= 2^31 - 1
 0 <= k <= 10^5
@@ -304,17 +294,15 @@ You are given an array prices where prices[i] is the price of a given stock on t
 
 Examples
 
-```text
+```texttext
 Input: prices = [7,1,5,3,6,4]
 Output: 5
 =============================================
 Input: prices = [7,6,4,3,1]
 Output: 0
-```
 
 Constraints
-
-```text
+text
 1 <= prices.length <= 10^5
 0 <= prices[i] <= 10^4
 ```
@@ -340,17 +328,15 @@ You may complete as many transactions as you like (i.e., buy one and sell one sh
 
 Examples
 
-```text
+```texttext
 Input: prices = [7,1,5,3,6,4]
 Output: 7
 =============================================
 Input: prices = [1,2,3,4,5]
 Output: 4
-```
 
 Constraints
-
-```text
+text
 1 <= prices.length <= 3 * 10^4
 0 <= prices[i] <= 10^4
 ```
@@ -377,17 +363,15 @@ Given an array of non-negative integers nums, you are initially positioned at th
 
 Examples
 
-```text
+```texttext
 Input: nums = [2,3,1,1,4]
 Output: true
 =============================================
 Input: nums = [3,2,1,0,4]
 Output: false
-```
 
 Constraints
-
-```text
+text
 1 <= nums.length <= 10^4
 0 <= nums[i] <= 10^5
 ```
@@ -413,17 +397,15 @@ Given an array of non-negative integers nums, you are initially positioned at th
 
 Examples
 
-```text
+```texttext
 Input: nums = [2,3,1,1,4]
 Output: 2
 =============================================
 Input: nums = [2,3,0,1,4]
 Output: 2
-```
 
 Constraints
-
-```text
+text
 1 <= nums.length <= 10^4
 0 <= nums[i] <= 1000
 ```
@@ -452,17 +434,15 @@ Given an array of integers citations where citations[i] is the number of citatio
 
 Examples
 
-```
+```texttext
 Input: citations = [3,0,6,1,5]
 Output: 3
 =============================================
 Input: citations = [1,3,1]
 Output: 1
-```
 
 Constraints
-
-```
+text
 n == citations.length
 1 <= n <= 5000
 0 <= citations[i] <= 1000
@@ -492,17 +472,15 @@ Implement the RandomizedSet class with insert, remove, and getRandom methods, al
 
 Examples
 
-```
+```text
 Input
 ["RandomizedSet","insert","remove","insert","getRandom","remove","insert","getRandom"]
 [[],[1],[2],[2],[],[1],[2],[]]
 Output
 [null,true,false,true,2,true,false,2]
-```
 
 Constraints
 
-```
 -2^31 <= val <= 2^31 - 1
 At most 2 * 10^5 calls will be made to insert, remove, and getRandom.
 ```
@@ -552,17 +530,15 @@ Given an integer array nums, return an array answer such that answer[i] is equal
 
 Examples
 
-```
+```text
 Input: nums = [1,2,3,4]
 Output: [24,12,8,6]
 =============================================
 Input: nums = [-1,1,0,-3,3]
 Output: [0,0,9,0,0]
-```
 
 Constraints
 
-```
 2 <= nums.length <= 10^5
 -30 <= nums[i] <= 30
 ```
@@ -595,17 +571,15 @@ There are n gas stations along a circular route, where the amount of gas at the 
 
 Examples
 
-```
+```text
 Input: gas = [1,2,3,4,5], cost = [3,4,5,1,2]
 Output: 3
 =============================================
 Input: gas = [2,3,4], cost = [3,4,3]
 Output: -1
-```
 
 Constraints
 
-```
 n == gas.length == cost.length
 1 <= n <= 10^5
 0 <= gas[i], cost[i] <= 10^4
@@ -636,17 +610,15 @@ There are n children standing in a line. Each child is assigned a rating value. 
 
 Examples
 
-```
+```text
 Input: ratings = [1,0,2]
 Output: 5
 =============================================
 Input: ratings = [1,2,2]
 Output: 4
-```
 
 Constraints
 
-```
 n == ratings.length
 1 <= n <= 2 * 10^4
 0 <= ratings[i] <= 2 * 10^4
@@ -679,17 +651,15 @@ Given n non-negative integers representing an elevation map, compute how much wa
 
 Examples
 
-```
+```text
 Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
 =============================================
 Input: height = [4,2,0,3,2,5]
 Output: 9
-```
 
 Constraints
 
-```
 n == height.length
 1 <= n <= 2 * 10^4
 0 <= height[i] <= 10^5
@@ -723,7 +693,7 @@ Convert a Roman numeral to an integer.
 
 Examples
 
-```
+```text
 Input: s = "III"
 Output: 3
 =============================================
@@ -732,11 +702,9 @@ Output: 58
 =============================================
 Input: s = "MCMXCIV"
 Output: 1994
-```
 
 Constraints
 
-```
 1 <= s.length <= 15
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 ```
@@ -771,7 +739,7 @@ Convert an integer to a Roman numeral.
 
 Examples
 
-```
+```text
 Input: num = 3
 Output: "III"
 =============================================
@@ -780,11 +748,9 @@ Output: "LVIII"
 =============================================
 Input: num = 1994
 Output: "MCMXCIV"
-```
 
 Constraints
 
-```
 1 <= num <= 3999
 ```
 
@@ -813,17 +779,15 @@ Given a string s consisting of words and spaces, return the length of the last w
 
 Examples
 
-```
+```text
 Input: s = "Hello World"
 Output: 5
 =============================================
 Input: s = "   fly me   to   the moon  "
 Output: 4
-```
 
 Constraints
 
-```
 1 <= s.length <= 10^4
 s consists of only English letters and spaces ' '.
 ```
@@ -850,17 +814,15 @@ Write a function to find the longest common prefix string amongst an array of st
 
 Examples
 
-```
+```text
 Input: strs = ["flower","flow","flight"]
 Output: "fl"
 =============================================
 Input: strs = ["dog","racecar","car"]
 Output: ""
-```
 
 Constraints
 
-```
 1 <= strs.length <= 200
 0 <= strs[i].length <= 200
 ```
@@ -889,17 +851,15 @@ Given an input string s, reverse the order of the words.
 
 Examples
 
-```
+```text
 Input: s = "the sky is blue"
 Output: "blue is sky the"
 =============================================
 Input: s = "  hello world  "
 Output: "world hello"
-```
 
 Constraints
 
-```
 1 <= s.length <= 10^4
 s contains English letters (upper-case and lower-case), digits, and spaces ' '.
 ```
@@ -926,17 +886,15 @@ Convert a string to a zigzag pattern on a given number of rows.
 
 Examples
 
-```
+```text
 Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
 =============================================
 Input: s = "PAYPALISHIRING", numRows = 4
 Output: "PINALSIGYAHRPI"
-```
 
 Constraints
 
-```
 1 <= s.length <= 1000
 1 <= numRows <= 1000
 ```
@@ -968,17 +926,15 @@ Return the index of the first occurrence of needle in haystack, or -1 if needle 
 
 Examples
 
-```
+```text
 Input: haystack = "sadbutsad", needle = "sad"
 Output: 0
 =============================================
 Input: haystack = "leetcode", needle = "leeto"
 Output: -1
-```
 
 Constraints
 
-```
 1 <= haystack.length, needle.length <= 10^4
 ```
 
@@ -998,7 +954,7 @@ Given an array of words and a width maxWidth, format the text such that each lin
 
 Examples
 
-```
+```text
 Input: words = ["This","is","an","example","of","text","justification."], maxWidth = 16
 Output:
 [
@@ -1006,11 +962,9 @@ Output:
    "example  of text",
    "justification.  "
 ]
-```
 
 Constraints
 
-```
 1 <= words.length <= 300
 1 <= words[i].length <= 20
 words[i] consists of only English letters and symbols.
@@ -1064,17 +1018,15 @@ Given a string s, determine if it is a palindrome, considering only alphanumeric
 
 Examples
 
-```
+```text
 Input: s = "A man, a plan, a canal: Panama"
 Output: true
 =============================================
 Input: s = "race a car"
 Output: false
-```
 
 Constraints
 
-```
 1 <= s.length <= 2 * 10^5
 ```
 
@@ -1101,17 +1053,15 @@ Given two strings s and t, return true if s is a subsequence of t.
 
 Examples
 
-```
+```text
 Input: s = "abc", t = "ahbgdc"
 Output: true
 =============================================
 Input: s = "axc", t = "ahbgdc"
 Output: false
-```
 
 Constraints
 
-```
 0 <= s.length <= 100
 0 <= t.length <= 10^4
 ```
@@ -1137,17 +1087,15 @@ Given a 1-indexed array of integers numbers that is already sorted in non-decrea
 
 Examples
 
-```
+```text
 Input: numbers = [2,7,11,15], target = 9
 Output: [1,2]
 =============================================
 Input: numbers = [2,3,4], target = 6
 Output: [1,3]
-```
 
 Constraints
 
-```
 2 <= numbers.length <= 3 * 10^4
 -1000 <= numbers[i] <= 1000
 numbers is sorted in non-decreasing order.
@@ -1176,17 +1124,15 @@ Given n non-negative integers a1, a2, ..., an, where each represents a point at 
 
 Examples
 
-```
+```text
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
 =============================================
 Input: height = [1,1]
 Output: 1
-```
 
 Constraints
 
-```
 2 <= height.length <= 10^5
 0 <= height[i] <= 10^4
 ```
@@ -1213,17 +1159,15 @@ Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
 
 Examples
 
-```
+```text
 Input: nums = [-1,0,1,2,-1,-4]
 Output: [[-1,-1,2],[-1,0,1]]
 =============================================
 Input: nums = []
 Output: []
-```
 
 Constraints
 
-```
 0 <= nums.length <= 3000
 -10^5 <= nums[i] <= 10^5
 ```
@@ -1263,17 +1207,15 @@ Given an array of positive integers nums and a positive integer target, return t
 
 Examples
 
-```
+```text
 Input: target = 7, nums = [2,3,1,2,4,3]
 Output: 2
 =============================================
 Input: target = 4, nums = [1,4,4]
 Output: 1
-```
 
 Constraints
 
-```
 1 <= target <= 10^9
 1 <= nums.length <= 10^5
 1 <= nums[i] <= 10^4
@@ -1303,17 +1245,15 @@ Given a string s, find the length of the longest substring without repeating cha
 
 Examples
 
-```
+```text
 Input: s = "abcabcbb"
 Output: 3
 =============================================
 Input: s = "bbbbb"
 Output: 1
-```
 
 Constraints
 
-```
 0 <= s.length <= 5 * 10^4
 ```
 
@@ -1370,17 +1310,15 @@ Given a string s and a list of words, find all starting indices of substring(s) 
 
 Examples
 
-```
+```text
 Input: s = "barfoothefoobarman", words = ["foo","bar"]
 Output: [0,9]
 =============================================
 Input: s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"]
 Output: []
-```
 
 Constraints
 
-```
 1 <= s.length <= 10^4
 1 <= words.length <= 5000
 1 <= words[i].length <= 30
@@ -1420,17 +1358,15 @@ Given two strings s and t, return the minimum window in s which will contain all
 
 Examples
 
-```
+```text
 Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
 =============================================
 Input: s = "a", t = "a"
 Output: "a"
-```
 
 Constraints
 
-```
 1 <= s.length, t.length <= 10^5
 ```
 
@@ -1475,7 +1411,7 @@ Determine if a 9 x 9 Sudoku board is valid.
 
 Examples
 
-```
+```text
 Input: board = 
 [["5","3",".",".","7",".",".",".","."],
  ["6",".",".","1","9","5",".",".","."],
@@ -1487,11 +1423,9 @@ Input: board =
  [".",".",".","4","1","9",".",".","5"],
  [".",".",".",".","8",".",".","7","9"]]
 Output: true
-```
 
 Constraints
 
-```
 board.length == 9
 board[i].length == 9
 ```
@@ -1523,17 +1457,15 @@ Given an m x n matrix, return all elements of the matrix in spiral order.
 
 Examples
 
-```
+```text
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,3,6,9,8,7,4,5]
 =============================================
 Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 Output: [1,2,3,4,8,12,11,10,9,5,6,7]
-```
 
 Constraints
 
-```
 m == matrix.length
 n == matrix[i].length
 1 <= m, n <= 10
@@ -1572,14 +1504,12 @@ You are given an n x n 2D matrix representing an image, rotate the image by 90 d
 
 Examples
 
-```
+```text
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [[7,4,1],[8,5,2],[9,6,3]]
-```
 
 Constraints
 
-```
 n == matrix.length == matrix[i].length
 1 <= n <= 20
 ```
@@ -1614,17 +1544,15 @@ Given an m x n integer matrix, if an element is 0, set its entire row and column
 
 Examples
 
-```
+```text
 Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
 Output: [[1,0,1],[0,0,0],[1,0,1]]
 =============================================
 Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
-```
 
 Constraints
 
-```
 m == matrix.length
 n == matrix[0].length
 1 <= m, n <= 200
@@ -1672,14 +1600,12 @@ Note that you do not need to return anything.
 
 Examples
 
-```text
+```texttext
 Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
-```
 
 Constraints
-
-```text
+text
 m == board.length
 n == board[0].length
 1 <= m, n <= 25
@@ -1763,7 +1689,7 @@ Given two strings ransomNote and magazine, return true if ransomNote can be cons
 
 Examples
 
-```text
+```texttext
 Input: ransomNote = "a", magazine = "b"
 Output: false
 =============================================
@@ -2137,7 +2063,7 @@ Given an integer array nums and an integer k, return true if there are two disti
 
 Examples
 
-```
+```text
 Input: nums = [1,2,3,1], k = 3
 Output: true
 =============================================
@@ -2146,11 +2072,9 @@ Output: true
 =============================================
 Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
-```
 
 Constraints
 
-```
 1 <= nums.length <= 10^5
 -10^9 <= nums[i] <= 10^9
 0 <= k <= 10^5
@@ -2178,17 +2102,15 @@ Given an unsorted array of integers nums, return the length of the longest conse
 
 Examples
 
-```
+```text
 Input: nums = [100,4,200,1,3,2]
 Output: 4
 =============================================
 Input: nums = [0,3,7,2,5,8,4,6,0,1]
 Output: 9
-```
 
 Constraints
 
-```
 0 <= nums.length <= 10^5
 -10^9 <= nums[i] <= 10^9
 ```
@@ -2285,17 +2207,15 @@ Given an array of intervals, merge all overlapping intervals.
 
 Examples
 
-```
+```text
 Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
 Output: [[1,6],[8,10],[15,18]]
 =============================================
 Input: intervals = [[1,4],[4,5]]
 Output: [[1,5]]
-```
 
 Constraints
 
-```
 1 <= intervals.length <= 10^4
 intervals[i].length == 2
 0 <= intervals[i][0] <= intervals[i][1] <= 10^4
@@ -2330,17 +2250,15 @@ Given a set of non-overlapping intervals, insert a new interval into the interva
 
 Examples
 
-```
+```text
 Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
 Output: [[1,5],[6,9]]
 =============================================
 Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 Output: [[1,2],[3,10],[12,16]]
-```
 
 Constraints
 
-```
 0 <= intervals.length <= 10^4
 intervals[i].length == 2
 0 <= intervals[i][0] <= intervals[i][1] <= 10^5
@@ -2373,17 +2291,15 @@ Given a list of intervals representing balloons, find the minimum number of arro
 
 Examples
 
-```
+```text
 Input: points = [[10,16],[2,8],[1,6],[7,12]]
 Output: 2
 =============================================
 Input: points = [[1,2],[3,4],[5,6],[7,8]]
 Output: 4
-```
 
 Constraints
 
-```
 1 <= points.length <= 10^5
 points[i].length == 2
 ```
@@ -2416,7 +2332,7 @@ Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
 
 Examples
 
-```text
+```texttext
 Input: s = "()[]{}"
 Output: true
 =============================================
@@ -2450,7 +2366,7 @@ Given an absolute path for a file (Unix-style), simplify it.
 
 Examples
 
-```text
+```texttext
 Input: path = "/home/"
 Output: "/home"
 =============================================
@@ -2490,7 +2406,7 @@ Design a stack that supports push, pop, top, and retrieving the minimum element 
 
 Examples
 
-```text
+```texttext
 Input: ["MinStack","push","push","push","getMin","pop","top","getMin"]
        [[],[-2],[0],[-3],[],[],[],[]]
 Output: [null,null,null,null,-3,null,0,-2]
@@ -2529,17 +2445,15 @@ Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 
 Examples
 
-```
+```text
 Input: tokens = ["2","1","+","3","*"]
 Output: 9
 =============================================
 Input: tokens = ["4","13","5","/","+"]
 Output: 6
-```
 
 Constraints
 
-```
 1 <= tokens.length <= 10^4
 ```
 
@@ -2574,17 +2488,15 @@ Implement a basic calculator to evaluate a simple expression string.
 
 Examples
 
-```
+```text
 Input: s = "1 + 1"
 Output: 2
 =============================================
 Input: s = " 2-1 + 2 "
 Output: 3
-```
 
 Constraints
 
-```
 1 <= s.length <= 3 * 10^5
 ```
 
@@ -2627,17 +2539,15 @@ Given a linked list, determine if it has a cycle.
 
 Examples
 
-```
+```text
 Input: head = [3,2,0,-4], pos = 1
 Output: true
 =============================================
 Input: head = [1,2], pos = 0
 Output: true
-```
 
 Constraints
 
-```
 The number of nodes in the list is in the range [0, 10^4].
 ```
 
@@ -2663,14 +2573,12 @@ Add two numbers represented by linked lists.
 
 Examples
 
-```
+```text
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
-```
 
 Constraints
 
-```
 The number of nodes in each list is in the range [1, 100].
 ```
 
@@ -2700,14 +2608,12 @@ Merge two sorted linked lists and return it as a new sorted list.
 
 Examples
 
-```
+```text
 Input: l1 = [1,2,4], l2 = [1,3,4]
 Output: [1,1,2,3,4,4]
-```
 
 Constraints
 
-```
 The number of nodes in both lists is in the range [0, 50].
 ```
 
@@ -2734,14 +2640,12 @@ Copy a linked list with next and random pointer.
 
 Examples
 
-```
+```text
 Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
-```
 
 Constraints
 
-```
 0 <= Node.val <= 100
 ```
 
@@ -2775,14 +2679,12 @@ Reverse a linked list from position left to right.
 
 Examples
 
-```
+```text
 Input: head = [1,2,3,4,5], left = 2, right = 4
 Output: [1,4,3,2,5]
-```
 
 Constraints
 
-```
 1 <= left <= right <= n
 ```
 
@@ -2814,17 +2716,15 @@ Reverse nodes of a linked list k at a time.
 
 Examples
 
-```
+```text
 Input: head = [1,2,3,4,5], k = 2
 Output: [2,1,4,3,5]
 =============================================
 Input: head = [1,2,3,4,5], k = 3
 Output: [3,2,1,4,5]
-```
 
 Constraints
 
-```
 1 <= k <= n
 ```
 
@@ -2860,14 +2760,12 @@ Remove the nth node from the end of a linked list.
 
 Examples
 
-```
+```text
 Input: head = [1,2,3,4,5], n = 2
 Output: [1,2,3,5]
-```
 
 Constraints
 
-```
 1 <= n <= size of list
 ```
 
@@ -2895,17 +2793,15 @@ Remove all nodes that have duplicate numbers from a sorted linked list.
 
 Examples
 
-```
+```text
 Input: head = [1,2,3,3,4,4,5]
 Output: [1,2,5]
 =============================================
 Input: head = [1,1,1,2,3]
 Output: [2,3]
-```
 
 Constraints
 
-```
 The number of nodes in the list is in the range [0, 300].
 ```
 
@@ -2935,14 +2831,12 @@ Rotate a linked list to the right by k places.
 
 Examples
 
-```
+```text
 Input: head = [1,2,3,4,5], k = 2
 Output: [4,5,1,2,3]
-```
 
 Constraints
 
-```
 0 <= k <= 2 * 10^9
 ```
 
@@ -2975,14 +2869,12 @@ Partition a linked list around a value x.
 
 Examples
 
-```
+```text
 Input: head = [1,4,3,2,5,2], x = 3
 Output: [1,2,2,4,3,5]
-```
 
 Constraints
 
-```
 The number of nodes in the list is in the range [0, 200].
 ```
 
@@ -3011,15 +2903,13 @@ Design a data structure that follows the constraints of a Least Recently Used (L
 
 Examples
 
-```
+```text
 Input: ["LRUCache","put","put","get","put","get","put","get","get","get"]
        [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
 Output: [null,null,null,1,null,-1,null,-1,3,4]
-```
 
 Constraints
 
-```
 1 <= capacity <= 3000
 ```
 
@@ -3054,14 +2944,12 @@ Given a binary tree, find its maximum depth.
 
 Examples
 
-```
+```text
 Input: root = [3,9,20,null,null,15,7]
 Output: 3
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 10^4].
 ```
 
@@ -3082,17 +2970,15 @@ Given two binary trees, check if they are the same.
 
 Examples
 
-```
+```text
 Input: p = [1,2,3], q = [1,2,3]
 Output: true
 =============================================
 Input: p = [1,2], q = [1,null,2]
 Output: false
-```
 
 Constraints
 
-```
 The number of nodes in both trees is in the range [0, 100].
 ```
 
@@ -3114,14 +3000,12 @@ Invert a binary tree.
 
 Examples
 
-```
+```text
 Input: root = [4,2,7,1,3,6,9]
 Output: [4,7,2,9,6,3,1]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 100].
 ```
 
@@ -3145,17 +3029,15 @@ Check if a binary tree is symmetric.
 
 Examples
 
-```
+```text
 Input: root = [1,2,2,3,4,4,3]
 Output: true
 =============================================
 Input: root = [1,2,2,null,3,null,3]
 Output: false
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [1, 1000].
 ```
 
@@ -3182,14 +3064,12 @@ Construct a binary tree from preorder and inorder traversal.
 
 Examples
 
-```
+```text
 Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
 Output: [3,9,20,null,null,15,7]
-```
 
 Constraints
 
-```
 1 <= preorder.length <= 3000
 ```
 
@@ -3228,7 +3108,7 @@ Construct a binary tree from inorder and postorder traversal.
 
 Examples
 
-```text
+```texttext
 Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
 Output: [3,9,20,null,null,15,7]
 
@@ -3273,7 +3153,7 @@ Populate each next pointer to point to its next right node.
 
 Examples
 
-```text
+```texttext
 Input: root = [1,2,3,4,5,null,7]
 Output: [1,#,2,3,#,4,5,7,#]
 
@@ -3308,7 +3188,7 @@ Flatten a binary tree to a linked list in-place.
 
 Examples
 
-```text
+```texttext
 Input: root = [1,2,5,3,4,null,6]
 Output: [1,null,2,null,3,null,4,null,5,null,6]
 
@@ -3367,14 +3247,12 @@ Given a binary tree and a sum, determine if the tree has a root-to-leaf path suc
 
 Examples
 
-```
+```text
 Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], sum = 22
 Output: true
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 5000].
 ```
 
@@ -3396,14 +3274,12 @@ Given a binary tree, return the sum of all root-to-leaf numbers.
 
 Examples
 
-```
+```text
 Input: root = [1,2,3]
 Output: 25
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 1000].
 ```
 
@@ -3429,17 +3305,15 @@ Find the maximum path sum in a binary tree.
 
 Examples
 
-```
+```text
 Input: root = [1,2,3]
 Output: 6
 =============================================
 Input: root = [-10,9,20,null,null,15,7]
 Output: 42
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [1, 3 * 10^4].
 ```
 
@@ -3468,14 +3342,12 @@ Implement an iterator over a binary search tree (BST).
 
 Examples
 
-```
+```text
 Input: root = [7,3,15,null,null,9,20]
 Output: [3,7,9,15,20]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [1, 10^5].
 ```
 
@@ -3511,14 +3383,12 @@ Count the number of nodes in a complete binary tree.
 
 Examples
 
-```
+```text
 Input: root = [1,2,3,4,5,6]
 Output: 6
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 5 * 10^4].
 ```
 
@@ -3551,17 +3421,15 @@ Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in
 
 Examples
 
-```
+```text
 Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
 Output: 3
 =============================================
 Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
 Output: 5
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [2, 10^5].
 ```
 
@@ -3587,17 +3455,15 @@ Return the values of the nodes you can see ordered from top to bottom when looki
 
 Examples
 
-```
+```text
 Input: root = [1,2,3,null,5,null,4]
 Output: [1,3,4]
 =============================================
 Input: root = [1,null,3]
 Output: [1,3]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 100].
 ```
 
@@ -3631,14 +3497,12 @@ Return the average value of the nodes on each level in the form of an array.
 
 Examples
 
-```
+```text
 Input: root = [3,9,20,null,null,15,7]
 Output: [3.00000,14.50000,11.00000]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [1, 10^4].
 ```
 
@@ -3673,14 +3537,12 @@ Return the level order traversal of a binary tree's nodes' values.
 
 Examples
 
-```
+```text
 Input: root = [3,9,20,null,null,15,7]
 Output: [[3],[9,20],[15,7]]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 2000].
 ```
 
@@ -3716,14 +3578,12 @@ Return the zigzag level order traversal of a binary tree's nodes' values.
 
 Examples
 
-```
+```text
 Input: root = [3,9,20,null,null,15,7]
 Output: [[3],[20,9],[15,7]]
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [0, 2000].
 ```
 
@@ -3764,14 +3624,12 @@ Given a BST, return the minimum absolute difference between values of any two no
 
 Examples
 
-```
+```text
 Input: root = [4,2,6,1,3]
 Output: 1
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [2, 10^4].
 ```
 
@@ -3801,14 +3659,12 @@ Find the kth smallest element in a BST.
 
 Examples
 
-```
+```text
 Input: root = [3,1,4,null,2], k = 1
 Output: 1
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [1, 10^4].
 ```
 
@@ -3837,17 +3693,15 @@ Determine if a binary tree is a valid BST.
 
 Examples
 
-```
+```text
 Input: root = [2,1,3]
 Output: true
 =============================================
 Input: root = [5,1,4,null,null,3,6]
 Output: false
-```
 
 Constraints
 
-```
 The number of nodes in the tree is in the range [1, 10^4].
 ```
 
@@ -3874,7 +3728,7 @@ Given a 2D grid map of '1's (land) and '0's (water), count the number of islands
 
 Examples
 
-```
+```text
 Input: grid = [
   ["1","1","1","1","0"],
   ["1","1","0","1","0"],
@@ -3882,11 +3736,9 @@ Input: grid = [
   ["0","0","0","0","0"]
 ]
 Output: 1
-```
 
 Constraints
 
-```
 m == grid.length
 n == grid[i].length
 1 <= m, n <= 300
@@ -3922,14 +3774,12 @@ Capture all regions surrounded by 'X' on a 2D board.
 
 Examples
 
-```
+```text
 Input: board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
 Output: [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
-```
 
 Constraints
 
-```
 m == board.length
 n == board[i].length
 1 <= m, n <= 200
@@ -3968,14 +3818,12 @@ Clone an undirected graph. Each node contains a value and a list of its neighbor
 
 Examples
 
-```
+```text
 Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
 Output: [[2,4],[1,3],[2,4],[1,3]]
-```
 
 Constraints
 
-```
 The number of nodes in the graph is in the range [0, 100].
 ```
 
@@ -4007,14 +3855,12 @@ Given equations like a / b = 2.0, evaluate queries.
 
 Examples
 
-```
+```text
 Input: equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
 Output: [6.0,0.5,-1.0,1.0,-1.0]
-```
 
 Constraints
 
-```
 1 <= equations.length <= 20
 ```
 
@@ -4056,17 +3902,15 @@ Determine if you can finish all courses given prerequisites.
 
 Examples
 
-```
+```text
 Input: numCourses = 2, prerequisites = [[1,0]]
 Output: true
 =============================================
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
 Output: false
-```
 
 Constraints
 
-```
 1 <= numCourses <= 2000
 ```
 
@@ -4102,17 +3946,15 @@ Return the order of courses you should take to finish all courses.
 
 Examples
 
-```
+```text
 Input: numCourses = 2, prerequisites = [[1,0]]
 Output: [0,1]
 =============================================
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
 Output: []
-```
 
 Constraints
 
-```
 1 <= numCourses <= 2000
 ```
 
@@ -4153,14 +3995,12 @@ Find the minimum number of moves to reach the last square on a snakes and ladder
 
 Examples
 
-```
+```text
 Input: board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
 Output: 4
-```
 
 Constraints
 
-```
 2 <= board.length == board[0].length <= 20
 ```
 
@@ -4211,17 +4051,15 @@ Return the minimum number of mutations to mutate from start to end using valid g
 
 Examples
 
-```
+```text
 Input: start = "AACCGGTT", end = "AACCGGTA", bank = ["AACCGGTA"]
 Output: 1
 =============================================
 Input: start = "AACCGGTT", end = "AAACGGTA", bank = ["AACCGGTA","AACCGCTA","AAACGGTA"]
 Output: 2
-```
 
 Constraints
 
-```
 start.length == end.length == 8
 ```
 
@@ -4266,14 +4104,12 @@ Return the length of the shortest transformation sequence from beginWord to endW
 
 Examples
 
-```
+```text
 Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]
 Output: 5
-```
 
 Constraints
 
-```
 1 <= beginWord.length <= 10
 ```
 
@@ -4319,15 +4155,13 @@ Implement a trie with insert, search, and startsWith methods.
 
 Examples
 
-```
+```text
 Input: ["Trie","insert","search","search","startsWith","insert","search"]
        [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
 Output: [null,null,true,false,true,null,true]
-```
 
 Constraints
 
-```
 1 <= word.length, prefix.length <= 2000
 ```
 
@@ -4371,15 +4205,13 @@ Implement a data structure that supports adding new words and searching with '.'
 
 Examples
 
-```
+```text
 Input: ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
        [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
 Output: [null,null,null,null,false,true,true,true]
-```
 
 Constraints
 
-```
 1 <= word.length <= 25
 ```
 
@@ -4423,14 +4255,12 @@ Given a 2D board and a list of words, return all words present in the board.
 
 Examples
 
-```
+```text
 Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
 Output: ["eat","oath"]
-```
 
 Constraints
 
-```
 1 <= board.length, board[i].length <= 12
 ```
 
@@ -4492,14 +4322,12 @@ Return all possible letter combinations that the number could represent.
 
 Examples
 
-```
+```text
 Input: digits = "23"
 Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-```
 
 Constraints
 
-```
 0 <= digits.length <= 4
 ```
 
@@ -4536,14 +4364,12 @@ Return all possible combinations of k numbers out of 1 ... n.
 
 Examples
 
-```
+```text
 Input: n = 4, k = 2
 Output: [[2,4],[3,4],[2,3],[1,2],[1,3],[1,4]]
-```
 
 Constraints
 
-```
 1 <= n <= 20
 ```
 
@@ -4577,14 +4403,12 @@ Return all possible permutations of a list of numbers.
 
 Examples
 
-```
+```text
 Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-```
 
 Constraints
 
-```
 1 <= nums.length <= 6
 ```
 
@@ -4621,14 +4445,12 @@ Return all unique combinations where the candidate numbers sum to target.
 
 Examples
 
-```
+```text
 Input: candidates = [2,3,6,7], target = 7
 Output: [[2,2,3],[7]]
-```
 
 Constraints
 
-```
 1 <= candidates.length <= 30
 ```
 
@@ -4663,14 +4485,12 @@ Return the number of distinct solutions to the n-queens puzzle.
 
 Examples
 
-```
+```text
 Input: n = 4
 Output: 2
-```
 
 Constraints
 
-```
 1 <= n <= 9
 ```
 
@@ -4705,14 +4525,12 @@ Return all combinations of well-formed parentheses.
 
 Examples
 
-```
+```text
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]
-```
 
 Constraints
 
-```
 1 <= n <= 8
 ```
 
@@ -4743,14 +4561,12 @@ Given a 2D board and a word, return true if the word exists in the grid.
 
 Examples
 
-```
+```text
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 Output: true
-```
 
 Constraints
 
-```
 1 <= board.length, board[i].length <= 6
 ```
 
@@ -4789,14 +4605,12 @@ Convert a sorted array to a height-balanced BST.
 
 Examples
 
-```
+```text
 Input: nums = [-10,-3,0,5,9]
 Output: [0,-3,9,-10,null,5]
-```
 
 Constraints
 
-```
 1 <= nums.length <= 10^4
 ```
 
@@ -4824,14 +4638,12 @@ Sort a linked list in O(n log n) time and constant space complexity.
 
 Examples
 
-```
+```text
 Input: head = [4,2,1,3]
 Output: [1,2,3,4]
-```
 
 Constraints
 
-```
 The number of nodes in the list is in the range [0, 5 * 10^4].
 ```
 
@@ -4871,14 +4683,12 @@ Construct a Quad-Tree from a 2D grid.
 
 Examples
 
-```
+```text
 Input: grid = [[0,1],[1,0]]
 Output: [[0,1],[1,0]]
-```
 
 Constraints
 
-```
 n == grid.length == grid[i].length
 n == 2^x where 0 <= x <= 6
 ```
@@ -4911,14 +4721,12 @@ Merge k sorted linked lists and return it as one sorted list.
 
 Examples
 
-```
+```text
 Input: lists = [[1,4,5],[1,3,4],[2,6]]
 Output: [1,1,2,3,4,4,5,6]
-```
 
 Constraints
 
-```
 k == lists.length
 0 <= k <= 10^4
 ```
@@ -4951,14 +4759,12 @@ Find the contiguous subarray with the largest sum.
 
 Examples
 
-```
+```text
 Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
-```
 
 Constraints
 
-```
 1 <= nums.length <= 10^5
 ```
 
@@ -4983,17 +4789,15 @@ Find the maximum sum of a non-empty subarray in a circular array.
 
 Examples
 
-```
+```text
 Input: nums = [1,-2,3,-2]
 Output: 3
 =============================================
 Input: nums = [5,-3,5]
 Output: 10
-```
 
 Constraints
 
-```
 1 <= nums.length <= 3 * 10^4
 ```
 
@@ -5023,17 +4827,15 @@ Return the index if the target is found, or the index where it would be if inser
 
 Examples
 
-```
+```text
 Input: nums = [1,3,5,6], target = 5
 Output: 2
 =============================================
 Input: nums = [1,3,5,6], target = 2
 Output: 1
-```
 
 Constraints
 
-```
 1 <= nums.length <= 10^4
 ```
 
@@ -5060,17 +4862,15 @@ Write an efficient algorithm that searches for a value in an m x n matrix.
 
 Examples
 
-```
+```text
 Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
 Output: true
 =============================================
 Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
 Output: false
-```
 
 Constraints
 
-```
 m == matrix.length
 n == matrix[i].length
 ```
@@ -5100,17 +4900,15 @@ Find a peak element in an array.
 
 Examples
 
-```
+```text
 Input: nums = [1,2,3,1]
 Output: 2
 =============================================
 Input: nums = [1,2,1,3,5,6,4]
 Output: 5
-```
 
 Constraints
 
-```
 1 <= nums.length <= 1000
 ```
 
@@ -5136,17 +4934,15 @@ Search for a target value in a rotated sorted array.
 
 Examples
 
-```
+```text
 Input: nums = [4,5,6,7,0,1,2], target = 0
 Output: 4
 =============================================
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
-```
 
 Constraints
 
-```
 1 <= nums.length <= 5000
 ```
 
@@ -5178,17 +4974,15 @@ Find the starting and ending position of a given target value.
 
 Examples
 
-```
+```text
 Input: nums = [5,7,7,8,8,10], target = 8
 Output: [3,4]
 =============================================
 Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
-```
 
 Constraints
 
-```
 0 <= nums.length <= 10^5
 ```
 
@@ -5223,17 +5017,15 @@ Find the minimum element in a rotated sorted array.
 
 Examples
 
-```
+```text
 Input: nums = [3,4,5,1,2]
 Output: 1
 =============================================
 Input: nums = [4,5,6,7,0,1,2]
 Output: 0
-```
 
 Constraints
 
-```
 1 <= nums.length <= 5000
 ```
 
@@ -5259,17 +5051,15 @@ Find the median of two sorted arrays.
 
 Examples
 
-```
+```text
 Input: nums1 = [1,3], nums2 = [2]
 Output: 2.0
 =============================================
 Input: nums1 = [1,2], nums2 = [3,4]
 Output: 2.5
-```
 
 Constraints
 
-```
 0 <= m, n <= 1000
 ```
 
@@ -5307,17 +5097,15 @@ Find the kth largest element in an unsorted array.
 
 Examples
 
-```
+```text
 Input: nums = [3,2,1,5,6,4], k = 2
 Output: 5
 =============================================
 Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
 Output: 4
-```
 
 Constraints
 
-```
 1 <= k <= nums.length <= 30000
 ```
 
@@ -5342,17 +5130,15 @@ public class SolutionKthLargestElement {
 Given the initial capital and profits of projects, find the maximum capital after k projects.
 Examples
 
-```
+```text
 Input: k = 2, w = 0, profits = [1,2,3], capital = [0,1,2]
 Output: 4
 =============================================
 Input: k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]
 Output: 6
-```
 
 Constraints
 
-```
 1 <= k <= 10^4
 0 <= w <= 10^9
 1 <= profits.length, capital.length <= 10^4
@@ -5389,17 +5175,15 @@ public class SolutionIPO {
 Find the k pairs with the smallest sums from two sorted arrays.
 Examples
 
-```
+```text
 Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
 Output: [[1,2],[1,4],[1,6]]
 =============================================
 Input: nums1 = [1,1,2], nums2 = [1,2,3], k = 2
 Output: [[1,1],[1,1]]
-```
 
 Constraints
 
-```
 1 <= nums1.length, nums2.length <= 10^5
 0 <= nums1[i], nums2[i] <= 10^9
 1 <= k <= 10^4
@@ -5432,14 +5216,12 @@ public class SolutionKPairsWithSmallestSums {
 Design a data structure that supports adding numbers and finding the median efficiently.
 Examples
 
-```Input: ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"]
+```textInput: ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"]
        [[],[1],[2],[],[3],[]]
 Output: [null,null,null,1.5,null,2.0]
-```
 
 Constraints
 
-```
 1 <= num <= 10^5
 There will be at most 10^5 calls to addNum and findMedian.
 ```
@@ -5478,16 +5260,14 @@ public class MedianFinder {
 Add two binary strings and return their sum as a binary string.
 Examples
 
-```Input: a = "11", b = "1"
+```textInput: a = "11", b = "1"
 Output: "100"
 =============================================
 Input: a = "1010", b = "1011"
 Output: "10101"
-```
 
 Constraints
 
-```
 1 <= a.length, b.length <= 10^4
 a and b consist only of '0' or '1'.
 ```
@@ -5515,16 +5295,14 @@ public class SolutionAddBinary {
 Reverse the bits of a given 32-bit unsigned integer.
 Examples
 
-```Input: n = 43261596
+```textInput: n = 43261596
 Output: 964176192
 =============================================
 Input: n = 4294967293
 Output: 3221225471
-```
 
 Constraints
 
-```
 The input must be a 32-bit unsigned integer.
 ```
 
@@ -5547,16 +5325,14 @@ public class SolutionReverseBits {
 Count the number of '1' bits in a given integer.
 Examples
 
-```Input: n = 11
+```textInput: n = 11
 Output: 3
 =============================================
 Input: n = 128
 Output: 1
-```
 
 Constraints
 
-```
 0 <= n <= 2^31 - 1
 ```
 
@@ -5578,16 +5354,14 @@ public class SolutionNumberOf1Bits {
 Find the single number in an array where every other number appears twice.
 Examples
 
-```Input: nums = [2,2,1]
+```textInput: nums = [2,2,1]
 Output: 1
 =============================================
 Input: nums = [4,1,2,1,2]
 Output: 4
-```
 
 Constraints
 
-```
 1 <= nums.length <= 3 * 10^4
 -3 * 10^4 <= nums[i] <= 3 * 10^4
 Each element in the array appears twice except for one element.
@@ -5610,16 +5384,14 @@ public class SolutionSingleNumber {
 Find the single number in an array where every other number appears three times.
 Examples
 
-```Input: nums = [2,2,3,2]
+```textInput: nums = [2,2,3,2]
 Output: 3
 =============================================
 Input: nums = [0,1,0,1,0,1,99]
 Output: 99
-```
 
 Constraints
 
-```
 1 <= nums.length <= 3 * 10^4
 -2^31 <= nums[i] <= 2^31 - 1
 Each element in the array appears three times except for one element.
@@ -5643,16 +5415,14 @@ public class SolutionSingleNumberII {
 Find the bitwise AND of all numbers in a given range [m, n].
 Examples
 
-```Input: m = 5, n = 7
+```textInput: m = 5, n = 7
 Output: 4
 =============================================
 Input: m = 0, n = 1
 Output: 0
-```
 
 Constraints
 
-```
 0 <= m <= n <= 2^31 - 1
 ```
 
@@ -5677,16 +5447,14 @@ public class SolutionBitwiseANDRange {
 Determine whether an integer is a palindrome without converting it to a string.
 Examples
 
-```Input: x = 121
+```textInput: x = 121
 Output: true
 =============================================
 Input: x = -121
 Output: false
-```
 
 Constraints
 
-```
 -2^31 <= x <= 2^31 - 1
 ```
 
@@ -5711,16 +5479,14 @@ public class SolutionPalindromeNumber {
 Given a non-negative integer represented as an array of digits, increment the number by one.
 Examples
 
-```Input: digits = [1,2,3]
+```textInput: digits = [1,2,3]
 Output: [1,2,4]
 =============================================
 Input: digits = [9,9,9]
 Output: [1,0,0,0]
-```
 
 Constraints
 
-```
 1 <= digits.length <= 100
 0 <= digits[i] <= 9
 The digits do not contain any leading zeros except for the number 0 itself.
@@ -5751,16 +5517,14 @@ public class SolutionPlusOne {
 Count the number of trailing zeroes in the factorial of a given number.
 Examples
 
-```Input: n = 5
+```textInput: n = 5
 Output: 1
 =============================================
 Input: n = 10
 Output: 2
-```
 
 Constraints
 
-```
 0 <= n <= 10^4
 ```
 
@@ -5782,16 +5546,14 @@ public class SolutionFactorialTrailingZeroes {
 Implement the sqrt function to compute the square root of a non-negative integer x.
 Examples
 
-```Input: x = 4
+```textInput: x = 4
 Output: 2
 =============================================
 Input: x = 8
 Output: 2
-```
 
 Constraints
 
-```
 0 <= x <= 2^31 - 1
 ```
 
@@ -5821,16 +5583,14 @@ public class SolutionSqrt {
 Implement the pow function to compute x raised to the power n.
 Examples
 
-```Input: x = 2.00000, n = 10
+```textInput: x = 2.00000, n = 10
 Output: 1024.00000
 =============================================
 Input: x = 2.10000, n = 3
 Output: 9.26100
-```
 
 Constraints
 
-```
 -100.0 < x < 100.0
 -2^31 <= n <= 2^31 - 1
 -10^4 <= x^n <= 10^4
@@ -5862,16 +5622,14 @@ public class SolutionPow {
 Given an array of points on a 2D plane, find the maximum number of points that lie on the same straight line.
 Examples
 
-```Input: points = [[1,1],[2,2],[3,3]]
+```textInput: points = [[1,1],[2,2],[3,3]]
 Output: 3
 =============================================
 Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 Output: 4
-```
 
 Constraints
 
-```
 1 <= points.length <= 300
 points[i].length == 2
 -10^4 <= points[i][0], points[i][1] <= 10^4
@@ -5920,68 +5678,6 @@ private int gcd(int a, int b) {
 }
 ```
 
-### Question 136: Max Points on a Line
-
-Given an array of points on a 2D plane, find the maximum number of points that lie on the same straight line.
-Examples
-
-```Input: points = [[1,1],[2,2],[3,3]]
-Output: 3
-=============================================
-Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
-Output: 4
-```
-
-Constraints
-
-```
-1 <= points.length <= 300
-points[i].length == 2
--10^4 <= points[i][0], points[i][1] <= 10^4
-```
-
-```java
-import java.util.*;
-public class SolutionMaxPointsOnLine {
-    public int maxPoints(int[][] points) {
-        if (points.length < 2) return points.length; // If less than 2 points, return the count
-        int maxPoints = 1;
-        for (int i = 0; i < points.length; i++) {
-            Map<String, Integer> slopeCount = new HashMap<>();
-            int duplicate = 0, vertical = 0;
-            for (int j = i + 1; j < points.length; j++) {
-                if (points[i][0] == points[j][0] && points[i][1] == points[j][1]) {
-                    duplicate++; // Count duplicates
-                } else if (points[i][0] == points[j][0]) {
-                    vertical++; // Count vertical lines
-                } else {
-                    int dy = points[j][1] - points[i][1];
-                    int dx = points[j][0] - points[i][0];
-                    int gcd = gcd(dy, dx); // Get the greatest common divisor
-                    dy /= gcd; // Reduce dy
-                    dx /= gcd; // Reduce dx
-                    String slope = dy + "/" + dx; // Create a unique slope representation
-                    slopeCount.put(slope, slopeCount.getOrDefault(slope, 0) + 1); // Count the slope
-                }
-            }
-            maxPoints = Math.max(maxPoints, vertical + duplicate + 1); // Update max
-            for (int count : slopeCount.values()) {
-                maxPoints = Math.max(maxPoints, count + duplicate + 1); // Update max
-            }
-        }
-        return maxPoints; // Return the maximum points on a line
-    }
-    private int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a; // Return the greatest common divisor
-    }
-}
-```
-
 ## 1-D DP
 
 ### Question 137: Climbing Stairs
@@ -5989,16 +5685,14 @@ public class SolutionMaxPointsOnLine {
 You are climbing a staircase with n steps. Each time you can either climb 1 or 2 steps. Find the number of distinct ways to reach the top.
 Examples
 
-```Input: n = 2
+```textInput: n = 2
 Output: 2
 =============================================
 Input: n = 3
 Output: 3
-```
 
 Constraints
 
-```
 1 <= n <= 45
 ```
 
@@ -6022,16 +5716,14 @@ public class SolutionClimbingStairs {
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, but adjacent houses have security systems connected that will automatically contact the police if two adjacent houses are robbed on the same night.
 Examples
 
-```Input: nums = [1,2,3,1]
+```textInput: nums = [1,2,3,1]
 Output: 4
 =============================================
 Input: nums = [2,7,9,3,1]
 Output: 12
-```
 
 Constraints
 
-```
 1 <= nums.length <= 100
 0 <= nums[i] <= 400
 ```
@@ -6057,16 +5749,14 @@ public class SolutionHouseRobber {
 Given a string s and a dictionary of strings wordDict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 Examples
 
-```Input: s = "leetcode", wordDict = ["leet","code"]
+```textInput: s = "leetcode", wordDict = ["leet","code"]
 Output: true
 =============================================
 Input: s = "applepenapple", wordDict = ["apple","pen"]
 Output: true
-```
 
 Constraints
 
-```
 1 <= s.length <= 300
 1 <= wordDict.length <= 1000
 1 <= wordDict[i].length <= 20
@@ -6099,18 +5789,16 @@ public class SolutionWordBreak {
 Given an amount and a list of coin denominations, find the minimum number of coins needed to make that amount.
 Examples
 
-```Input: coins = [1,2,5], amount = 11
+```textInput: coins = [1,2,5], amount = 11
 Output: 3
 Explanation: 11 = 5 + 5 + 1
 =============================================
 Input: coins = [2], amount = 3
 Output: -1
 Explanation: It is not possible to make amount 3 with coin 2.
-```
 
 Constraints
 
-```
 1 <= coins.length <= 12
 1 <= coins[i] <= 2^31 - 1
 0 <= amount <= 10^4
@@ -6140,18 +5828,16 @@ public class SolutionCoinChange {
 Find the length of the longest increasing subsequence in an array of integers.
 Examples
 
-```Input: nums = [10,9,2,5,3,7,101,18]
+```textInput: nums = [10,9,2,5,3,7,101,18]
 Output: 4
 Explanation: The longest increasing subsequence is [2,3,7,101], so the length is 4.
 =============================================
 Input: nums = [0,1,0,3,2,3]
 Output: 4
 Explanation: The longest increasing subsequence is [0,1,2,3], so the length is 4.
-```
 
 Constraints
 
-```
 1 <= nums.length <= 2500
 -10^4 <= nums[i] <= 10^4
 ```
@@ -6184,17 +5870,15 @@ public class SolutionLongestIncreasingSubsequence {
 Find the minimum path sum from the top to the bottom of a triangle.
 Examples
 
-```Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
+```textInput: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
 Output: 11
 Explanation: The minimum path sum is 2 + 3 + 5 + 1 = 11.
 =============================================
 Input: triangle = [[-10]]
 Output: -10
-```
 
 Constraints
 
-```
 1 <= triangle.length <= 200
 1 <= triangle[i].length <= i + 1
 -10^4 <= triangle[i][j] <= 10^4
@@ -6224,17 +5908,15 @@ public class SolutionTriangle {
 Find the minimum path sum from the top left to the bottom right of a grid.
 Examples
 
-```Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+```textInput: grid = [[1,3,1],[1,5,1],[4,2,1]]
 Output: 7
 Explanation: The path 1 → 3 → 1 → 1 → 1 has the minimum sum = 7.
 =============================================
 Input: grid = [[1,2,3],[4,5,6],[7,8,9]]
 Output: 21
-```
 
 Constraints
 
-```
 m == grid.length
 n == grid[0].length
 1 <= m, n <= 200
@@ -6269,17 +5951,15 @@ public class SolutionMinimumPathSum {
 Find the number of unique paths from the top left to the bottom right of a grid with obstacles.
 Examples
 
-```Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+```textInput: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 Output: 2
 Explanation: There are two unique paths to the bottom right corner.
 =============================================
 Input: obstacleGrid = [[0,1],[0,0]]
 Output: 1
-```
 
 Constraints
 
-```
 m == obstacleGrid.length
 n == obstacleGrid[0].length
 1 <= m, n <= 100
@@ -6316,17 +5996,15 @@ public class SolutionUniquePathsII {
 Find the longest palindromic substring in a given string.
 Examples
 
-```Input: s = "babad"
+```textInput: s = "babad"
 Output: "bab"
 Explanation: "aba" is also a valid answer.
 =============================================
 Input: s = "cbbd"
 Output: "bb"
-```
 
 Constraints
 
-```
 1 <= s.length <= 1000
 s consist of only digits and English letters (lowercase and/or uppercase).
 ```
@@ -6362,16 +6040,14 @@ public class SolutionLongestPalindromicSubstring {
 Determine if a string s3 is formed by interleaving two other strings s1 and s2.
 Examples
 
-```Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbca"
+```textInput: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbca"
 Output: true
 =============================================
 Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbac"
 Output: false
-```
 
 Constraints
 
-```
 1 <= s1.length, s2.length <= 100
 0 <= s3.length <= s1.length + s2.length
 s1, s2, and s3 consist of lowercase English letters.
@@ -6404,18 +6080,16 @@ public class SolutionInterleavingString {
 Find the minimum number of operations required to convert one string into another.
 Examples
 
-```Input: word1 = "horse", word2 = "ros"
+```textInput: word1 = "horse", word2 = "ros"
 Output: 3
 Explanation: horse → rorse (replace 'h' with 'r') → rose (remove 'r') → ros (remove 'e')
 =============================================
 Input: word1 = "intention", word2 = "execution"
 Output: 5
 Explanation: intention → inention (remove 't') → enention (replace 'i' with 'e') → exention (replace 'n' with 'x') → exection (replace 'n' with 'c') → execution (add 'u')
-```
 
 Constraints
-
-```1 <= word1.length, word2.length <= 500
+1 <= word1.length, word2.length <= 500
 word1 and word2 consist of lowercase English letters.
 ```
 
@@ -6450,7 +6124,7 @@ public class SolutionEditDistance {
 Find the maximum profit you can achieve by making at most two transactions.
 Examples
 
-```Input: prices = [3,3,5,0,0,3,1,4]
+```textInput: prices = [3,3,5,0,0,3,1,4]
 Output: 6
 Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3.
 Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 3.
@@ -6458,11 +6132,9 @@ Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 3.
 Input: prices = [1,2,3,4,5]
 Output: 4
 Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 4.
-```
 
 Constraints
-
-```1 <= prices.length <= 10^5
+1 <= prices.length <= 10^5
 0 <= prices[i] <= 10^5
 ```
 
@@ -6489,7 +6161,7 @@ public class SolutionBestTimeToBuyAndSellStockIII {
 Find the maximum profit you can achieve by making at most k transactions.
 Examples
 
-```Input: k = 2, prices = [2,4,1]
+```textInput: k = 2, prices = [2,4,1]
 Output: 2
 Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 2.
 =============================================
@@ -6497,11 +6169,9 @@ Input: k = 2, prices = [3,2,6,5,0,3]
 Output: 7
 Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 4.
 Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3.
-```
 
 Constraints
-
-```1 <= k <= 100
+1 <= k <= 100
 1 <= prices.length <= 1000
 0 <= prices[i] <= 1000
 ```
@@ -6538,18 +6208,16 @@ public class SolutionBestTimeToBuyAndSellStockIV {
 Find the largest square containing only 1's in a binary matrix and return its area.
 Examples
 
-```Input: matrix = [["1","0","1","0","0"],["1","1","1","1","0"],["1","0","0","1","0"],["0","1","1","1","0"],["1","0","1","0","1]]
+```textInput: matrix = [["1","0","1","0","0"],["1","1","1","1","0"],["1","0","0","1","0"],["0","1","1","1","0"],["1","0","1","0","1]]
 Output: 4
 Explanation: The largest square has a side length of 2, so its area is 4.
 =============================================
 Input: matrix = [["0","1"],["1","0"]]
 Output: 1
 Explanation: The largest square has a side length of 1, so its area is 1.
-```
 
 Constraints
 
-```
 1 <= matrix.length, matrix[i].length <= 300
 matrix[i][j] is '0' or '1'.
 ```
