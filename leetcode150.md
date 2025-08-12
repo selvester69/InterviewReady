@@ -4511,28 +4511,36 @@ Constraints
 Solution
 
 ```java
-import java.util.*;
-public class SolutionPermutations {
-    public List<List<Integer>> permute(int[] nums) {
+public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(nums, new boolean[nums.length], new ArrayList<>(), res);
+        if (nums.length == 0)
+            return res;
+        permute(nums, res, 0);
         return res;
     }
-    private void backtrack(int[] nums, boolean[] used, List<Integer> curr, List<List<Integer>> res) {
-        if (curr.size() == nums.length) {
-            res.add(new ArrayList<>(curr));
+
+    public void permute(int[] nums, List<List<Integer>> res, int index) {
+        if (index == nums.length) {
+            List<Integer> arr = new ArrayList<>();
+            for (int i : nums) {
+                arr.add(i);
+            }
+            res.add(arr);
             return;
         }
-        for (int i = 0; i < nums.length; i++) {
-            if (used[i]) continue;
-            used[i] = true;
-            curr.add(nums[i]);
-            backtrack(nums, used, curr, res);
-            curr.remove(curr.size() - 1);
-            used[i] = false;
+
+        for (int i = index; i < nums.length; i++) {
+            swap(nums, i, index);
+            permute(nums, res, index + 1);
+            swap(nums, i, index);
         }
     }
-}
+
+    public void swap(int[] nums, int start, int end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+    }
 ```
 
 ### Question 104: Combination Sum
