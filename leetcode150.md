@@ -3964,7 +3964,7 @@ Constraints
 1 <= numCourses <= 2000
 ```
 
-Solution
+Solution: using Graph DFS
 
 ```java
 import java.util.*;
@@ -3986,6 +3986,52 @@ public class SolutionCourseSchedule {
             if (!dfs(graph, visited, nei)) return false;
         visited[i] = 2;
         return true;
+    }
+}
+```
+
+Solution: Using Topological sort
+
+```java
+class Solution {
+    public boolean canFinish(int numCourse, int[][] prerequisites) {
+        List<List<Integer>> adj = makeGraph(prerequisites, numCourse);
+        int[] indegree = new int[numCourse];
+        int[] visited = new int[numCourse];
+        for (int i = 0; i < adj.size(); i++) {
+            for (int it : adj.get(i)) {
+                indegree[it]++;
+            }
+        }
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourse; i++) {
+            if (indegree[i] == 0) {
+                q.add(i);
+            }
+        }
+        int index=0;
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            index++;
+            for (int it : adj.get(u)) {
+                indegree[it]--;
+                if (indegree[it] == 0) {
+                    q.add(it);
+                }
+            }
+        }
+        return index==numCourse;
+    }
+
+    public List<List<Integer>> makeGraph(int[][] pre, int n) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            res.add(new ArrayList<>());
+        }
+        for (int i = 0; i < pre.length; i++) {
+            res.get(pre[i][1]).add(pre[i][0]);
+        }
+        return res;
     }
 }
 ```
