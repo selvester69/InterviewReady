@@ -410,7 +410,81 @@ text
 0 <= nums[i] <= 1000
 ```
 
-Solution
+Solution - Recursion O(n^n) --> Memo O(n^2)
+
+```java
+// Main function to start the DP process
+    public int minJumps(int[] arr) {
+        int n = arr.length;
+        if (n <= 1) {
+            return 0;
+        }
+
+        int[] dp = new int[n];
+        Arrays.fill(dp, -1);
+        
+        int result = solve(arr, 0, dp);
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
+    // Recursive helper function with memoization
+    private int solve(int[] arr, int start, int[] dp) {
+        int n = arr.length;
+        if (start >= n - 1) {
+            return 0;
+        }
+
+        // Return memoized result if available
+        if (dp[start] != -1) {
+            return dp[start];
+        }
+
+        int minJumps = Integer.MAX_VALUE;
+
+        // Recursively find minimum jumps from all reachable indices
+        for (int i = 1; i <= arr[start]; i++) {
+            if (start + i < n) {
+                int jumps = solve(arr, start + i, dp);
+                if (jumps != Integer.MAX_VALUE) {
+                    minJumps = Math.min(minJumps, 1 + jumps);
+                }
+            }
+        }
+
+        // Memoize and return the result
+        return dp[start] = minJumps;
+    }
+    
+```
+
+Solution - DP O(n^2) - Better
+
+```java
+public int minJumps(int[] arr) {
+        int n = arr.length;
+        if (n <= 1) {
+            return 0;
+        }
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        // Base case: 0 jumps from the last index to reach the end
+        dp[n - 1] = 0;
+        // Build the solution from the second to last index to the first
+        for (int i = n - 2; i >= 0; i--) {
+            int maxReach = Math.min(n - 1, i + arr[i]);
+            // Look for the minimum jumps from all reachable indices
+            for (int j = i + 1; j <= maxReach; j++) {
+                if (dp[j] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], 1 + dp[j]);
+                }
+            }
+        }
+        // If dp[0] is still MAX_VALUE, it means the end is unreachable
+        return dp[0] == Integer.MAX_VALUE ? -1 : dp[0];
+    }
+```
+
+Solution - Greedy O(N) - Expected
 
 ```java
 public class SolutionJumpGameII {
