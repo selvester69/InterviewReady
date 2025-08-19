@@ -522,7 +522,31 @@ n == citations.length
 0 <= citations[i] <= 1000
 ```
 
-Solution
+Solution - line sweep method
+
+```java
+public int hIndex(int[] citations) {
+        int n = citations.length;
+        int[] counts = new int[n + 1];
+
+        for(int i = 0; i < n; i++) {
+            int index = Math.min(n, citations[i]);
+            counts[index]++;
+        }
+        // Base case
+        if(counts[n] >= n) return n;
+
+        // Line Sweep Algorithms
+        for(int j = n - 1; j >= 0; j--) {
+            counts[j] += counts[j + 1];
+            if(counts[j] >= j) return j;
+        }
+
+        return 0;
+    }
+```
+
+Solution - Sorting
 
 ```java
 import java.util.Arrays;
@@ -2707,6 +2731,50 @@ The number of nodes in each list is in the range [1, 100].
 ```
 
 Solution
+
+```java
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(0);
+        ListNode temp = res;
+        int carry = 0;
+        int sum = 0;
+        while (l1 != null && l2 != null) {
+            sum = l1.val + l2.val + carry;
+            ListNode digit = new ListNode(sum % 10);
+            carry = sum / 10;
+            temp.next = digit;
+            temp = digit;
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        while (l1 != null ) {
+            if (carry > 0) {
+                sum = l1.val + carry;
+                l1.val = sum % 10;
+                carry = sum / 10;
+            }
+            temp.next = l1;
+            temp = l1;
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            if (carry > 0) {
+                sum = l2.val + carry;
+                l2.val = sum % 10;
+                carry = sum / 10;
+            }
+            temp.next = l2;
+            temp = l2;
+            l2 = l2.next;
+        }
+        if(carry >0){
+            temp.next = new ListNode(carry);
+        }
+        return res.next;
+    }
+```
+
+Solution: compact code same complexity
 
 ```java
 public class SolutionAddTwoNumbers {
@@ -6424,3 +6492,90 @@ public class SolutionMaximalSquare {
 ```
 
 completed 150 questions in leetcode/leetcode.md
+
+================================================================================
+
+## Additional Leetcode Questions
+
+### 1096 Brace Expansion II
+
+Problem:
+
+```text
+Under the grammar given below, strings can represent a set of lowercase words. Let R(expr) denote the set of words the expression represents.
+
+The grammar can best be understood through simple examples:
+
+Single letters represent a singleton set containing that word.
+R("a") = {"a"}
+R("w") = {"w"}
+When we take a comma-delimited list of two or more expressions, we take the union of possibilities.
+R("{a,b,c}") = {"a","b","c"}
+R("{{a,b},{b,c}}") = {"a","b","c"} (notice the final set only contains each word at most once)
+When we concatenate two expressions, we take the set of possible concatenations between two words where the first word comes from the first expression and the second word comes from the second expression.
+R("{a,b}{c,d}") = {"ac","ad","bc","bd"}
+R("a{b,c}{d,e}f{g,h}") = {"abdfg", "abdfh", "abefg", "abefh", "acdfg", "acdfh", "acefg", "acefh"}
+Formally, the three rules for our grammar:
+
+For every lowercase letter x, we have R(x) = {x}.
+For expressions e1, e2, ... , ek with k >= 2, we have R({e1, e2, ...}) = R(e1) ∪ R(e2) ∪ ...
+For expressions e1 and e2, we have R(e1 + e2) = {a + b for (a, b) in R(e1) × R(e2)}, where + denotes concatenation, and × denotes the cartesian product.
+Given an expression representing a set of words under the given grammar, return the sorted list of words that the expression represents.
+
+ 
+
+Example 1:
+
+Input: expression = "{a,b}{c,{d,e}}"
+Output: ["ac","ad","ae","bc","bd","be"]
+Example 2:
+
+Input: expression = "{{a,z},a{b,c},{ab,z}}"
+Output: ["a","ab","ac","z"]
+Explanation: Each distinct word is written only once in the final answer.
+ 
+
+Constraints:
+
+1 <= expression.length <= 60
+expression[i] consists of '{', '}', ','or lowercase English letters.
+The given expression represents a set of words based on the grammar given in the description.
+```
+
+Solution: BFS
+
+```java
+class Solution {
+    public List<String> braceExpansionII(String expression) {
+        Set<String> s = new HashSet<>();
+        Queue<String> q = new LinkedList<>();
+        q.add(expression);
+
+        while (!q.isEmpty()) {
+            String temp = q.poll();
+            int left = -1, right = 0;
+            while (right < temp.length() && temp.charAt(right) != '}') {
+                if (temp.charAt(right) == '{') {
+                    left = right;
+                }
+                right++;
+            }
+            if (left == -1) {
+                s.add(temp);
+                continue;
+            }
+            String start = temp.substring(0, left);
+            String end = temp.substring(right + 1, temp.length());
+
+            String words[] = temp.substring(left + 1, right).split(",");
+            for (String w : words) {
+                q.add(new StringBuilder().append(start).append(w).append(end).toString());
+            }
+        }
+
+        List<String> list = new ArrayList<>(s);
+        Collections.sort(list);
+        return list;
+    }
+}
+```
