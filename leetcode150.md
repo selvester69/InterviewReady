@@ -1342,7 +1342,31 @@ Constraints
 1 <= nums[i] <= 10^4
 ```
 
-Solution
+Solution 1
+
+```java
+public int minSubArrayLen(int target, int[] nums) {
+        int minLen = Integer.MAX_VALUE;
+        //sliding window
+        int i = 0, j = 0;
+        int sum = 0;
+        while (j < nums.length) {
+            sum += nums[j];
+            if (sum < target) {
+                j++;
+            } else if (sum >= target) {
+                while (sum >= target) {
+                    minLen = Math.min(minLen, j - i + 1);
+                    sum -= nums[i++];
+                }
+                j++;
+            }
+        }
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
+```
+
+Solution 2
 
 ```java
 public class SolutionMinSubArrayLen {
@@ -1379,6 +1403,31 @@ Constraints
 ```
 
 Solution
+
+```java
+public int lengthOfLongestSubstring(String s) {
+        Set<Character> hs = new HashSet<>();
+        int longest = 0;
+        int i = 0, j = 0;
+        // use sliding window
+        while (j < s.length()) {
+            // calculations
+            char c = s.charAt(j);
+            if (!hs.contains(c)) {
+                hs.add(c);
+                longest = Math.max(longest, j - i + 1);
+                j++;
+            } else if (hs.contains(c)) {
+                // ans from calcualtions
+                while (hs.contains(c) && hs.size()>0) {
+                    hs.remove(s.charAt(i));
+                    i++;
+                }
+            }
+        }
+        return longest;
+    }
+```
 
 ```java
 import java.util.*;
