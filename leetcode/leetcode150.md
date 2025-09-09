@@ -461,27 +461,30 @@ Solution - DP O(n^2) - Better
 
 ```java
 public int minJumps(int[] arr) {
-        int n = arr.length;
-        if (n <= 1) {
-            return 0;
-        }
-        int[] dp = new int[n];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        // Base case: 0 jumps from the last index to reach the end
-        dp[n - 1] = 0;
-        // Build the solution from the second to last index to the first
-        for (int i = n - 2; i >= 0; i--) {
-            int maxReach = Math.min(n - 1, i + arr[i]);
-            // Look for the minimum jumps from all reachable indices
-            for (int j = i + 1; j <= maxReach; j++) {
-                if (dp[j] != Integer.MAX_VALUE) {
-                    dp[i] = Math.min(dp[i], 1 + dp[j]);
-                }
+    int n = arr.length;
+    if (n <= 1) {
+        return 0;
+    }
+
+    // dp[i] stores the minimum jumps to reach index i
+    int[] dp = new int[n];
+    Arrays.fill(dp, Integer.MAX_VALUE);
+    dp[0] = 0;
+
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            // If index j is reachable and we can jump from j to i
+            if (dp[j] != Integer.MAX_VALUE && j + arr[j] >= i) {
+                dp[i] = Math.min(dp[i], dp[j] + 1);
+                break; // Once we find the first valid jump, we can break
             }
         }
-        // If dp[0] is still MAX_VALUE, it means the end is unreachable
-        return dp[0] == Integer.MAX_VALUE ? -1 : dp[0];
     }
+
+    // If dp[n-1] is still MAX_VALUE, the end is unreachable
+    return dp[n - 1] == Integer.MAX_VALUE ? -1 : dp[n - 1];
+}
+
 ```
 
 Solution - Greedy O(N) - Expected
