@@ -1,38 +1,46 @@
 # Rate limiter
 
-## Problem: 
+## Problem
+
 Design rate limiter — A rate limiter is a tool that monitors the number of requests per a window time a service agrees to allow. If the request count exceeds the number agreed by the service owner and the user (in a decided window time), the rate limiter blocks all the excess calls(say by throwing exceptions). The user can be a human or any other service(ex: in a micro service based architecture)
 
+## Various Levels
 
-
-## Various Levels: 
 There are different levels at which one can design rate limiters. Listing a few…
 
- - Rate limiter in a single machine, single threaded scenario
- - Rate limiter in a single machine, multi threaded scenario — Handling race conditions
- - Rate limiter in a distributed scenario —Distributed Cache Usage like redis
- - Rate limiter from client side —Prevent network calls from client to server for all the excess requests.
+- Rate limiter in a single machine, single threaded scenario
+- Rate limiter in a single machine, multi threaded scenario — Handling race conditions
+- Rate limiter in a distributed scenario —Distributed Cache Usage like redis
+- Rate limiter from client side —Prevent network calls from client to server for all the excess requests.
 
 ## Fixed window counters
 
 Space Complexity: O(1) — Storing the current window count
 Time Complexity: O(1) — Get and simple atomic increment operation
-#### Pros
+
+### Pros
+
 - Easy to implement
 - Less memory footprint, ’cause all that is being done is storing the counts
 - Can use inbuilt concurrency with redis like technologies
-#### Cons
+
+### Cons
+
 This in incorrect. Explanation: In the above case, if all the 7 requests in the 1AM-2AM bucket occurs from 1:30AM-2AM, and all the 8 requests from 2AM-3AM bucket occur from 2AM-2:30AM, then effectively we have 15(7 + 8) requests in the time range of 1:30AM-2:30AM, which is violating the condition of 10req/hr
 
 ## Sliding window logs
 
-#### Pros
+### Pros
+
 - Works perfectly
-#### Cons
+
+### Cons
+
 - High memory footprint. All the request timestamps needs to be maintained for a window time, thus requires lots of memory to handle multiple users or large window times
 - High time complexity for removing the older timestamps
 
 ### Data Modelling
+
 In memory Design (Single machine with multiple threads)
 
 ```java
@@ -122,6 +130,7 @@ public class SlidingWindowLogsRateLimiter {
     }
 }
 ```
+
 The following solutions use redis based pipelines which provide ways to use optimistic locking in redis.
 
 ```java
@@ -217,17 +226,22 @@ public class SlidingWindowLogRateLimiterRedis {
 
 ```
 
-
 ## Sliding window counters
+
 - This is a hybrid of Fixed Window Counters and Sliding Window logs
 - Space Complexity: O(number of buckets)
 - Time Complexity: O(1) — Fetch the recent bucket, increment and check against the total sum of buckets(can be stored in a totalCount variable).
+
 #### Pros
+
 - No large memory footprint as only the counts are stored
+
 #### Cons
+
 - Works only for not-so-strict look back window times, especially for smaller unit times
 
 ### Data Modelling
+
 In memory Design (Single machine with multiple threads)
 
 ```java
@@ -309,6 +323,7 @@ public class RequestCounters {
     }
 }
 ```
+
 ```java
 public class SlidingWindowCounterRateLimiter {
 
@@ -665,10 +680,9 @@ public class SlidingWindowCounterRateLimiter {
 }
 ```
 
+### More details on below blog
 
-### More details on below blog 
-
-#### https://www.figma.com/blog/an-alternative-approach-to-rate-limiting/
+#### <https://www.figma.com/blog/an-alternative-approach-to-rate-limiting/>
 
 ## High Level Architecture
 
@@ -680,11 +694,13 @@ public class SlidingWindowCounterRateLimiter {
 
 # Design deep dive
 
-#### 2 questions we need to ask 
+#### 2 questions we need to ask
+
 - How are rate limiting rules created? Where are the rules stored?
 - How to handle requests that are rate limited?
 
 - Rate limiting rules example
+
 ```
 domain: messaging
 descriptors:
@@ -696,6 +712,7 @@ descriptors:
 ```
 
 - Rate limiter headers
+
 ```
 X-Ratelimit-Remaining: The remaining number of allowed requests within the window.
 X-Ratelimit-Limit: It indicates how many calls the client can make per time window.
@@ -703,13 +720,16 @@ X-Ratelimit-Retry-After: The number of seconds to wait until you can make a requ
 ```
 
 # Detailed design
+
 ![detail architecture](image-1.png)
 
 ### Rate limiter in a distributed environment
+
 - Race condition
 - Synchronization issue
 
 #### Race condition
+
 - Read the counter value from Redis.
 - Check if (counter + 1) exceeds the threshold.
 - If not, increment the counter value by 1 in Redis
@@ -717,59 +737,61 @@ X-Ratelimit-Retry-After: The number of seconds to wait until you can make a requ
 ![race condition](image-2.png)
 
 - solution
-Two strategies are commonly used to solve the problem: Lua script [13] and sorted sets data structure in Redis 
+Two strategies are commonly used to solve the problem: Lua script [13] and sorted sets data structure in Redis
 
 #### Synchronization issue
 
 ![sync issue](image-3.png)
-- solution
-either use sticky session which is not generally recommended 
 
-another solution is to use centralized data store 
+- solution
+either use sticky session which is not generally recommended
+
+another solution is to use centralized data store
 ![centralized data store](image-4.png)
 
 # Reference materials
+
 [1] Rate-limiting strategies and techniques:
-https://cloud.google.com/solutions/rate-limiting-strategies-techniques
+<https://cloud.google.com/solutions/rate-limiting-strategies-techniques>
 
-[2] Twitter rate limits: https://developer.twitter.com/en/docs/basics/rate-limits
+[2] Twitter rate limits: <https://developer.twitter.com/en/docs/basics/rate-limits>
 
-[3] Google docs usage limits: https://developers.google.com/docs/api/limits
+[3] Google docs usage limits: <https://developers.google.com/docs/api/limits>
 
-[4] IBM microservices: https://www.ibm.com/cloud/learn/microservices
+[4] IBM microservices: <https://www.ibm.com/cloud/learn/microservices>
 
 [5] Throttle API requests for better throughput:
-https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html
+<https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html>
 
-[6] Stripe rate limiters: https://stripe.com/blog/rate-limiters
+[6] Stripe rate limiters: <https://stripe.com/blog/rate-limiters>
 
 [7] Shopify REST Admin API rate limits:
-https://help.shopify.com/en/api/reference/rest-admin-api-rate-limits
+<https://help.shopify.com/en/api/reference/rest-admin-api-rate-limits>
 
 [8] Better Rate Limiting With Redis Sorted Sets:
-https://engineering.classdojo.com/blog/2015/02/06/rolling-rate-limiter/
+<https://engineering.classdojo.com/blog/2015/02/06/rolling-rate-limiter/>
 
 [9] System Design — Rate limiter and Data modelling:
-https://medium.com/@saisandeepmopuri/system-design-rate-limiter-and-data-modelling-9304b0d18250
+<https://medium.com/@saisandeepmopuri/system-design-rate-limiter-and-data-modelling-9304b0d18250>
 
 [10] How we built rate limiting capable of scaling to millions of domains:
-https://blog.cloudflare.com/counting-things-a-lot-of-different-things/
+<https://blog.cloudflare.com/counting-things-a-lot-of-different-things/>
 
-[11] Redis website: https://redis.io/
+[11] Redis website: <https://redis.io/>
 
-[12] Lyft rate limiting: https://github.com/lyft/ratelimit
+[12] Lyft rate limiting: <https://github.com/lyft/ratelimit>
 
 [13] Scaling your API with rate limiters:
-https://gist.github.com/ptarjan/e38f45f2dfe601419ca3af937fff574d#request-rate-limiter
+<https://gist.github.com/ptarjan/e38f45f2dfe601419ca3af937fff574d#request-rate-limiter>
 
 [14] What is edge computing:
-https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing/
+<https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing/>
 
-[15] Rate Limit Requests with Iptables: https://blog.programster.org/rate-limit-requests-with-iptables
+[15] Rate Limit Requests with Iptables: <https://blog.programster.org/rate-limit-requests-with-iptables>
 
 [16] OSI model:
-https://en.wikipedia.org/wiki/OSI_model#Layer_architecture
+<https://en.wikipedia.org/wiki/OSI_model#Layer_architecture>
 
+# PS all notes and references are from alex Xu book
 
-# PS all notes and references are from alex Xu book 
-i am making notes for revision only 
+i am making notes for revision only
