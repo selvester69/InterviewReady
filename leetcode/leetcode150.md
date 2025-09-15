@@ -3420,7 +3420,7 @@ Populate each next pointer to point to its next right node.
 
 Examples
 
-```texttext
+```text
 Input: root = [1,2,3,4,5,null,7]
 Output: [1,#,2,3,#,4,5,7,#]
 
@@ -3429,7 +3429,7 @@ Constraints
 The number of nodes in the tree is in the range [0, 6000].
 ```
 
-Solution
+Solution - DFS
 
 ```java
 public class SolutionConnectNextRightII {
@@ -3443,6 +3443,33 @@ public class SolutionConnectNextRightII {
                 head = head.next;
             }
             head = dummy.next;
+        }
+        return root;
+    }
+}
+```
+BFS
+```java
+public class SolutionConnectNextRightII {
+    public Node connect(Node root) {
+        if(root==null) return root;
+        Queue<Node> q = new LinkedList();
+        q.add(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            while (size > 0) {
+                Node temp = q.poll();
+                size--;
+                if (size != 0) {
+                    temp.next = q.peek();
+                }
+                if (temp.left != null) {
+                    q.add(temp.left);
+                }
+                if (temp.right != null) {
+                    q.add(temp.right);
+                }
+            }
         }
         return root;
     }
