@@ -55,22 +55,19 @@ public class FindResource {
     }
 
     public static int getmaxIn5minWindow(List<Integer> arr) {
-        int n = arr.size();
-        int i = 0, j = i + 1;
-        int count = 1, maxCount = count;
-        while (j < n) {
-            // calculate
-            if (arr.get(j) - arr.get(i) <= 300) {
-                count++;
-                maxCount = Math.max(maxCount, count);
-                j++;
-            } else if (arr.get(j) - arr.get(i) > 300) {
-                count--;
-                i++;
-            }
-        }
-        return maxCount;
-
+        Collections.sort(arr);
+    int i=0,j=0;
+    int maxCount = 0;
+    while(j<arr.size()){
+      if(arr.get(j)-arr.get(i) <= INTERVAL){
+        maxCount = Math.max(maxCount,j-i+1);
+        j++;
+      }
+      else {
+          i++;
+      }
+    }
+    return maxCount;
     }
 
     public static void main(String[] argv) {
