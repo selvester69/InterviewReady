@@ -35,39 +35,38 @@ import java.util.Map;
 public class FindResource {
 
     public static String[] findResource(String[][] logs) {
-        String resourceName = "";
-        int maxCount = 0;
-
-        Map<String, List<Integer>> map = new HashMap<>();
-        for (String[] log : logs) {
-            map.computeIfAbsent(log[2], k -> new ArrayList<>()).add(Integer.parseInt(log[0]));
+        Map<String,List<Integer>> hm = new HashMap<>();
+        for(String[] res: resources){
+          hm.putIfAbsent(res[2],new ArrayList<>());
+          hm.get(res[2]).add(Integer.parseInt(res[0]));
         }
-        for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
-            List<Integer> values = entry.getValue();
-            Collections.sort(values, (a, b) -> Integer.compare(a, b));
-            int count = getmaxIn5minWindow(values);
-            if (count > maxCount) {
-                resourceName = entry.getKey();
-                maxCount = count;
-            }
+        String[]ans = new String[2];
+        int maxCount=0;
+        for(Map.Entry<String,List<Integer>> entry: hm.entrySet()){
+          int resourceCount = validateWindow(entry.getValue());
+          if(resourceCount>maxCount){
+            ans[0] = entry.getKey();
+            ans[1] = String.valueOf(resourceCount);
+            maxCount = resourceCount;
+          }
         }
-        return new String[] { resourceName, String.valueOf(maxCount) };
+    return ans;
     }
 
     public static int getmaxIn5minWindow(List<Integer> arr) {
         Collections.sort(arr);
-    int i=0,j=0;
-    int maxCount = 0;
-    while(j<arr.size()){
-      if(arr.get(j)-arr.get(i) <= INTERVAL){
-        maxCount = Math.max(maxCount,j-i+1);
-        j++;
-      }
-      else {
-          i++;
-      }
-    }
-    return maxCount;
+        int i=0,j=0;
+        int maxCount = 0;
+        while(j<arr.size()){
+          if(arr.get(j)-arr.get(i) <= INTERVAL){
+            maxCount = Math.max(maxCount,j-i+1);
+            j++;
+          }
+          else {
+              i++;
+          }
+        }
+        return maxCount;
     }
 
     public static void main(String[] argv) {
