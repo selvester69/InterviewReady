@@ -1,4 +1,11 @@
+# Atlassian
+
+## Attempt 1
+
 ```java
+import java.io.*;
+import java.util.*;
+import javafx.util.Pair;
 /*
 You are running a classroom and suspect that some of your students are passing around the answer to a multiple-choice question disguised as a random note.
 
@@ -41,63 +48,62 @@ Complexity analysis variables:
 W = number of words in `words`  
 S = maximal length of each word or of the note  
 */
-import java.io.*;
-import java.util.*;
-
-import javafx.util.Pair;
-
 public class Solution {
-  public static void main(String[] argv) {
-    String[] words = {"baby", "referee", "cat", "dada", "dog", "bird", "ax", "baz"};
-    String note1 = "ctay";
-    String note2 = "bcanihjsrrrferet";
-    String note3 = "tbaykkjlga";
-    String note4 = "bbbblkkjbaby";
-    String note5 = "dad";
-    String note6 = "breadmaking";
-    String note7 = "dadaa";
-    Solution sol = new Solution();
-   String ans =  sol.scrambledString(words,note1);
-   System.out.println(ans);
-  }
-  public String scrambledString(String[]words, String str){
-    //freqMap is ready 
-    int[]strArray = new int[26];
-    //create new freq of string
-    for(char c:str.toCharArray()){
-      strArray[c-'a']++;
+  
+  public static Map<Character,Integer> getFreq(String message){
+    Map<Character,Integer> freq = new HashMap<>();
+    for(char ch:message.toCharArray()){
+      freq.put(ch, freq.getOrDefault(ch,0)+1);
     }
-    // Map<String, Integer[]> freqMap = new HashMap<>();
-    for(String word:words){
-      int[]ch = new int[26];
-      for(char c:word.toCharArray()){
-        ch[c-'a']++;
-      }
-      if(compareFrequency(strArray,ch)){// we need to pass scrambled word char as first params
-       return word;
-      }
-      // freqMap.put(word,ch);
-      
-    }
-
-    return "-";
-
+    return freq;
   }
-  /*
-  cbtay
-  1110,,,1,00,1,0
-  cat
-  1,0,1,..1,000
-  */
-  public boolean compareFrequency(int[] arr1, int[]arr2){
+  public static boolean isValid(String word, Map<Character,Integer> freqMap){
+    int[]freq = new int[26];
+    for(char ch:word.toCharArray()){
+      freq[ch-'a']++;
+    }
+    // System.out.println(Arrays.toString(freq));
     for(int i=0;i<26;i++){
-      // for any case arr[i]== < than arr2[i]
-      if(arr1[i]> arr2[i]){//not correct 
-        return false;
+      if(freq[i]>0){// for char in word list
+        char key = (char) ('a'+i);
+
+        if(!freqMap.containsKey(key) || freq[i]>freqMap.get(key)){
+          return false;
+        }
       }
     }
+
     return true;
   }
-  
+  public static String scrambledString(String[]words, String message){
+      Map<Character,Integer> freqMap = getFreq(message);
+      // System.out.println(freqMap);
+      for(String word:words){
+        if(isValid(word,freqMap)){
+          return word;
+        }
+      }
+      return "-";
+  }
+  public static void main(String[] argv) {
+    System.out.println("Hello, world!");
+    System.out.println("This is a fully functioning Java environment.");
+    String[]words = {"baby", "referee", "cat", "dada", "dog", "bird", "ax", "baz"};
+     String note1 = "ctay";
+        String note2 = "bcanihjsrrrferet";
+        String note3 = "tbaykkjlga";
+        String note4 = "bbbblkkjbaby";
+        String note5 = "dad";
+        String note6 = "breadmaking";
+        String note7 = "dadaa";
+        System.out.println(scrambledString(words, note1));
+        System.out.println(scrambledString(words, note2));
+        System.out.println(scrambledString(words, note3));
+        System.out.println(scrambledString(words, note4));
+        System.out.println(scrambledString(words, note5));
+        System.out.println(scrambledString(words, note6));
+        System.out.println(scrambledString(words, note7));
+  }
 }
+
 ```
