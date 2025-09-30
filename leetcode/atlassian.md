@@ -1,3 +1,4 @@
+```java
 /*
 You are running a classroom and suspect that some of your students are passing around the answer to a multiple-choice question disguised as a random note.
 
@@ -99,3 +100,4 @@ public class Solution {
   }
   
 }
+```
