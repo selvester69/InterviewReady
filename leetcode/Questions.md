@@ -5,6 +5,10 @@
 ### Sliding Window
 
 generic pattern
+```java
+
+```
+
 
 ### Fixed Size Sliding window
 
