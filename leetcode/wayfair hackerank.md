@@ -1,3 +1,6 @@
+# wayfair
+
+```java
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -95,7 +98,12 @@ public class Solution {
         bufferedWriter.close();
     }
 }
+```
+
 ========
+
+```java
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -194,3 +202,4 @@ public class Solution {
         bufferedWriter.close();
     }
 }
+```
