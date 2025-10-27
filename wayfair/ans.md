@@ -183,7 +183,7 @@ public class EventManager implements IEventManager {
 }
 ```
 
-```java 
+```java
 import java.time.LocalDateTime;
 
 public class Main {
