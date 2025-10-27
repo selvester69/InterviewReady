@@ -1,4 +1,4 @@
-Paypal KARAt interview 
+// Paypal KARAt interview 
 
 /*
 Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time, the ID of the user making the access, and the resource ID. 

@@ -1,37 +1,156 @@
-# Cache Problems and Solutions
+# InterviewReady Repository Content
 
-## 1. Thunder Herd
+This document provides an overview of the content within this repository.
 
-**Problem:** When a large number of keys expire simultaneously, all subsequent queries for these keys bypass the cache and hit the database directly, leading to a surge in database load.
+## Directory Structure
 
-**Solutions:**
-
-- **Stagger Expiry Times:** Avoid setting identical expiry times for a large group of keys. Introduce a random offset to their expiry times.
-- **Prioritize Data:** Allow core business-critical data to hit the database if necessary, while non-critical data waits until the cache is repopulated.
-
-## 2. Cache Penetration
-
-**Problem:** A request is made for a key that does not exist in the cache, nor in the database. This leads to repeated, unnecessary database queries for non-existent data.
-
-**Solutions:**
-
-- **Cache Null Values:** Store a special "null" or "not found" value in the cache for non-existent keys. This prevents repeated database lookups for the same non-existent data.
-- **Bloom Filter:** Use a Bloom filter to quickly check if a key *might* exist before querying the database. If the Bloom filter indicates the key definitely does not exist, the database query can be avoided.
-
-## 3. Cache Breakdown
-
-**Problem:** When a "hot" key (a key that is frequently accessed) expires, a large number of concurrent requests for that key will bypass the cache and hit the database, causing a sudden spike in database load.
-
-**Solution:**
-
-- **Do Not Expire Hot Keys:** For extremely hot keys that account for a significant percentage (e.g., 80%) of queries, consider not setting an expiry time or setting a very long one. Alternatively, implement a proactive refresh mechanism for these keys.
-
-## 4. Cache Crash
-
-**Problem:** The entire cache system becomes unavailable (crashes), leading to all incoming requests directly hitting the database, potentially overwhelming it.
-
-**Solutions:**
-
-- **Circuit Breaker:** Implement a circuit breaker pattern. When the cache is detected as down, the circuit breaker can prevent further requests from hitting the database directly, perhaps by returning a default value or an error, to protect the database.
-- **Cache Cluster/High Availability:** Deploy the cache in a clustered or highly available configuration (e.g., multiple nodes, replication) to improve its resilience and minimize downtime.
-![problems in using cache](image.png)
+* **Frontend/**
+  * `angular.md`
+* **ai-generate-interview-content/**
+  * `Gemini-Interview.md`
+  * `Optimizing Spring Boot performance.md`
+* **articles/**
+  * `Cache-problem.md`
+  * `image.png`
+  * `token-flow.png`
+* **byte-byte-go/**
+  * `image1.png`
+  * `image2.png`
+  * `image3.png`
+* **distributedSystem/**
+  * `Exactly-Once Semantics in Kafka.md`
+  * `Screenshot 2025-07-28 at 6.41.26 PM-1.png`
+  * `Screenshot 2025-07-28 at 6.41.26 PM.png`
+  * `authentication.md`
+  * `authentication.png`
+  * `kafka-read-once.md`
+  * `kafka.excalidraw`
+  * `kafka.md`
+  * `readme.md`
+* **grokking-system-design/**
+  * `CAP.pdf`
+  * `Caching.pdf`
+  * `Consistent Hashing.pdf`
+  * `Data Partitioning.pdf`
+  * `Indexes.pdf`
+  * `Introduction.pdf`
+  * `Key Characteristics of Distributed Systems.pdf`
+  * `Load Balancing - Link 2.pdf`
+  * `LoadBalancing - Link 1.pdf`
+  * `LoadBalancing.pdf`
+  * `Long-Polling vs WebSockets vs Server-Sent Events .pdf`
+  * `Problems/`
+    * `Additional Resources/`
+      * `Consistent Hashing.pdf`
+      * `Kafka.pdf`
+      * `Shvachko.pdf`
+      * `Zoo Keeper.pdf`
+      * `amazon-dynamo-sosp2007.pdf`
+      * `chubby-osdi06.pdf`
+      * `kung-1981.pdf`
+      * `mapreduce-osdi04.pdf`
+      * `paxos-simple-Copy.pdf`
+    * `Dropbox.pdf`
+    * `FB Newsfeed.pdf`
+    * `Instagram.pdf`
+    * `Messenger.pdf`
+    * `Pastebin.pdf`
+    * `QuadTree.pdf`
+    * `Rate Limiting.pdf`
+    * `Steps.pdf`
+    * `TicketMaster.pdf`
+    * `TicketMaster.png`
+    * `Twitter Search.pdf`
+    * `Twitter.pdf`
+    * `TypeAhead Suggestion.pdf`
+    * `URL Shortener.pdf`
+    * `Web Crawler.pdf`
+    * `Yelp.pdf`
+    * `Youtube_Netflix.pdf`
+  * `Proxies.pdf`
+  * `README.md`
+  * `Redundancy _ Replication.pdf`
+  * `SQL vs No-SQL.pdf`
+* **interview-experience/**
+  * `Karat-interview/`
+    * `fixed.md`
+    * `readme.md`
+  * `kotak barraiser interview.md`
+  * `paypal karat interview.java`
+  * `wayfair/`
+    * `Main.java`
+    * `ans.md`
+* **java/**
+  * `Caching with ConcurrentHashMap and computeIfAbsent.md`
+  * `Java: Design an Immutable Class.md`
+  * `java-lru-cache.md`
+  * `java-rate-limiter.md`
+  * `java-thread-safe-singleton.md`
+  * `microservices-config.md`
+  * `spring-security-oauth2.md`
+  * `spring-transactions-propagation.md`
+* **leetcode/**
+  * `DP.md`
+  * `FindResource.java`
+  * `Questions.md`
+  * `ScrambledString.java`
+  * `atlassian.md`
+  * `leetcode150.md`
+  * `leetcodeDebug.md`
+  * `practice-set.md`
+  * `rough.md`
+  * `wayfair hackerank.md`
+* **leetcoding-practice/**
+  * `practice/`
+    * `README.md`
+    * `lib/`
+    * `src/`
+      * `App.java`
+* **others/**
+  * `4+1view.md`
+  * `c4Model.png`
+  * `review/`
+    * `code-review.md`
+    * `image-1.png`
+    * `image-2.png`
+    * `image.png`
+* **sql/**
+  * `database.md`
+  * `sql.md`
+* **system-design/**
+  * `HLD/`
+    * `Readme.md`
+    * `chat-application/`
+      * `Readme.md`
+    * `consistentHasing.md`
+    * `others/`
+      * `ebay-chat-assistance.excalidraw`
+      * `ecommerce-chat.md`
+      * `wbd-video-comment.excalidraw`
+    * `rate-limiter/`
+      * `SlidingWindowLogRateLimiterRedis.java`
+      * `SlidingWindowLogsRateLimiter.java`
+      * `image-1.png`
+      * `image-2.png`
+      * `image-3.png`
+      * `image-4.png`
+      * `image.png`
+      * `rateLimiter.md`
+    * `search/`
+      * `search.excalidraw`
+      * `search.md`
+  * `LLD/`
+    * `ATMSystem.md`
+    * `BlackjackGame.md`
+    * `ElevatorSystem.md`
+    * `GroceryStoreSystem.md`
+    * `MovieTicketBookingSystem.md`
+    * `ParkingLotSystem.md`
+    * `RestaurantManagementSystem.md`
+    * `ShippingLockerSystem.md`
+    * `TicTacToeGame.md`
+    * `UnixFileSearchSystem.md`
+    * `VendingMachine.md`
+    * `lld.md`
+  * `revision system design problems list.md`
+* `token-flow.excalidraw`

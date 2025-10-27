@@ -1,9 +1,3 @@
----
-title: "The “4 + 1” View Model of Software Architecture"
-author: "Gemini"
-date: "2025-08-04"
----
-
 # The “4 + 1” View Model of Software Architecture
 
 ## Introduction
