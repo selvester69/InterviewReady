@@ -1284,11 +1284,16 @@ Solution
 ```java
 public class SolutionContainerWithMostWater {
     public int maxArea(int[] height) {
-        int l = 0, r = height.length - 1, max = 0;
-        while (l < r) {
-            max = Math.max(max, Math.min(height[l], height[r]) * (r - l));
-            if (height[l] < height[r]) l++;
-            else r--;
+        int left=0,right=height.length-1;
+        int max = Integer.MIN_VALUE;
+        while(left<right){
+            int area = Math.min(height[left], height[right]) * (right-left);
+            max = Math.max(max, area );
+            if(height[left] < height[right]){
+                left++;
+            }else{
+                right--;
+            }
         }
         return max;
     }
@@ -1468,33 +1473,6 @@ public class SolutionLongestSubstringNoRepeat {
 }
 ```
 
-another Solution
-
-```java
-public int lengthOfLongestSubstring(String s) {
-        Set<Character> hs = new HashSet<>();
-        int longest = 0;
-        int i = 0, j = 0;
-        // use sliding window
-        while (j < s.length()) {
-            // calculations
-            char c = s.charAt(j);
-            if (!hs.contains(c)) {
-                hs.add(c);
-                longest = Math.max(longest, j - i + 1);
-                j++;
-            } else if (hs.contains(c)) {
-                // ans from calcualtions
-                while (hs.contains(c) && hs.size()>0) {
-                    hs.remove(s.charAt(i));
-                    i++;
-                }
-            }
-        }
-        return longest;
-    }
-```
-
 ### Question 32: Substring with Concatenation of All Words
 
 Given a string s and a list of words, find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters.
@@ -1520,25 +1498,44 @@ Solution
 ```java
 import java.util.*;
 public class SolutionSubstringWithConcatWords {
-    public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> res = new ArrayList<>();
-        if (words.length == 0) return res;
-        int wordLen = words[0].length(), totalLen = wordLen * words.length;
-        Map<String, Integer> wordCount = new HashMap<>();
-        for (String w : words) wordCount.put(w, wordCount.getOrDefault(w, 0) + 1);
-        for (int i = 0; i <= s.length() - totalLen; i++) {
-            Map<String, Integer> seen = new HashMap<>();
-            int j = 0;
-            while (j < words.length) {
-                String sub = s.substring(i + j * wordLen, i + (j + 1) * wordLen);
-                if (!wordCount.containsKey(sub)) break;
-                seen.put(sub, seen.getOrDefault(sub, 0) + 1);
-                if (seen.get(sub) > wordCount.get(sub)) break;
-                j++;
-            }
-            if (j == words.length) res.add(i);
+   public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> ans = new ArrayList<>();
+        if (s == null || s.length() == 0 || words == null || words.length == 0) {
+            return ans;
         }
-        return res;
+
+        int n = s.length();
+        int m = words.length;
+        int w = words[0].length();
+
+        Map<String, Integer> chars = new HashMap<>();
+        for (String word : words) {
+            chars.put(word, chars.getOrDefault(word, 0) + 1);
+        }
+
+        for (int i = 0; i < w; i++) {
+            Map<String, Integer> mpp = new HashMap<>();
+            int j = i;
+            for (int k = i; k + w <= n; k += w) {
+                String currentWord = s.substring(k, k + w);
+                mpp.put(currentWord, mpp.getOrDefault(currentWord, 0) + 1);
+
+                if (k - j + w == m * w) {
+                    if (mpp.equals(chars)) {
+                        ans.add(j);
+                    }
+
+                    String removeWord = s.substring(j, j + w);
+                    if (mpp.get(removeWord) > 1) {
+                        mpp.put(removeWord, mpp.get(removeWord) - 1);
+                    } else {
+                        mpp.remove(removeWord);
+                    }
+                    j += w;
+                }
+            }
+        }
+        return ans;
     }
 }
 ```
@@ -3466,7 +3463,9 @@ public class SolutionConnectNextRightII {
     }
 }
 ```
+
 BFS
+
 ```java
 public class SolutionConnectNextRightII {
     public Node connect(Node root) {
