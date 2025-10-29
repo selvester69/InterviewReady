@@ -1100,29 +1100,47 @@ Solution
 ```java
 import java.util.*;
 public class SolutionTextJustification {
-    public List<String> fullJustify(String[] words, int maxWidth) {
+   public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> res = new ArrayList<>();
-        int i = 0, n = words.length;
+        int n = words.length;
+        int i = 0;
         while (i < n) {
             int j = i, len = 0;
             while (j < n && len + words[j].length() + (j - i) <= maxWidth) {
-                len += words[j++].length();
+                len += words[j].length();
+                j++;
             }
             StringBuilder sb = new StringBuilder();
-            int spaces = maxWidth - len;
             int gaps = j - i - 1;
+            int spaces = maxWidth - len;
+            // this is an
+            // if it is the last word
             if (j == n || gaps == 0) {
                 for (int k = i; k < j; k++) {
                     sb.append(words[k]);
-                    if (k < j - 1) sb.append(" ");
+                    if (k < j - 1) {
+                        sb.append(" ");
+                    }
                 }
-                for (int k = sb.length(); k < maxWidth; k++) sb.append(" ");
+                //add remining space
+                while (sb.length() < maxWidth) {
+                    sb.append(" ");
+                }
             } else {
-                int space = spaces / gaps, extra = spaces % gaps;
+                // not last word.
+                // space count, totalgaps count , 
+                int space = spaces / gaps;
+                int extra = spaces % gaps;
                 for (int k = i; k < j; k++) {
                     sb.append(words[k]);
                     if (k < j - 1) {
-                        for (int s = 0; s < space + (k - i < extra ? 1 : 0); s++) sb.append(" ");
+                        //add all extra space 
+                        for (int s = 0; s < space; s++) {
+                            sb.append(" ");
+                        }
+                        if (k - i < extra) {
+                            sb.append(" ");
+                        }
                     }
                 }
             }
