@@ -1,4 +1,4 @@
-Java: Design an Immutable Class
+# Java: Design an Immutable Class
 An immutable class is one whose instance cannot be modified after it's created. This is a fundamental concept in concurrent programming because immutable objects are inherently thread-safe and can be shared freely among multiple threads without synchronization.
 
 Rules for Designing an Immutable Class
@@ -14,6 +14,7 @@ Defensive Copy in Getters: Similarly, if a getter returns a reference to a mutab
 
 Example
 Here is a complete, well-commented example of a properly designed immutable class that contains both a primitive field and a mutable object.
+
 ```java
 import java.util.ArrayList;
 import java.util.Collections;

@@ -115,5 +115,3 @@ cache.computeIfAbsent(key, mappingFunction);
 ---
 
 ✅ This approach is a **simple, generic, thread-safe in-memory cache** implementation that can be adapted to any expensive operation (e.g., database calls, API requests, heavy computations).
-
-```

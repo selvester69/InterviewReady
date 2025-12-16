@@ -312,10 +312,13 @@ Solution
 ```java
 public class SolutionBestTimeToBuySellStock {
     public int maxProfit(int[] prices) {
-        int minPrice = Integer.MAX_VALUE, maxProfit = 0;
-        for (int price : prices) {
-            if (price < minPrice) minPrice = price;
-            else if (price - minPrice > maxProfit) maxProfit = price - minPrice;
+        int buy = prices[0];
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < buy) {
+                buy = prices[i];
+            }
+            maxProfit = Math.max(maxProfit, prices[i] - buy);
         }
         return maxProfit;
     }
@@ -1432,27 +1435,23 @@ Solution
 
 ```java
 public int lengthOfLongestSubstring(String s) {
-        Set<Character> hs = new HashSet<>();
-        int longest = 0;
-        int i = 0, j = 0;
-        // use sliding window
-        while (j < s.length()) {
-            // calculations
-            char c = s.charAt(j);
-            if (!hs.contains(c)) {
-                hs.add(c);
-                longest = Math.max(longest, j - i + 1);
-                j++;
-            } else if (hs.contains(c)) {
-                // ans from calcualtions
-                while (hs.contains(c) && hs.size()>0) {
-                    hs.remove(s.charAt(i));
-                    i++;
-                }
-            }
+    Set<Character> set = new HashSet<>();
+    int n = s.length();
+    int length = 0;
+    int i = 0, j = 0;
+    while (j < n) {
+        char c = s.charAt(j);
+        if (!set.contains(c)) {
+            set.add(c);
+            length = Math.max(length, j - i + 1);
+            j++;
+        } else {
+            set.remove(s.charAt(i));
+            i++;
         }
-        return longest;
     }
+    return length;
+}
 ```
 
 ```java
@@ -5118,15 +5117,29 @@ public class SolutionMergeKSortedLists {
 
 ## Kadane's Algorithm
 
-### Question 112: Maximum Subarray
+### Question 112: Maximum Subarray sum
 
 Find the contiguous subarray with the largest sum.
 
 Examples
 
 ```text
+Example 1:
+
 Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+Example 2:
+
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+Example 3:
+
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+
 
 Constraints
 
@@ -5136,14 +5149,52 @@ Constraints
 Solution
 
 ```java
-public class SolutionMaximumSubarray {
-    public int maxSubArray(int[] nums) {
-        int max = nums[0], curr = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            curr = Math.max(nums[i], curr + nums[i]);
-            max = Math.max(max, curr);
+public class MaxSubarraySum {
+
+    /** using bruteforrce method-> calculate all subarray sum and find max sum among them 
+     * time : O(N^2)
+     * space: O(1)
+    */
+    public static int maxSubarrSumBruteforce(int[]arr){
+        int maxSum = Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            int sum = 0;
+            for(int j=i;j<arr.length;j++){
+                sum+=arr[j];
+                maxSum = Math.max(sum,maxSum);
+            }
         }
-        return max;
+        return maxSum;
+    }
+
+    /**
+     * Using Kadane's Algorithm - using one pass
+     * time: O(N)
+     * space: O(1)
+     */
+
+    public static int maxSubarraySum(int[]arr){
+        int maxSum = Integer.MIN_VALUE;
+        int currSum = 0;
+        for(int i=0;i<arr.length;i++){
+            currSum+=arr[i];
+            maxSum = Math.max(maxSum, currSum);
+            if(currSum<0){
+                currSum=0;
+            }
+        }
+        return maxSum;
+    }
+
+    /** using one more line optimizations */
+    public static int maxSubarraySum_1(int[]arr){
+        int maxSum = arr[0]; // Note keep intial values as first value in array.
+        int currSum = arr[0];
+        for(int i=1;i<arr.length;i++){
+            currSum = Math.max(currSum+arr[i],arr[i]);
+            maxSum = Math.max(maxSum, currSum);
+        }
+        return maxSum;
     }
 }
 ```
@@ -6169,6 +6220,77 @@ Constraints
 0 <= amount <= 10^4
 ```
 
+- Recursive
+
+```java
+public int coinChange(int[] coins, int amt) {
+        int res = rec(coins, amt, 0);
+        int maxcount = amt + 1;
+        if (res >= maxcount) {
+            return -1;
+        }
+        return res;
+    }
+
+    private int rec(int[] coins, int amt, int n) {
+        int MAX_COUNT = Integer.MAX_VALUE; 
+        if (amt == 0) {
+            return 0;
+        }
+        if (n == coins.length) {
+            return MAX_COUNT;
+        }
+        int pick = MAX_COUNT;
+        if (coins[n] <= amt) {
+            int subRes = rec(coins, amt - coins[n], n);
+            if (subRes < MAX_COUNT) {
+                pick = 1 + subRes;
+            }
+        }
+        int nopick = rec(coins, amt, n + 1);
+        return Math.min(pick, nopick);
+    }
+```
+
+- Memoized
+
+```java
+public int coinChange(int[] coins, int amt) {
+        int memo[][] = new int[amt + 1][coins.length];
+        for(int[]row:memo){
+            Arrays.fill(row,-1);
+        }
+        int res = rec(coins, amt, 0, memo);
+        int maxcount = amt + 1;
+        if (res >= maxcount) {
+            return -1;
+        }
+        return res;
+    }
+
+    private int rec(int[] coins, int amt, int n, int memo[][]) {
+        if (amt == 0) {
+            return 0;
+        }
+        if (n == coins.length) {
+            return Integer.MAX_VALUE;
+        }
+        if(memo[amt][n]!=-1){
+            return memo[amt][n];
+        }
+        int pick = Integer.MAX_VALUE;
+        if (coins[n] <= amt) {
+            int subRes = rec(coins, amt - coins[n], n, memo);
+            if (subRes < Integer.MAX_VALUE) {
+                pick = 1 + subRes;
+            }
+        }
+        int nopick = rec(coins, amt, n + 1, memo);
+        memo[amt][n] = Math.min(pick, nopick);
+        return memo[amt][n];
+    }
+```
+
 ```java
 import java.util.*;
 public class SolutionCoinChange {
@@ -6695,6 +6817,152 @@ class Solution {
         List<String> list = new ArrayList<>(s);
         Collections.sort(list);
         return list;
+    }
+}
+```
+
+## Based on Kadane's Algorithm
+
+### Print subarray with maximum sum
+
+Given an array arr[], the task is to print the subarray having maximum sum.
+
+Examples:
+
+Input: arr[] = {2, 3, -8, 7, -1, 2, 3}
+Output: {7, -1, 2, 3}
+Explanation: The subarray {7, -1, 2, 3} has the largest sum 11.
+
+Input: arr[] = {-2, -5, 6, -2, -3, 1, 5, -6}
+Output: {6, -2, -3, 1, 5}
+Explanation: The subarray {6, -2, -3, 1, 5} has the largest sum of 7.
+
+```java
+public class PrintSubarrayWithMaximumSum {
+
+    /**
+     * using bruteforrce method-> calculate all subarray sum and find max sum among
+     * them
+     * time : O(N^2)
+     * space: O(1)
+     */
+
+    public static List<Integer> maxSubarrSumBruteforce(int[] arr) {
+        List<Integer> res = new ArrayList<>();
+        int maxSum = Integer.MIN_VALUE;
+        int start = 0, end = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int currSum = 0;
+            for (int j = i; j < arr.length; j++) {
+                currSum += arr[j];
+                if (currSum > maxSum) {
+                    maxSum = currSum;
+                    start = i;
+                    end = j;
+                }
+            }
+        }
+        for (int i = start; i <= end; i++) {
+            res.add(arr[i]);
+        }
+        return res;
+    }
+
+    /**
+     * sliding window will not be applicable as we dont know window condition
+     * kadane's algorithm will work.
+     * time: O(N)
+     * space: O(1)
+     */
+    public static List<Integer> maxSubarraySum(int[] arr) {
+        List<Integer> res = new ArrayList<>();
+        int start = 0, end = 0;
+        int tempStart = 0;
+        int currSum = 0, maxSum = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            currSum += arr[i];
+            if (currSum > maxSum) {
+                maxSum = currSum;
+                start = tempStart;
+                end = i;
+            }
+            if (currSum < 0) {
+                currSum = 0;
+                tempStart = i + 1;
+            }
+        }
+        for (int i = start; i <= end; i++) {
+            res.add(arr[i]);
+        }
+        return res;
+    }
+}
+```
+
+### Maximum Product Subarray
+
+Given an array arr[] consisting of positive, negative, and zero values, find the maximum product that can be obtained from any contiguous subarray of arr[].
+
+Examples:
+
+Input: arr[] = [-2, 6, -3, -10, 0, 2]
+Output: 180
+Explanation: The subarray with maximum product is [6, -3, -10] with product = 6 *(-3)* (-10) = 180.
+
+Input: arr[] = [-1, -3, -10, 0, 6]
+Output: 30
+Explanation: The subarray with maximum product is [-3, -10] with product = (-3) * (-10) = 30.
+
+Input: arr[] = [2, 3, 4]
+Output: 24
+Explanation: For an array with all positive elements, the result is product of all elements.
+
+```java
+public class MaximumProductSubarray {
+
+    /** brute force way in O(N^2) time */
+
+    public static int maxProductBruteForce(int[] arr) {
+        int maxProd = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            int prod = 1;
+            for (int j = i; j < arr.length; j++) {
+                prod *= arr[j];
+                maxProd = Math.max(maxProd, prod);
+            }
+        }
+        return maxProd;
+    }
+
+    /** using greedy approach O(N) time */
+
+    public static int maxProduct(int[] arr) {
+        int maxProd = arr[0];
+        int currMin = arr[0], currMax = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            int temp = Math.max(arr[i], Math.max(arr[i] * currMax, arr[i] * currMin));
+            currMin = Math.min(arr[i], Math.min(arr[i] * currMax, arr[i] * currMin));
+            currMax = temp;
+            maxProd = Math.max(currMax, maxProd);
+        }
+        return maxProd;
+    }
+
+    /** using prefix and suffix array */
+    public static int maxProduct_1(int[] arr) {
+        int maxProd = 1;
+        int pre = 1, suff = 1, n = arr.length;
+        for (int i = 0; i < n; i++) {
+            // if prefix or suffix becomes zero we have to make it 1 othewise we can get wrong ans 
+            if (pre == 0)
+                pre = 1;
+            if (suff == 0)
+                suff = 1;
+            pre *= arr[i]; 
+            suff *= arr[n - i - 1];
+            maxProd = Math.max(maxProd, Math.max(pre, suff));
+        }
+        return maxProd;
     }
 }
 ```
