@@ -381,6 +381,30 @@ text
 
 Solution
 
+Solution-1 : O(2^N)
+
+```java
+public boolean canJump(int[] nums) {
+        if(nums==null || nums.length==0) return true;
+        return rec(nums,0);
+    }
+
+    public boolean rec(int[]nums, int idx){
+        if(idx==nums.length-1) return true;
+        if(idx>=nums.length) return false;
+        for(int i=1;i<=nums[idx];i++){
+            if(rec(nums,idx+i)){
+                return true;
+            }
+        }
+        return false;
+    }
+```
+
+we can also wite memoized solution but which will take O(N) space
+
+Optimised Solution: O(N) Greedy approach
+
 ```java
 public class SolutionJumpGame {
     public boolean canJump(int[] nums) {
@@ -392,6 +416,21 @@ public class SolutionJumpGame {
         return true;
     }
 }
+```
+
+Another way in greedy
+
+```java
+public boolean canJump(int[] nums) {
+        int n = nums.length;
+        int gIndex = n - 1;
+        for (int i = n - 1; i >= 0; i--) {
+            if (i + nums[i] >= gIndex) {
+                gIndex = i;
+            }
+        }
+        return gIndex == 0;
+    }
 ```
 
 ### Question 10: Jump Game II
@@ -664,6 +703,36 @@ public class SolutionProductExceptSelf {
             res[i] *= right;
             right *= nums[i];
         }
+        return res;
+    }
+}
+```
+
+Another way using Zero count -> same complexity.
+
+```java
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int res[] = new int[nums.length];
+        int prod = 1;
+        int zeroCount = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                prod *= nums[i];
+            } else {
+                zeroCount++;
+            }
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (zeroCount > 1) {
+                res[i] = 0;
+            } else if (zeroCount == 1) {
+                res[i] = nums[i] != 0 ? 0 : prod;
+            } else {
+                res[i] = prod / nums[i];
+            }
+        }
+        System.gc();
         return res;
     }
 }
@@ -972,26 +1041,98 @@ public class SolutionLongestCommonPrefix {
 }
 ```
 
+Another Solution is using Trie
+
+```java
+public class P20LongestCommonPrefix {
+    class TrieNode {
+        TrieNode[] children;
+        int count;
+        boolean isTerminal;
+
+        public TrieNode() {
+            this.children = new TrieNode[26];
+            this.count = 0;
+        }
+    }
+
+    TrieNode node = null;
+
+    public P20LongestCommonPrefix() {
+        this.node = new TrieNode();
+    }
+
+    public void addTrie(String s) {
+        TrieNode temp = this.node;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int idx = c - 'a';
+            if (temp.children[idx] == null) {
+                temp.children[c - 'a'] = new TrieNode();
+                temp.count++;
+            }
+            temp = temp.children[c - 'a'];
+        }
+        temp.isTerminal = true;
+    }
+
+    public String iterate(TrieNode root, String s) {
+        TrieNode curr = root;
+        int i = 0;
+        while (curr.count == 1 && !curr.isTerminal) {
+            int idx = s.charAt(i) - 'a';
+            i++;
+            curr = curr.children[idx];
+        }
+        return s.substring(0, i);
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+        for (String s : strs) {
+            addTrie(s);
+        }
+        // validate trie value
+        return iterate(node, strs[0]);
+    }
+    public static void main(String[] args) {
+        P20LongestCommonPrefix obj = new P20LongestCommonPrefix();
+        String res = obj.longestCommonPrefix(new String[]{ "geeksforgeeks","geeks","geek","geezer"});
+        System.out.println(res);
+    }
+}
+```
+
 ### Question 21: Reverse Words in a String
 
 Given an input string s, reverse the order of the words.
 
+A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+
+Return a string of the words in reverse order concatenated by a single space.
+
+**Note** that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+
 Examples
 
 ```text
+Example 1:
+
 Input: s = "the sky is blue"
 Output: "blue is sky the"
-=============================================
+Example 2:
+
 Input: s = "  hello world  "
 Output: "world hello"
+Explanation: Your reversed string should not contain leading or trailing spaces.
+Example 3:
 
-Constraints
+Input: s = "a good   example"
+Output: "example good a"
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
 
-1 <= s.length <= 10^4
-s contains English letters (upper-case and lower-case), digits, and spaces ' '.
 ```
 
-Solution
+Solution using inbuilt function O(N) time and O(N) space
 
 ```java
 public class SolutionReverseWords {
@@ -1005,6 +1146,39 @@ public class SolutionReverseWords {
         return sb.toString();
     }
 }
+```
+
+Another Approach using reverse complete String - O(N) time O(1) space
+**Note** this Solution does not remove extra space
+
+```java
+public String reverseWordsInString(String s) {
+        char ch[] = s.toCharArray();
+        reverse(ch, 0, ch.length - 1);
+        int i = 0;
+        for (int j = 0; j < ch.length; j++) {
+            if (ch[i] == ' ') {
+                i++;
+                continue;
+            }
+            while (j < ch.length && ch[j] != ' ') {
+                j++;
+            }
+            reverse(ch, i, j-1);
+            i=j;
+        }
+        return new String(ch);
+    }
+
+    public void reverse(char ch[], int start, int end) {
+        while (start < end) {
+            char temp = ch[start];
+            ch[start] = ch[end];
+            ch[end] = temp;
+            start++;
+            end--;
+        }
+    }
 ```
 
 ### Question 22: Zigzag Conversion
