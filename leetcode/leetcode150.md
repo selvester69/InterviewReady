@@ -1249,6 +1249,26 @@ public class SolutionStrStr {
 }
 ```
 
+```java
+public int strStr(String haystack, String needle) {
+        int n = haystack.length();
+        int m = needle.length();
+        if (n < m) { // edge case
+            return -1;
+        }
+        for (int i = 0; i <= n - m; i++) {
+            int j = 0;
+            while (j < m && haystack.charAt(i + j) == needle.charAt(j)) {
+                j++;
+            }
+            if (j == needle.length()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+```
+
 ### Question 24: Text Justification
 
 Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
@@ -1293,6 +1313,7 @@ public class SolutionTextJustification {
             // this is an
             // if it is the last word
             if (j == n || gaps == 0) {
+                // this loop is required if the line is last line and we need to add all words left aligned
                 for (int k = i; k < j; k++) {
                     sb.append(words[k]);
                     if (k < j - 1) {
@@ -1304,7 +1325,7 @@ public class SolutionTextJustification {
                     sb.append(" ");
                 }
             } else {
-                // not last word.
+                // not last word or the last line.
                 // space count, totalgaps count , 
                 int space = spaces / gaps;
                 int extra = spaces % gaps;
@@ -1456,7 +1477,7 @@ Constraints
 0 <= height[i] <= 10^4
 ```
 
-Solution
+Solution - 5ms run time
 
 ```java
 public class SolutionContainerWithMostWater {
@@ -1475,6 +1496,32 @@ public class SolutionContainerWithMostWater {
         return max;
     }
 }
+```
+
+Solution - 2ms solution
+
+```java
+public int maxArea(int[] height) {
+        int i = 0, j = height.length - 1;
+        int maxLeft = height[i], maxRight = height[j];
+        int maxArea = 0;
+        while (i < j) {
+            int area = Math.min(height[i], height[j]) * (j - i);
+            maxArea = Math.max(maxArea, area);
+            if (height[i] < height[j]) {
+                while (height[i] <= maxLeft && i < j) {
+                    i++;
+                }
+                maxLeft = height[i];
+            } else {
+                while (height[j] <= maxRight && i < j) {
+                    j--;
+                }
+                maxRight = height[j];
+            }
+        }
+        return maxArea;
+    }
 ```
 
 ### Question 29: 3Sum
@@ -3876,14 +3923,27 @@ Constraints
 The number of nodes in the tree is in the range [0, 5 * 10^4].
 ```
 
-Solution
+Solution simple calculation
+
+```java
+public int countNodes(TreeNode root) {
+    if (root == null)
+        return 0;
+    return countNodes(root.left) + 1 + countNodes(root.right);
+}
+```
+
+Solution 2
+
+**explaination** in this solution we calc first left side and right side depth if the depth is same return 1<< left-1 means 2^h-1;
+else count nodes in regular way
 
 ```java
 public class SolutionCountCompleteTreeNodes {
     public int countNodes(TreeNode root) {
         if (root == null) return 0;
         int left = leftDepth(root), right = rightDepth(root);
-        if (left == right) return (1 << left) - 1;
+        if (left == right) return (1 << left) - 1;// 2^h-1 is no of nodes in complete bianry tree.
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
     private int leftDepth(TreeNode node) {
@@ -4117,7 +4177,7 @@ Constraints
 The number of nodes in the tree is in the range [2, 10^4].
 ```
 
-Solution
+Solution 1 (directly calcualte in inorder traversal)
 
 ```java
 public class SolutionMinAbsDiffBST {
@@ -4137,6 +4197,34 @@ public class SolutionMinAbsDiffBST {
 }
 ```
 
+Solution 2 (convert BST to list inorder and calculate the difference)
+
+```java
+class Solution {
+    public int getMinimumDifference(TreeNode root) {
+        if (root == null)
+            return 0;
+        List<Integer> res = new ArrayList();
+        inorder(root, res);
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < res.size(); i++) {
+            min = Math.min(min, Math.abs(res.get(i) - res.get(i - 1)));
+        }
+        return min;
+    }
+
+    public void inorder(TreeNode root, List<Integer> res) {
+        if (root == null)
+            return;
+        if (root.left != null)
+            inorder(root.left, res);
+        res.add(root.val);
+        if (root.right != null)
+            inorder(root.right, res);
+    }
+}
+```
+
 ### Question 87: Kth Smallest Element in a BST
 
 Find the kth smallest element in a BST.
@@ -4151,6 +4239,8 @@ Constraints
 
 The number of nodes in the tree is in the range [1, 10^4].
 ```
+
+**BruteForce Solution** would be to covert bst to array using inorder traversal and find kth element from start.
 
 Solution
 
@@ -4189,7 +4279,9 @@ Constraints
 The number of nodes in the tree is in the range [1, 10^4].
 ```
 
-Solution
+**Burute Force** convert to array using inorder and check every element.
+
+**Solution** optimised directly to check left and right element
 
 ```java
 public class SolutionValidateBST {
@@ -5681,6 +5773,8 @@ public class SolutionMedianOfTwoSortedArrays {
 }
 ```
 
+## Heap
+
 ### Question 121: Kth Largest Element in an Array
 
 Find the kth largest element in an unsorted array.
@@ -5896,6 +5990,8 @@ Constraints
 The input must be a 32-bit unsigned integer.
 ```
 
+Solution
+
 ```java
 public class SolutionReverseBits {
     public int reverseBits(int n) {
@@ -5908,6 +6004,20 @@ public class SolutionReverseBits {
         return result;
     }
 }
+```
+
+Another SOlution
+
+```java
+public int reverseBits(int n) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result <<= 1;
+            result |= (n & 1);
+            n >>>= 1;
+        }
+        return result;
+    }
 ```
 
 ### Question 127: Number of 1 Bits

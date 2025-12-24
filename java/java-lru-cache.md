@@ -1,4 +1,31 @@
-## Java: LRU Cache Implementation
+# Java: LRU Cache Implementation
+
+## Using LinkedHashMap
+
+- using linkedhashmap the implementation becomes easy as we can easily remove element from start
+
+```java
+public class LRUCache {
+    private final int capacity;
+    private final LinkedHashMap<Integer, Integer> map;
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        // passing true will ensure put and get operation will move the key to the end of linked hashMap
+        this.map = new LinkedHashMap<>(capacity, 0.75f, true);
+    }
+    public int get(int key) {
+        return map.getOrDefault(key, -1);
+    }
+    public void put(int key, int value) {
+        map.put(key, value);
+        if (map.size() > capacity) {
+            map.remove(map.keySet().iterator().next());
+        }
+    }
+}
+```
+
+## Using doubly linkedList and hashmap
 
 ```java
 import java.util.HashMap;
