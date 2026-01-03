@@ -74,76 +74,76 @@ import javafx.util.Pair;
 public class Solution {
   public static void main(String[] argv) {
     String[][] logs1 = {
-      {"200", "user_1", "resource_5"},
-      {"3", "user_1", "resource_1"},
-      {"620", "user_1", "resource_1"},
-      {"620", "user_3", "resource_1"},
-      {"34", "user_6", "resource_2"},
-      {"95", "user_9", "resource_1"},
-      {"416", "user_6", "resource_1"},
-      {"58523", "user_3", "resource_1"},
-      {"53760", "user_3", "resource_3"},
-      {"58522", "user_22", "resource_1"},
-      {"100", "user_3", "resource_6"},
-      {"400", "user_6", "resource_2"},
+        { "200", "user_1", "resource_5" },
+        { "3", "user_1", "resource_1" },
+        { "620", "user_1", "resource_1" },
+        { "620", "user_3", "resource_1" },
+        { "34", "user_6", "resource_2" },
+        { "95", "user_9", "resource_1" },
+        { "416", "user_6", "resource_1" },
+        { "58523", "user_3", "resource_1" },
+        { "53760", "user_3", "resource_3" },
+        { "58522", "user_22", "resource_1" },
+        { "100", "user_3", "resource_6" },
+        { "400", "user_6", "resource_2" },
     };
 
     String[][] logs2 = {
-      {"357", "user", "resource_2"},
-      {"1262", "user", "resource_1"},
-      {"1462", "user", "resource_2"},
-      {"1060", "user", "resource_1"},
-      {"756", "user", "resource_3"},
-      {"1090", "user", "resource_3"},
+        { "357", "user", "resource_2" },
+        { "1262", "user", "resource_1" },
+        { "1462", "user", "resource_2" },
+        { "1060", "user", "resource_1" },
+        { "756", "user", "resource_3" },
+        { "1090", "user", "resource_3" },
     };
 
     String[][] logs3 = {
-      {"300", "user_10", "resource_5"},
+        { "300", "user_10", "resource_5" },
     };
 
     String[][] logs4 = {
-      {"1", "user_96", "resource_5"},
-      {"1", "user_10", "resource_5"},
-      {"301", "user_11", "resource_5"},
-      {"301", "user_12", "resource_5"},
-      {"603", "user_12", "resource_5"},
-      {"1603", "user_12", "resource_7"},
+        { "1", "user_96", "resource_5" },
+        { "1", "user_10", "resource_5" },
+        { "301", "user_11", "resource_5" },
+        { "301", "user_12", "resource_5" },
+        { "603", "user_12", "resource_5" },
+        { "1603", "user_12", "resource_7" },
     };
 
     String[][] logs5 = {
-      {"300", "user_1", "resource_3"},
-      {"599", "user_1", "resource_3"},
-      {"900", "user_1", "resource_3"},
-      {"1199", "user_1", "resource_3"},
-      {"1200", "user_1", "resource_3"},
-      {"1201", "user_1", "resource_3"},
-      {"1202", "user_1", "resource_3"},
+        { "300", "user_1", "resource_3" },
+        { "599", "user_1", "resource_3" },
+        { "900", "user_1", "resource_3" },
+        { "1199", "user_1", "resource_3" },
+        { "1200", "user_1", "resource_3" },
+        { "1201", "user_1", "resource_3" },
+        { "1202", "user_1", "resource_3" },
     };
-    
+
   }
-  
-  static String[] findResource(String[][] logs){
-    Map<String,Integer> map = new HashMap<>();
+
+  // fix the string 
+  static String[] findResource(String[][] logs) {
+    Map<String, Integer> map = new HashMap<>();
     int maxCount = 0;
     String maxResource = "";
-    Arrays.sort(logs, (a,b)->  Integer.parseInt(a[0])-Integer.parseInt(b[0]));
-    //arrays sorted ased on time.
-    int i=Integer.parseInt(logs[0][0]),j=i;
-    while(j<logs.size()){
-      //calculation
-      map.put(logs[j][2],map.getOrDefault(logs[j][2],0)+1);
-      if(j-i<300){
-         maxCount = map.values().stream().max();
-        for (Map.Entry<K,V> e: map.entrySet()){
-          if(e.getValue==maxCount){
+    Arrays.sort(logs, (a, b) -> Integer.parseInt(a[0]) - Integer.parseInt(b[0]));
+    // arrays sorted ased on time.
+    int i = Integer.parseInt(logs[0][0]), j = i;
+    while (j < logs.size()) {
+      // calculation
+      map.put(logs[j][2], map.getOrDefault(logs[j][2], 0) + 1);
+      if (j - i < 300) {
+        maxCount = map.values().stream().max();
+        for (Map.Entry<K, V> e : map.entrySet()) {
+          if (e.getValue == maxCount) {
             maxResource = entry.getKey();
           }
         }
-      }
-      else if(j-i+1>300) {
-        if(map.containsKey(Integer.parseInt(logs[i][2]))){
-          map.put(logs[i][2],map.get(logs[i][2],0)-1);
-          if(map.get(logs[i][2])<0){
+      } else if (j - i + 1 > 300) {
+        if (map.containsKey(Integer.parseInt(logs[i][2]))) {
+          map.put(logs[i][2], map.get(logs[i][2], 0) - 1);
+          if (map.get(logs[i][2]) < 0) {
             map.remove(logs[i][2]);
           }
         }
@@ -151,10 +151,10 @@ public class Solution {
       }
       j++;
     }
-    return new String[]{remaxResource,String.valueOf(maxCount)};
+    return new String[] { maxResource, String.valueOf(maxCount) };
   }
 }
-//any 5 min window 
-//0->300
-//group by resource 
+// any 5 min window
+// 0->300
+// group by resource
 // map<String, list<int>>

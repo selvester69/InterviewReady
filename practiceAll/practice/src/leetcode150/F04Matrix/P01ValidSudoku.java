@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class P01ValidSudoku {
+    @SuppressWarnings("unchecked")
     public boolean isValidSudoku(char[][] board) {
         Set<Character>[] rows = new Set[9];
         Set<Character>[] cols = new Set[9];
