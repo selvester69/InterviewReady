@@ -169,26 +169,24 @@
 - Minimum Depth of Binary Tree
 - Inorder Traversal of Cartesian Tree
 - Build Cartesian Tree from Inorder Traversal
-- Count Nodes in Binary Tree
-- Reverse Level Order Traversal
 - Diameter of Binary Tree
 - Subtree of Another Tree
-- Right Side View of Binary Tree
-- Left Side View of Binary Tree
-- Top View of Binary Tree
-- Bottom View of Binary Tree
 - Count Good Nodes in Binary Tree
-- Serialize and Deserialize Binary Tree
 
 ---
 
 ## Binary Tree BFS
 
-- Binary Tree Right Side View
+- Right Side View of Binary Tree
+- Left Side View of Binary Tree
+- Top View of Binary Tree
+- Bottom View of Binary Tree
 - Average of Levels in Binary Tree
 - Binary Tree Level Order Traversal
 - Binary Tree Zigzag Level Order Traversal
 - Vertical Order Traversal of Binary Tree
+- Reverse Level Order Traversal
+- Serialize and Deserialize Binary Tree
 
 ---
 
