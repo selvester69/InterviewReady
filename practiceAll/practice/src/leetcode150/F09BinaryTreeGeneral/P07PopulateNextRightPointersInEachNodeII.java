@@ -3,8 +3,6 @@ package leetcode150.F09BinaryTreeGeneral;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import org.w3c.dom.Node;
-
 public class P07PopulateNextRightPointersInEachNodeII {
     class Node {
         public int val;
