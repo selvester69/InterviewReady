@@ -47,7 +47,7 @@ public class P04ValidAnagram {
     }
 
     // using array as freq map to map characters
-    public static boolean validAnagramArray(String s, String t) {
+    public static boolean validAnagramArray_optimised(String s, String t) {
         if (s.length() != t.length())
             return false;
         int[] charMap = new int[26];
@@ -66,7 +66,7 @@ public class P04ValidAnagram {
     public static void main(String[] args) {
         System.out.println(validAnagram("anagram", "nagaram"));
         System.out.println(validAnagram("rat", "car"));
-        System.out.println(validAnagramArray("anagram", "nagaram"));
-        System.out.println(validAnagramArray("rat", "car"));
+        System.out.println(validAnagramArray_optimised("anagram", "nagaram"));
+        System.out.println(validAnagramArray_optimised("rat", "car"));
     }
 }
