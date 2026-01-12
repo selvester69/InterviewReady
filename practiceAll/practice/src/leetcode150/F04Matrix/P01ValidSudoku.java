@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class P01ValidSudoku {
+
+    /**
+     * point to remember block index is (i/3)*3 + (j/3)
+     */
     @SuppressWarnings("unchecked")
     public boolean isValidSudoku(char[][] board) {
         Set<Character>[] rows = new Set[9];
@@ -17,17 +21,32 @@ public class P01ValidSudoku {
         }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == '.') {
+                char val = board[i][j];
+                if (val == '.') {
                     continue;
                 }
-                if (rows[i].contains(board[i][j]) ||
-                        cols[j].contains(board[i][j]) ||
-                        boxes[i / 3 + j / 3].contains(board[i][j])) {
+                if (rows[i].contains(val) || cols[j].contains(val) ||
+                        boxes[(i / 3) * 3 + (j / 3)].contains(val)) {
                     return false;
-                } else {
-                    rows[i].add(board[i][j]);
-                    cols[j].add(board[i][j]);
-                    boxes[i / 3 + j / 3].add(board[i][j]);
+                }
+                rows[i].add(val);
+                cols[j].add(val);
+                boxes[(i / 3) * 3 + (j / 3)].add(val);
+            }
+        }
+        return true;
+    }
+
+    public boolean isValidSudoku_optimizedSpace(char[][] board) {
+        Set<String> seen = new HashSet<>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                int val = board[i][j];
+                if (val == '.')
+                    continue;
+                if (!seen.add(val + " in row " + i) || !seen.add(val + " in col " + j) ||
+                        !seen.add(val + " in block " + ((i / 3) * 3) + (j / 3))) {
+                    return false;
                 }
             }
         }
@@ -126,19 +145,6 @@ public class P01ValidSudoku {
 
         // Test Case 5: Boundary Case - Fully Valid Board
         System.out.println("Test Case 5: Boundary - Fully filled, valid board (a solved Sudoku).");
-        char[][] board5 = {
-                { '5', '1', '9', '7', '4', '8', '3', '6', '2' },
-                { '6', '2', '8', '1', '5', '3', '7', '9', '4' },
-                { '4', '3', '7', '6', '2', '9', '1', '8', '5' },
-                { '3', '7', '2', '4', '6', '1', '8', '5', '9' },
-                { '9', '8', '5', '3', '7', '2', '6', '4', '1' },
-                { '1', '6', '4', '8', '9', '5', '2', '7', '3' },
-                { '2', '5', '3', '9', '1', '4', 'X', '2', 'Y' }, // Board is not 9x9 and has invalid chars, must use
-                                                                 // valid 9x9 grid
-                { '2', '5', '3', '9', '1', '4', 'X', '2', 'Y' }, // Re-using a known valid 9x9
-                { '2', '5', '3', '9', '1', '4', '8', '7', '6' }
-        };
-        // Re-using a known valid 9x9 for this test case
         char[][] board5_valid = {
                 { '5', '1', '9', '7', '4', '8', '3', '6', '2' },
                 { '6', '2', '8', '1', '5', '3', '7', '9', '4' },
@@ -151,7 +157,7 @@ public class P01ValidSudoku {
                 { '8', '4', '6', '5', '3', '7', '9', '1', '2' }
         };
         boolean expected5 = true;
-        boolean result5 = solution.isValidSudoku(board5);
+        boolean result5 = solution.isValidSudoku(board5_valid);
         System.out.println("Input: " + formatBoard(board5_valid));
         System.out.println("Expected: " + expected5);
         System.out.println("Actual: " + result5);
