@@ -5,7 +5,7 @@ import java.util.Queue;
 
 import leetcode150.F09BinaryTreeGeneral.TreeNode;
 
-public class P27SerializeAndDeserializeBinaryTree {
+public class P10SerializeAndDeserializeBinaryTree {
 
     public String serialize(TreeNode root) {
         if (root == null)
