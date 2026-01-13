@@ -2,7 +2,7 @@ package leetcode150.F09BinaryTreeGeneral;
 
 public class P21SubtreeOfAnotherTree {
 
-    public boolean areidenticalUtil(TreeNode root, TreeNode subroot) {
+    public boolean areidenticalUtil(TreeNode root, TreeNode subroot) {// this is same as subtree problem.
         if (root == null && subroot == null)
             return true;
         if (root == null || subroot == null)

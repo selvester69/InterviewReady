@@ -177,15 +177,15 @@
 
 ## Binary Tree BFS
 
+- Binary Tree Level Order Traversal
+- Reverse Level Order Traversal
+- Binary Tree Zigzag Level Order Traversal
+- Vertical Order Traversal of Binary Tree
 - Right Side View of Binary Tree
 - Left Side View of Binary Tree
 - Top View of Binary Tree
 - Bottom View of Binary Tree
 - Average of Levels in Binary Tree
-- Binary Tree Level Order Traversal
-- Binary Tree Zigzag Level Order Traversal
-- Vertical Order Traversal of Binary Tree
-- Reverse Level Order Traversal
 - Serialize and Deserialize Binary Tree
 
 ---
