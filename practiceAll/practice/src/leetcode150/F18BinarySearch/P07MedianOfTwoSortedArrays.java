@@ -1,7 +1,5 @@
 package leetcode150.F18BinarySearch;
 
-import java.util.Arrays;
-
 public class P07MedianOfTwoSortedArrays {
     // brute force
     public double findMedianSortedArrays_brute(int[] nums1, int[] nums2) {
