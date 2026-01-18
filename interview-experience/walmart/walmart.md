@@ -3,7 +3,7 @@
 design a train search and seat booking system like IRCTC
 we need to open source the system for third party like make my trip, paytm which might give us 10million req per second
 
-we have to come up with database design to handle all the above request accomodations then java classes 
+we have to come up with database design to handle all the above request accomodations then java classes
 
 ```text
 rctc
@@ -73,8 +73,23 @@ how do we monitor production system memory.
 how do we decide how many threads are needed in thread pool / executor.
 what is p50, p90, p99 term in system design.
 
+-- Another round
 
-walmart other interview
+- design youtube like streaming service
+
+## walmart other interview - SSE
+
 - 2 dsa problem
- bottom view of binary tree 
- max sum subarrary in circular array
+- bottom view of binary tree
+- max sum subarrary in circular array
+
+---
+
+## Staff Software Engineer - Global Tech
+
+- first round
+next greater element
+sort hashmap using custom iterator.
+
+- second round
+design notification system at scale.
