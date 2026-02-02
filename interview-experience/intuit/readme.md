@@ -82,3 +82,17 @@ class Solution{
 }
 
 // some questions about operational excellence and some other questions aboud AI usage.
+
+Round 2
+
+craft demo
+Our service receives requests from a client that includes the query param isAdmin=true or isAdmin=false
+
+hld
+top k product in each category
+
+ai
+creative nick name
+
+hm ->
+project details

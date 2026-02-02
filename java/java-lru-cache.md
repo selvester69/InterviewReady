@@ -189,3 +189,83 @@ public class LRUCache<K, V> {
         System.out.println("Final cache contents: " + cache.cache.keySet()); // [4, 3, 2]
     }
 }
+```
+
+## Build an In-Memory Cache (eviction strategies, TTL) java
+
+```java
+public class CacheEntry<V> {
+    private final V value;
+    private final long expirationTime;
+
+    public CacheEntry(V value, long ttlMillis) {
+        this.value = value;
+        this.expirationTime = System.currentTimeMillis() + ttlMillis;
+    }
+
+    public boolean isExpired() {
+        return System.currentTimeMillis() > expirationTime;
+    }
+
+    public V getValue() {
+        return value;
+    }
+}
+```
+
+```java
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public class CustomCache<K, V> {
+    private final Map<K, CacheEntry<V>> cacheMap;
+    private final int capacity;
+    // Daemon thread for passive background cleanup of expired entries
+    private final ScheduledExecutorService cleaner = Executors.newSingleThreadScheduledExecutor();
+
+    public CustomCache(int capacity, long cleanupIntervalSeconds) {
+        this.capacity = capacity;
+        this.cacheMap = Collections.synchronizedMap(new LinkedHashMap<K, CacheEntry<V>>(capacity, 0.75f, true) {
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<K, CacheEntry<V>> eldest) {
+                // Evict the least recently used entry when capacity is reached
+                return size() > CustomCache.this.capacity;
+            }
+        });
+        
+        // Schedule periodic cleanup of expired entries
+        cleaner.scheduleAtFixedRate(this::cleanupExpiredEntries, 0, cleanupIntervalSeconds, TimeUnit.SECONDS);
+    }
+
+    public void put(K key, V value, long ttlMillis) {
+        if (value == null) {
+            cacheMap.remove(key);
+            return;
+        }
+        cacheMap.put(key, new CacheEntry<>(value, ttlMillis));
+    }
+
+    public V get(K key) {
+        CacheEntry<V> entry = cacheMap.get(key);
+        if (entry == null) {
+            return null; // Cache miss
+        }
+        if (entry.isExpired()) {
+            cacheMap.remove(key); // Remove expired entry
+            return null;
+        }
+        return entry.getValue();
+    }
+
+    // Active cleanup method to be run by the scheduler
+    private void cleanupExpiredEntries() {
+        synchronized (cacheMap) {
+            cacheMap.entrySet().removeIf(entry -> entry.getValue().isExpired());
+        }
+    }
+}
+```

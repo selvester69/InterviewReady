@@ -93,3 +93,149 @@ sort hashmap using custom iterator.
 
 - second round
 design notification system at scale.
+
+- LLD round
+
+design notification system
+
+send notification
+types: (opt, promotion message, alert, coupon  etc.)---> can be added
+channels: (email, SMS, push notification, in-app message)-> can be added
+priotiry: (high, medium, low)
+user details: (user id, name , contact info) ->
+priority , mesasge ,
+send message to
+notification: -> user detail, message, priority, type
+at any point of time new channel
+extentesible to new channel
+
+give type of mesage can go via which channel
+eg: otp via email, sms, can add or remove channel for type of message
+alert-> all channels
+
+Actor-> defining channel and type
+
+assume we have eveything in place ->
+
+-> req:
+Send notification
+Notification types:
+Channels
+Priority
+userDetails:
+Notification
+
+Enum notification_types{
+ OTP,PROMOTION,EMAIL,
+}
+
+Class User{
+ int id,
+ String name ,
+ Contact contact
+  
+}
+
+Class UserPreferences{
+ userId:int
+ NotificationType:List<Notifications>
+}
+
+Enum Channel {
+ email, sms, push
+}
+
+Enum Priority{
+HIGH,MEDIUM,LOW
+}
+
+Class Notification{
+ userDEtails: User
+ message:String
+ priority:Priority
+ type:Notification type
+}
+—————— design patterns , principles ——
+
+Interface NotificationSTrategy{
+ notify();
+}
+
+Class OTPNotification implements Notification{
+ factory: ChannelFactory
+
+ OTPNotification(){
+  factory = new ChannelFactory();
+ }
+ String message;
+ notify(List<Channels> channel, String message){
+  List<channelS> channelType = channel.foreach(c-> factory.getChannel()).collect
+  channelType.forach().notify(message);
+ }
+}
+
+Class EmailNotification implements Notification{
+String message;
+ notify(mesasge){
+ // call third party otp service
+ sop(“sending OTP);
+}
+}
+
+ChannelFactory{
+ getCHannel(NotificationChannelSTrategy{ channel){
+  if(channel instance PushNotificationStategy){
+   return new PushNotificationStategy();
+  }
+ }
+}
+
+Interface NotificationChannelSTrategy{
+ Notify(Notification notification);
+}
+
+PushNotificationStategy implements NotificationChannelSTrategy{
+ notifiy(Notification notification,Stirng message){
+  notification.notify(mesage)
+ }
+}
+
+EmailNotificationStategy implements NotificationChannelSTrategy{
+ notifiy(Notification notification,Stirng message){
+  notification.notify(mesage)
+ }
+}
+
+Class UserNotification{
+ useDetails:
+ messag
+ notifier: List<NotificationChannelSTrategy> -> push, email
+
+ constructor(String message,prefreences,notifier){
+ }
+ notifyUser(){
+  notifier.foreach(n-> n.notify(preferences))-> O(N^2)
+ }
+}
+
+Class OTPVIASMS{
+
+}
+
+Interface
+
+Problem-> OTPSMS
+ OTP,EMAIL
+ promotion->SMS
+promotion->email
+….
+
+Driver {
+
+}
+
+- HM round
+all why questions
+
+- HR round
+why change
